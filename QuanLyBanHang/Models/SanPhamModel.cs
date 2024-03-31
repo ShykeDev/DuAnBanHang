@@ -25,7 +25,8 @@ namespace QuanLyBanHang.Models
     public class SanPhamModelAdd
     {
         public SanPham sanPham { get; set; }
-        public List<ThuocTinhChungModel> ThuocTinhChungs { get; set; }
+        public List<ThuocTinhChungModel>? ThuocTinhChungs { get; set; }
+        public string? ImgsPath { get; set; }
     }
 
     public class ThuocTinhChungModel2

@@ -21,7 +21,7 @@ namespace DataBase.Entities
         public HoaDonChiTiet? HoaDonChiTiets { get; set; }
         public GioHangChiTiet? GioHangChiTiets { get; set; }
         public virtual ICollection<ThuocTinh>? thuocTinhs { get; set; }
-        public virtual ICollection<ItemImage>? anhs { get; set; }
+        public virtual ItemImage anhs { get; set; }
 
         public SanPham() { }
 

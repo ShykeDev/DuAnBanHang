@@ -13,8 +13,8 @@ namespace DataBase.Configuations
     {
         public void Configure(EntityTypeBuilder<ItemImage> builder)
         {
-            builder.HasKey(x => new { x.ID, x.Path });
-            builder.HasOne(p => p.sanPhams).WithMany(p => p.anhs).HasForeignKey(p => p.ID)
+            builder.HasKey(x => x.ID);
+            builder.HasOne<SanPham>().WithOne(p => p.anhs).HasForeignKey<SanPham>(p => p.ID)
                 .HasConstraintName("FK_IMG_SP");
         }
     }

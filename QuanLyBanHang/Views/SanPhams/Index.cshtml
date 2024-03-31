@@ -63,6 +63,16 @@
             </div>
             <div class="modal-body">
                 <input type="hidden" id="ID" />
+                <div asp-action="AddImg" class="form-group" enctype="multipart/form-data">
+                    <label for="imgItem" class="control-label">Ảnh sản phẩm</label>
+                    <br>
+                    <div class="w-100 text-center">
+                        <img id="ImgView" class="bg-white img-fluid">
+                    </div>
+                    <input type="file" id="imgItem" class="form-control" onchange="UpdateImage()" hidden></input>
+                    <button class="btn btn-primary w-100 rounded"
+                        onclick="document.getElementById('imgItem').click()">Chọn ảnh</button>
+                </div>
                 <div class="form-group">
                     <label for="Name" class="control-label">Tên sản phẩm</label>
                     <input id="Name" class="form-control" />
@@ -83,10 +93,7 @@
                     <label for="MoTa" class="control-label">Mô tả</label>
                     <textarea id="MoTa" class="form-control"></textarea>
                 </div>
-                <div class="form-group">
-                    <label for="imgItem" class="control-label">Ảnh sản phẩm</label>
-                    <input type="file" id="imgItem" class="form-control" onchange="UpdateImage()"></input>
-                </div>
+
                 <div class="form-group">
                     <label for="TenThuocTinh" class="control-label">Thuộc tính</label>
                     <div class="d-flex">
@@ -111,7 +118,7 @@
     </div>
 </div>
 
-<script src="~/js/SanPham.js"></script>
+<script src="~/js/Sp.js"></script>
 @section Scripts {
     @{
         await Html.RenderPartialAsync("_ValidationScriptsPartial");

@@ -1323,3 +1323,4 @@ E:\C#\QuanLyBanHang\obj\Debug\net8.0\refint\QuanLyBanHang.dll
 E:\C#\QuanLyBanHang\obj\Debug\net8.0\QuanLyBanHang.pdb
 E:\C#\QuanLyBanHang\obj\Debug\net8.0\QuanLyBanHang.genruntimeconfig.cache
 E:\C#\QuanLyBanHang\obj\Debug\net8.0\ref\QuanLyBanHang.dll
+Y:\C#\QuanLyBanHang\obj\Debug\net8.0\QuanLyBanHang.sourcelink.json

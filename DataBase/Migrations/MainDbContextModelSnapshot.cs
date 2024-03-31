@@ -134,12 +134,14 @@ namespace DataBase.Migrations
             modelBuilder.Entity("DataBase.Entities.ItemImage", b =>
                 {
                     b.Property<Guid>("ID")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<string>("Path")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<string>("Img")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("ID", "Path");
+                    b.HasKey("ID");
 
                     b.ToTable("ItemImages");
                 });
@@ -147,7 +149,6 @@ namespace DataBase.Migrations
             modelBuilder.Entity("DataBase.Entities.SanPham", b =>
                 {
                     b.Property<Guid>("ID")
-                        .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<int>("GiaGiamGia")
@@ -268,7 +269,7 @@ namespace DataBase.Migrations
                     b.HasData(
                         new
                         {
-                            ID = new Guid("b7b7d8aa-0a61-483f-b37b-95cede7212b3"),
+                            ID = new Guid("37665620-5d8b-431d-bd16-71efd80a57e6"),
                             DiaChi = "Phúc Diễn, Bắc Từ Liêm, Hà Nội",
                             Email = "nhatvu@gmail.com",
                             Name = "Nguyễn Lê Nhất Vũ",
@@ -355,16 +356,16 @@ namespace DataBase.Migrations
                     b.Navigation("sanPham");
                 });
 
-            modelBuilder.Entity("DataBase.Entities.ItemImage", b =>
+            modelBuilder.Entity("DataBase.Entities.SanPham", b =>
                 {
-                    b.HasOne("DataBase.Entities.SanPham", "sanPhams")
-                        .WithMany("anhs")
-                        .HasForeignKey("ID")
+                    b.HasOne("DataBase.Entities.ItemImage", "anhs")
+                        .WithOne()
+                        .HasForeignKey("DataBase.Entities.SanPham", "ID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired()
                         .HasConstraintName("FK_IMG_SP");
 
-                    b.Navigation("sanPhams");
+                    b.Navigation("anhs");
                 });
 
             modelBuilder.Entity("DataBase.Entities.ThuocTinh", b =>
@@ -401,8 +402,6 @@ namespace DataBase.Migrations
                     b.Navigation("GioHangChiTiets");
 
                     b.Navigation("HoaDonChiTiets");
-
-                    b.Navigation("anhs");
 
                     b.Navigation("thuocTinhs");
                 });

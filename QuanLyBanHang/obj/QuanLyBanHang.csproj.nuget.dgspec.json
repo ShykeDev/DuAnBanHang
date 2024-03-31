@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "E:\\C#\\QuanLyBanHang\\QuanLyBanHang.csproj": {}
+    "Y:\\C#\\QuanLyBanHang\\QuanLyBanHang.csproj": {}
   },
   "projects": {
-    "E:\\C#\\DataBase\\DataBase.csproj": {
+    "Y:\\C#\\DataBase\\DataBase.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\C#\\DataBase\\DataBase.csproj",
+        "projectUniqueName": "Y:\\C#\\DataBase\\DataBase.csproj",
         "projectName": "DataBase",
-        "projectPath": "E:\\C#\\DataBase\\DataBase.csproj",
-        "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-        "outputPath": "E:\\C#\\DataBase\\obj\\",
+        "projectPath": "Y:\\C#\\DataBase\\DataBase.csproj",
+        "packagesPath": "C:\\Users\\META COM\\.nuget\\packages\\",
+        "outputPath": "Y:\\C#\\DataBase\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\META COM\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -103,20 +103,20 @@
         }
       }
     },
-    "E:\\C#\\QuanLyBanHang\\QuanLyBanHang.csproj": {
+    "Y:\\C#\\QuanLyBanHang\\QuanLyBanHang.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "E:\\C#\\QuanLyBanHang\\QuanLyBanHang.csproj",
+        "projectUniqueName": "Y:\\C#\\QuanLyBanHang\\QuanLyBanHang.csproj",
         "projectName": "QuanLyBanHang",
-        "projectPath": "E:\\C#\\QuanLyBanHang\\QuanLyBanHang.csproj",
-        "packagesPath": "C:\\Users\\Admin\\.nuget\\packages\\",
-        "outputPath": "E:\\C#\\QuanLyBanHang\\obj\\",
+        "projectPath": "Y:\\C#\\QuanLyBanHang\\QuanLyBanHang.csproj",
+        "packagesPath": "C:\\Users\\META COM\\.nuget\\packages\\",
+        "outputPath": "Y:\\C#\\QuanLyBanHang\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\Admin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\META COM\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -132,8 +132,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "E:\\C#\\DataBase\\DataBase.csproj": {
-                "projectPath": "E:\\C#\\DataBase\\DataBase.csproj"
+              "Y:\\C#\\DataBase\\DataBase.csproj": {
+                "projectPath": "Y:\\C#\\DataBase\\DataBase.csproj"
               }
             }
           }
