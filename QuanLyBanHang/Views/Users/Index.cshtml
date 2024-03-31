@@ -1,0 +1,135 @@
+﻿@model IEnumerable<DataBase.Entities.User>
+
+@{
+    ViewData["Title"] = "Quản lý tài khoản";
+    ViewData["Name"] = "Users";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<div class="card-header justify-content-between align-items-center d-flex">
+    <h6 class="card-title m-0">Quản lý tài khoản</h6>
+</div>
+<div class="card-body">
+
+    <!-- User listing Actions-->
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <div class="bg-light rounded px-3 py-1 flex-shrink-0 d-flex align-items-center">
+            <input class="form-control border-0 bg-transparent px-0 py-2 fw-bolder" type="search" placeholder="Search"
+                aria-label="Search" id="searchText">
+        </div>
+        <div class="d-flex justify-content-end">
+            <button class="btn btn-sm btn-primary" onclick="ThemTaiKhoan()">
+                <i class="fa-solid fa-user-plus me-2"></i>Thêm tài khoản
+            </button>
+        </div>
+    </div>
+    <!-- /user listing Actions-->
+    <!-- User Listing Table-->
+    <div class="table-responsive">
+        <table class="table m-0 text-center table-bordered" id="MainTable">
+            <thead>
+                <tr>
+                    <th>Họ và tên</th>
+                    <th>UserName</th>
+                    <th>Password</th>
+                    <th>Role</th>
+                    <th>Trạng thái</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody id="myTable">
+
+            </tbody>
+        </table>
+
+        <div class="modal fade" id="MainModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+            aria-labelledby="MainModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-xl">
+                <div class="modal-content rounded">
+                    <div class="modal-header">
+                        <h3 class="modal-title w-100 text-center" id="MainModalLabel">Thêm tài khoản</h3>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Đóng"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row mt-5 d-flex justify-content-center">
+                            <div class="col-md-10">
+                                <div class="row">
+                                    <input id="ID" type="hidden" />
+                                    <div class="form-group col-6">
+                                        <label for="Name" class="control-label">Họ và tên</label>
+                                        <input id="Name" class="form-control" />
+                                        <span id="ValidName" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-group col-6">
+                                        <label for="SDT" class="control-label">Số điện thoại</label>
+                                        <input id="SDT" class="form-control" />
+                                        <span id="ValidSDT" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-group col-6">
+                                        <label for="UserName" class="control-label">UserName</label>
+                                        <input id="UserName" class="form-control" />
+                                        <span id="ValidUserName" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-group col-6">
+                                        <label for="Password" class="control-label">Password</label>
+                                        <input id="Password" class="form-control" />
+                                        <span id="ValidPassword" class="text-danger"></span>
+                                    </div>
+
+                                    <div class="form-group col-6">
+                                        <label for="DiaChi" class="control-label">Địa chỉ</label>
+                                        <input id="DiaChi" class="form-control" />
+                                        <span id="ValidDiaChi" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-group col-6">
+                                        <label for="Email" class="control-label">Email</label>
+                                        <input id="Email" type="email" class="form-control" />
+                                        <span id="ValidEmail" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-group col-6">
+                                        <label for="NgaySinh" class="control-label">Ngày sinh</label>
+                                        <input id="NgaySinh" class="form-control" type="date" />
+                                        <span id="ValidNgaySinh" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-group col-3">
+                                        <label for="Role" class="control-label">Role</label>
+                                        <select id="Role" class="form-control">
+                                            <option value=1>User (Người dùng)</option>
+                                            <option value=0>Admin (Người quản trị)</option>
+                                            <option value=2>Personnel (Nhân viên)</option>
+                                        </select>
+                                        <span id="ValidRole" class="text-danger"></span>
+                                    </div>
+                                    <div class="form-group col-3">
+                                        <label for="State" class="control-label">State</label>
+                                        <select id="State" class="form-control">
+                                            <option value=0>Active</option>
+                                            <option value=1>Disable</option>
+                                        </select>
+                                        <span id="ValidState" class="text-danger"></span>
+                                    </div>
+                                    <div class="d-flex justify-content-between">
+                                        <div class="form-group w-100 pe-3">
+                                            <button type="button" class="btn w-100 btn-secondary"
+                                                data-bs-dismiss="modal">Close</button>
+                                        </div>
+                                        <div class="form-group w-100 ps-2">
+                                            <button type="button" id="ThemTaiKhoan" class="btn btn-primary w-100"
+                                                onclick="OnThemTaiKhoan()">Thêm</button>
+                                            <button type="button" id="SuaTaiKhoan" class="btn btn-primary w-100"
+                                                onclick="OnSaveUser()">Lưu</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="~/js/user.js"></script>

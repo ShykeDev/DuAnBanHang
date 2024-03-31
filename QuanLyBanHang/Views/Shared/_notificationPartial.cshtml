@@ -1,0 +1,13 @@
+﻿<script>
+    LoadMessage();
+    function LoadMessage() {
+        var msg = @(TempData["Message"]!= null? Html.Raw(TempData["Message"]) : Html.Raw("undefined"));
+
+        if (msg) {
+            if (!msg.type)
+                swal(msg.title, msg.message, msg.icon)
+            else
+                toastr[msg.icon](msg.message, msg.title);
+        }
+    }
+</script>

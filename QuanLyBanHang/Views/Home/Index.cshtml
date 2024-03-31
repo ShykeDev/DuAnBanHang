@@ -1,0 +1,104 @@
+﻿@model IEnumerable<DataBase.Entities.SanPham>
+
+@{
+    ViewData["Title"] = "Home";
+    ViewData["Name"] = "Home";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="card-body">
+
+    <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+            <div class="carousel-item active" data-bs-interval="3000">
+                <img src="~/images/slideshows/slide1.png" width="100%" style="height: 700x !important;">
+            </div>
+            <div class="carousel-item" data-bs-interval="3000">
+                <img src="~/images/slideshows/slide2.png" width="100%" style="height: 700x !important;">
+            </div>
+            <div class="carousel-item" data-bs-interval="3000">
+                <img src="~/images/slideshows/slide3.png" width="100%" style="height: 700x !important;">
+
+            </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleInterval"
+            data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleInterval"
+            data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+</div>
+</div>
+
+<div class="card benefit">
+    <div class="container">
+        <div class="row benefit_row">
+            <div class="col-lg-3 benefit_col">
+                <div class="benefit_item d-flex flex-row align-items-center">
+                    <div class="benefit_icon"><i class="fa fa-truck" aria-hidden="true"></i></div>
+                    <div class="benefit_content">
+                        <h6>Miễn phí vận chuyển</h6>
+                        <p>Miễn phí vận chuyển - freeship</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 benefit_col">
+                <div class="benefit_item d-flex flex-row align-items-center">
+                    <div class="benefit_icon"><i class="fa fa-money" aria-hidden="true"></i></div>
+                    <div class="benefit_content">
+                        <h6>Thanh toán nhanh gọn</h6>
+                        <p>Thanh toán nhanh gọn, bảo m</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 benefit_col">
+                <div class="benefit_item d-flex flex-row align-items-center">
+                    <div class="benefit_icon"><i class="fa fa-undo" aria-hidden="true"></i></div>
+                    <div class="benefit_content">
+                        <h6>Miễn phí hoàn trả</h6>
+                        <p>Miễn phí hoàn trả trong 45 ngày</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3 benefit_col">
+                <div class="benefit_item d-flex flex-row align-items-center">
+                    <div class="benefit_icon"><i class="fa fa-clock-o" aria-hidden="true"></i></div>
+                    <div class="benefit_content">
+                        <h6>Thời gian hoạt động</h6>
+                        <p>8h sáng - 10h tối</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="card pb-5">
+    <div class="row m-0 p-0">
+        <h3 class="mt-3 mb-3 text-center text-black fw-bolder">Sản phẩm mới nhất</h3>
+        <hr class="bg-secondary">
+
+        @foreach (var item in Model)
+        {
+            <div class="product-item m-0 p-0 col-2">
+                <div class="product discount product_filter">
+                    <div class="product_image">
+                        <img src="~/images/ItemImage/product_1.png" alt="">
+                    </div>
+                    <div class="product_info">
+                        <h6 class="product_name">
+                            <a href="/SanPhams/ChiTiet/@item.ID">
+                                @item.Name
+                            </a>
+                        </h6>
+                        <div class="product_price">@String.Format(System.Globalization.CultureInfo.GetCultureInfo("vi-VN"),
+                        "{0:c}", item.GiaGiamGia)</div>
+                    </div>
+                </div>
+                <button class="red_button add_to_cart_button border-0">Thêm vào giỏ hàng</button>
+            </div>
+        }
