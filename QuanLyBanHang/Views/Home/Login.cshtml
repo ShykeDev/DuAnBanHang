@@ -7,6 +7,7 @@
 <html lang="en">
 
 <!-- Head -->
+
 <head>
     <!-- Page Meta Tags-->
     <meta charset="utf-8">
@@ -25,7 +26,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
-          rel="stylesheet">
+        rel="stylesheet">
     <link rel="stylesheet" href="~/css/libs.bundle.css" />
     <link rel="stylesheet" href="~/css/all.css" />
     <link rel="stylesheet" href="~/css/theme.bundle.css" />
@@ -40,6 +41,7 @@
     <script src="~/js/config.js"></script>
     <title>Đăng nhập</title>
 </head>
+
 <body class="">
 
     <!-- Main Section-->
@@ -51,7 +53,15 @@
             <!-- Logo-->
             <a href="./index.html" class="d-table mt-5 mb-4 mx-auto">
                 <div class="d-flex align-items-center">
-                    <svg class="f-w-5 me-2 text-primary d-flex align-self-center lh-1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 203.58 182"><path d="M101.66,41.34C94.54,58.53,88.89,72.13,84,83.78A21.2,21.2,0,0,1,69.76,96.41,94.86,94.86,0,0,0,26.61,122.3L81.12,0h41.6l55.07,123.15c-12-12.59-26.38-21.88-44.25-26.81a21.22,21.22,0,0,1-14.35-12.69c-4.71-11.35-10.3-24.86-17.53-42.31Z" fill="currentColor" fill-rule="evenodd" fill-opacity="0.5" /><path d="M0,182H29.76a21.3,21.3,0,0,0,18.56-10.33,63.27,63.27,0,0,1,106.94,0A21.3,21.3,0,0,0,173.82,182h29.76c-22.66-50.84-49.5-80.34-101.79-80.34S22.66,131.16,0,182Z" fill="currentColor" fill-rule="evenodd" /></svg>
+                    <svg class="f-w-5 me-2 text-primary d-flex align-self-center lh-1"
+                        xmlns="http://www.w3.org/2000/svg" viewBox="0 0 203.58 182">
+                        <path
+                            d="M101.66,41.34C94.54,58.53,88.89,72.13,84,83.78A21.2,21.2,0,0,1,69.76,96.41,94.86,94.86,0,0,0,26.61,122.3L81.12,0h41.6l55.07,123.15c-12-12.59-26.38-21.88-44.25-26.81a21.22,21.22,0,0,1-14.35-12.69c-4.71-11.35-10.3-24.86-17.53-42.31Z"
+                            fill="currentColor" fill-rule="evenodd" fill-opacity="0.5" />
+                        <path
+                            d="M0,182H29.76a21.3,21.3,0,0,0,18.56-10.33,63.27,63.27,0,0,1,106.94,0A21.3,21.3,0,0,0,173.82,182h29.76c-22.66-50.84-49.5-80.34-101.79-80.34S22.66,131.16,0,182Z"
+                            fill="currentColor" fill-rule="evenodd" />
+                    </svg>
                     <span class="fw-black text-uppercase tracking-wide fs-6 lh-1">AP shop</span>
                 </div>
             </a>
@@ -60,31 +70,60 @@
             <div class="shadow-lg rounded p-4 p-sm-5 bg-white form">
                 <h3 class="fw-bold">ĐĂNG NHẬP</h3>
                 <!-- Login Form-->
-                <form class="mt-4" asp-action="OnLogin">
+                <div class="mt-4">
                     <div class="form-group">
-                        <input type="text" class="form-control" name="username" id="username" placeholder="Tên đăng nhập">
+                        <input type="text" class="form-control" name="username" id="username"
+                            placeholder="Tên đăng nhập">
                     </div>
                     <div class="form-group">
-                        <input type="password" class="form-control" name="password" id="password" placeholder="Mật khẩu">
+                        <input type="password" class="form-control" name="password" id="password"
+                            placeholder="Mật khẩu">
                     </div>
-                    <button type="submit" class="btn btn-primary d-block w-100 my-4">ĐĂNG NHẬP</button>
-                </form>
+                    <button class="btn btn-primary d-block w-100 my-4" onclick="Login()">ĐĂNG NHẬP</button>
+                </div>
 
                 <p class="d-block text-center text-muted small">
-                    Bạn chưa có tài khoản? <a class="text-muted text-decoration-underline" href="./register.html">Đăng ký ngay</a>
+                    Bạn chưa có tài khoản? <a class="text-muted text-decoration-underline" href="./register.html">Đăng
+                        ký ngay</a>
                 </p>
             </div>
         </div>
         <!-- / Login Form-->
 
     </section>
+    <script>
+        function Login() {
+            $.ajax({
+                url: '/Home/OnLogin',
+                data: {
+                    username: $("#username").val(),
+                    password: $("#password").val()
+                },
+                type: "GET",
+                success: function (response) {
+                    if (response == null || response == undefined || response.length == 0) {
+                        swal("Oops!", "Đã xảy ra lỗi!", "error");
+                    } else {
+                        if (response == true) {
+                            document.location.href = "/"
+                        } else {
+                            swal("Đăng nhập thất bại", response, "error");
+                        }
+                    }
+                },
+                error: function () {
+                    swal("Oops!", "Đã xảy ra lỗi!", "error");
+                }
+            })
+        }
+
+    </script>
+
     <!-- Vendor JS -->
     <script src="~/js/vendor.bundle.js"></script>
 
     <!-- Theme JS -->
     <script src="~/js/theme.bundle.js"></script>
-
-    @await Html.PartialAsync("_notificationPartial")
 </body>
 
 </html>

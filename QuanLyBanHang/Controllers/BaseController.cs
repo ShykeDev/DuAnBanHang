@@ -23,12 +23,12 @@ namespace QuanLyBanHang.Controllers
         public static MainDbContext _context = new MainDbContext();
 
 
-        public void Notify(string message, typeNotify type, NotificationState notificationType = NotificationState.success)
+        public void Notify(string message, typeNotify type, NotificationState notificationType = NotificationState.success, string title = "Thông báo")
         {
             var msg = new
             {
                 message = message,
-                title = "Thông báo",
+                title = title,
                 icon = notificationType.ToString(),
                 type = type,
                 provider = GetProvider()

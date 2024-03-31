@@ -23,7 +23,6 @@ function UpdateImage() {
 }
 
 
-
 OnLoadSanPham()
 function OnLoadSanPham() {
     var tbody = document.getElementById("myTable");

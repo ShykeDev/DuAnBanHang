@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "+0YNwEVz4MVrxoA6Ot9bc/ftiCMoNb6oRwe3d3uxcII=",
+  "Hash": "XwRDFg1l1ztqyE/f6JRemwWVI24PeDkLwuEY/ZDe/yE=",
   "Source": "QuanLyBanHang",
   "BasePath": "_content/QuanLyBanHang",
   "Mode": "Default",
@@ -12120,12 +12120,12 @@
       "OriginalItemSpec": "wwwroot\\images\\slideshows\\slide3.png"
     },
     {
-      "Identity": "Y:\\C#\\QuanLyBanHang\\wwwroot\\js\\config.js",
+      "Identity": "Y:\\C#\\QuanLyBanHang\\wwwroot\\js\\config1.js",
       "SourceId": "QuanLyBanHang",
       "SourceType": "Discovered",
       "ContentRoot": "Y:\\C#\\QuanLyBanHang\\wwwroot\\",
       "BasePath": "_content/QuanLyBanHang",
-      "RelativePath": "js/config.js",
+      "RelativePath": "js/config1.js",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -12136,7 +12136,7 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\js\\config.js"
+      "OriginalItemSpec": "wwwroot\\js\\config1.js"
     },
     {
       "Identity": "Y:\\C#\\QuanLyBanHang\\wwwroot\\js\\desktop.ini",

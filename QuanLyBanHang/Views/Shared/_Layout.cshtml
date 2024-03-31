@@ -18,7 +18,7 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap"
-          rel="stylesheet">
+        rel="stylesheet">
     <link rel="stylesheet" href="~/css/libs.bundle.css" />
     <link rel="stylesheet" href="~/css/all.css" />
     <link rel="stylesheet" href="~/css/theme.bundle.css" />
@@ -27,10 +27,10 @@
     <script src="~/js/vendor.bundle.js"></script>
     <script src="~/js/theme.bundle.js"></script>
     <script src="~/js/font-fontawesome.js"></script>
-    
+
     <script src="~/js/toastr.min.js"></script>
     <script src="~/js/sweetalert.min.js"></script>
-    <script src="~/js/config.js"></script>
+    <script src="~/js/config1.js"></script>
     <title>@ViewData["Title"]</title>
 </head>
 
@@ -45,7 +45,8 @@
             </a>
             <div class="d-flex justify-content-between align-items-center flex-grow-1 navbar-actions">
                 <div class="d-flex align-items-center">
-                    <div class="menu-toggle cursor-pointer me-4 text-primary-hover transition-color disable-child-pointer">
+                    <div
+                        class="menu-toggle cursor-pointer me-4 text-primary-hover transition-color disable-child-pointer">
                     </div>
                 </div>
                 <div class="d-flex align-items-center">
@@ -59,25 +60,26 @@
                     </div>
                     <div class="dropdown ms-1">
                         <button class="btn btn-link p-0 position-relative f-w-12 f-h-12 rounded-circle bg-primary-faded"
-                                type="button" id="profileDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                            type="button" id="profileDropdown" data-bs-toggle="dropdown" aria-expanded="false">
                             <i class="fa-solid fa-user fa-xl"></i>
-                            <span class="position-absolute bottom-0 start-75 p-1 bg-success border border-3 border-white rounded-circle">
+                            <span
+                                class="position-absolute bottom-0 start-75 p-1 bg-success border border-3 border-white rounded-circle">
                             </span>
                         </button>
                         <ul class="dropdown-menu dropdown-md dropdown-menu-end" aria-labelledby="profileDropdown">
                             <li class="d-flex py-2 align-items-start">
                                 <div class="d-flex align-items-start justify-content-between flex-grow-1">
                                     <div>
-                                        <p class="lh-1 mb-2 fw-semibold text-body">Nguyễn Lê Nhất Vũ</p>
-                                        <p class="text-muted lh-1 mb-2 small">vunlnph32827@fpt.edu.vn</p>
+                                        <p id="User_Name" class="lh-1 mb-2 fw-semibold text-body"></p>
+                                        <p id="User_UserName" class="text-muted lh-1 mb-2 small"></p>
                                     </div>
-                                    <small class="badge bg-success-faded text-success rounded-pill">ADMIN</small>
+                                    <small  id="User_Role" class="badge rounded-pill"></small>
                                 </div>
                             </li>
                             <li>
                                 <hr class="dropdown-divider">
                             </li>
-                            <li><a class="dropdown-item d-flex align-items-center" href="#">Logout</a></li>
+                            <li><button class="dropdown-item d-flex align-items-center" onclick="LogOut()">Đăng xuất</button></li>
                         </ul>
                     </div>
                 </div>
@@ -109,9 +111,9 @@
                             </a>
                         </li>
                         <li class="menu-item">
-                            <a class="d-flex align-items-center collapsed" href="#"
-                               data-bs-toggle="collapse" data-bs-target="#collapseMenuItemPages" aria-expanded="false"
-                               aria-controls="collapseMenuItemPages">
+                            <a class="d-flex align-items-center collapsed" href="#" data-bs-toggle="collapse"
+                                data-bs-target="#collapseMenuItemPages" aria-expanded="false"
+                                aria-controls="collapseMenuItemPages">
                                 <span class="menu-icon">
                                     <i class="fa-solid fa-list"></i>
                                 </span>

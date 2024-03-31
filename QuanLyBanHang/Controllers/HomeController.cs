@@ -18,6 +18,11 @@ namespace QuanLyBanHang.Controllers
 
         public async Task<IActionResult> Index()
         {
+            if (HttpContext.Request.Cookies["Name"] == null || HttpContext.Request.Cookies["Name"] == "")
+            {
+                return View("Login");
+            }
+            Console.WriteLine(HttpContext.Request.Cookies["Name"]);
             return View(await _context.SanPhams.Include(sp => sp.anhs).ToListAsync());
         }
 
@@ -32,21 +37,38 @@ namespace QuanLyBanHang.Controllers
         }
 
 
-        [HttpPost]
-        public async Task<IActionResult> OnLogin(string username, string password)
+        [HttpGet]
+        public async Task<JsonResult> OnLogin(string username, string password)
         {
             if (_context.Users.Any(user => user.UserName == username && user.Password == password))
             {
                 var User = _context.Users.First(user => user.UserName == username && user.Password == password);
-                Notify("Đăng nhập thành công", typeNotify.alert);
-                TempData["User"] = username;
-                return View("Index");
+                HttpContext.Response.Cookies.Append("ID", User.ID.ToString());
+                HttpContext.Response.Cookies.Append("Name", User.Name);
+                HttpContext.Response.Cookies.Append("UserName", User.UserName);
+                HttpContext.Response.Cookies.Append("Password", User.Password);
+                HttpContext.Response.Cookies.Append("Role", User.Role.ToString());
+                Notify("Xin chào "+ User.Name, typeNotify.alert, NotificationState.success, "Đăng nhập thành công");
+                return Json(true);
             }
             else
             {
-                Notify("Tài khoản không tồn tại", typeNotify.alert, NotificationState.error);
+                return Json("Tài khoản không tồn tại, vui lòng nhập lại");
             }
-            return View("Login");
+        }
+
+        [HttpGet]
+        public async Task<JsonResult> GetUser(Guid ID)
+        {
+            if (_context.Users.Any(user => user.ID == ID))
+            {
+                var User = _context.Users.First(user => user.ID == ID);
+                return Json(User);
+            }
+            else
+            {
+                return Json(false);
+            }
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
