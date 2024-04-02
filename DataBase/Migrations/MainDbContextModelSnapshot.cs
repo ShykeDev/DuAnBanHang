@@ -247,7 +247,7 @@ namespace DataBase.Migrations
                     b.Property<int>("Role")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
-                        .HasDefaultValue(1);
+                        .HasDefaultValue(0);
 
                     b.Property<string>("SDT")
                         .IsRequired()
@@ -269,13 +269,13 @@ namespace DataBase.Migrations
                     b.HasData(
                         new
                         {
-                            ID = new Guid("37665620-5d8b-431d-bd16-71efd80a57e6"),
+                            ID = new Guid("113a6805-ec6f-4fde-979e-688cf6dca072"),
                             DiaChi = "Phúc Diễn, Bắc Từ Liêm, Hà Nội",
                             Email = "nhatvu@gmail.com",
                             Name = "Nguyễn Lê Nhất Vũ",
                             NgaySinh = "2004-01-01",
                             Password = "19112004",
-                            Role = 1,
+                            Role = 0,
                             SDT = "0865805582",
                             State = 0,
                             UserName = "shyke"

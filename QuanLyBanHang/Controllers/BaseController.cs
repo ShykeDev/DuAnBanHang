@@ -22,6 +22,20 @@ namespace QuanLyBanHang.Controllers
     {
         public static MainDbContext _context = new MainDbContext();
 
+        public BaseController()
+        {
+            Console.WriteLine("Call");
+        }
+
+        public static int CalculateAge(DateTime dateOfBirth)
+        {
+            int age = 0;
+            age = DateTime.Now.Year - dateOfBirth.Year;
+            if (DateTime.Now.DayOfYear < dateOfBirth.DayOfYear)
+                age = age - 1;
+
+            return age;
+        }
 
         public void Notify(string message, typeNotify type, NotificationState notificationType = NotificationState.success, string title = "Thông báo")
         {

@@ -19,8 +19,8 @@ namespace DataBase.EF
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            //optionsBuilder.UseSqlServer("Data Source=ADMIN-PC\\SHYKE;Initial Catalog=QuanLyShop;Integrated Security=True;Trust Server Certificate=True");
-            optionsBuilder.UseSqlServer("Data Source=SHYKE\\SQLEXPRESS;Initial Catalog=QuanLyShop;Integrated Security=True;Trust Server Certificate=True");
+            optionsBuilder.UseSqlServer("Data Source=ADMIN-PC\\SHYKE;Initial Catalog=QuanLyShop;Integrated Security=True;Trust Server Certificate=True");
+            //optionsBuilder.UseSqlServer("Data Source=SHYKE\\SQLEXPRESS;Initial Catalog=QuanLyShop;Integrated Security=True;Trust Server Certificate=True");
 
             optionsBuilder.EnableSensitiveDataLogging(true);
         }

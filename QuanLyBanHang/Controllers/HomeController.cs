@@ -20,9 +20,9 @@ namespace QuanLyBanHang.Controllers
         {
             if (HttpContext.Request.Cookies["Name"] == null || HttpContext.Request.Cookies["Name"] == "")
             {
-                return View("Login");
+                HttpContext.Response.Cookies.Append("Name", "Người dùng");
+                HttpContext.Response.Cookies.Append("Role", "1");
             }
-            Console.WriteLine(HttpContext.Request.Cookies["Name"]);
             return View(await _context.SanPhams.Include(sp => sp.anhs).ToListAsync());
         }
 
@@ -48,12 +48,64 @@ namespace QuanLyBanHang.Controllers
                 HttpContext.Response.Cookies.Append("UserName", User.UserName);
                 HttpContext.Response.Cookies.Append("Password", User.Password);
                 HttpContext.Response.Cookies.Append("Role", User.Role.ToString());
-                Notify("Xin chào "+ User.Name, typeNotify.alert, NotificationState.success, "Đăng nhập thành công");
+                Notify("Xin chào " + User.Name, typeNotify.alert, NotificationState.success, "Đăng nhập thành công");
                 return Json(true);
             }
             else
             {
                 return Json("Tài khoản không tồn tại, vui lòng nhập lại");
+            }
+        }
+
+        [HttpGet]
+        public async Task<JsonResult> OnRegister(User user)
+        {
+            if (user.Name == "" || user.Name == null)
+            {
+                return Json("Vui lòng nhập Họ và tên");
+            }
+            if (user.SDT == "" || user.SDT == null)
+            {
+                return Json("Vui lòng nhập số điện thoại");
+            }
+            if (user.UserName == "" || user.UserName == null)
+            {
+                return Json("Vui lòng nhập username");
+            }
+            if (user.Password == "" || user.Password == null)
+            {
+                return Json("Vui lòng nhập password");
+            }
+            if (user.DiaChi == "" || user.DiaChi == null)
+            {
+                return Json("Vui lòng nhập địa chỉ");
+            }
+            if (user.Email == "" || user.Email == null)
+            {
+                return Json("Vui lòng nhập email");
+            }
+            if (CalculateAge(Convert.ToDateTime(user.NgaySinh)) < 7 || CalculateAge(Convert.ToDateTime(user.NgaySinh)) > 100)
+            {
+                return Json("Tuổi không hợp lệ");
+            }
+            if (!UserExists(user.UserName))
+            {
+                try
+                {
+                    user.ID = Guid.NewGuid();
+                    user.Role = 1;
+                    _context.Add(user);
+                    await _context.SaveChangesAsync();
+                    return Json(true);
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                    return Json("Vui lòng thử lại");
+                }
+            }
+            else
+            {
+                return Json("Username Đã tồn tại");
             }
         }
 
@@ -70,6 +122,12 @@ namespace QuanLyBanHang.Controllers
                 return Json(false);
             }
         }
+
+        private bool UserExists(string userName)
+        {
+            return _context.Users.Any(e => e.UserName == userName);
+        }
+
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

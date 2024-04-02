@@ -17,7 +17,6 @@ namespace DataBase.Configuations
             builder.Property(x => x.SDT).IsRequired().HasMaxLength(12);
             builder.Property(x => x.NgaySinh).IsRequired();
             builder.Property(x => x.Role).HasDefaultValue<int>(0);
-            builder.Property(x => x.Role).HasDefaultValue<int>(1);
         }
     }
 }

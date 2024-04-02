@@ -77,9 +77,9 @@
                                 </div>
                             </li>
                             <li>
-                                <hr class="dropdown-divider">
+                                <button class="dropdown-item align-items-center" id="BtnLogOut" onclick="LogOut()">Đăng xuất</button>
+                                <button class="dropdown-item align-items-center" id="BtnLogIn" onclick="location.href = '/Home/Login'">Đăng nhập</button>
                             </li>
-                            <li><button class="dropdown-item d-flex align-items-center" onclick="LogOut()">Đăng xuất</button></li>
                         </ul>
                     </div>
                 </div>
@@ -99,55 +99,59 @@
             <div data-pixr-simplebar>
                 <div class="pb-6">
                     <ul class="list-unstyled mb-6">
-                        <li class="menu-section mt-2">Menu</li>
-                        <li class="menu-item">
-                            <a class="d-flex align-items-center" href="/">
-                                <span class="menu-icon">
-                                    <i class="fa-solid fa-house-chimney"></i>
-                                </span>
-                                <span class="menu-link">
-                                    Trang chủ
-                                </span>
-                            </a>
-                        </li>
-                        <li class="menu-item">
-                            <a class="d-flex align-items-center collapsed" href="#" data-bs-toggle="collapse"
-                                data-bs-target="#collapseMenuItemPages" aria-expanded="false"
-                                aria-controls="collapseMenuItemPages">
-                                <span class="menu-icon">
-                                    <i class="fa-solid fa-list"></i>
-                                </span>
-                                <span class="menu-link">Danh mục</span>
-                            </a>
-                            <div class="collapse" id="collapseMenuItemPages">
-                                <ul class="submenu">
-                                    <li><a href="#">Áo</a></li>
-                                    <li><a href="#">Quần</a></li>
-                                    <li><a href="#">Túi sách</a></li>
-                                    <li><a href="#">Giày</a></li>
-                                </ul>
-                            </div>
-                        </li>
-                        <li class="menu-section mt-2">Admin control</li>
-                        <li class="menu-item">
-                            <a class="d-flex align-items-center" href="/Users">
-                                <span class="menu-icon">
-                                    <i class="fa-solid fa-users"></i>
-                                </span>
-                                <span class="menu-link">
-                                    Quản lý tài khoản
-                                </span>
-                            </a>
-                        </li>
+                        <div id="UserLi">
+                            <li class="menu-section mt-2">Menu</li>
+                            <li class="menu-item">
+                                <a class="d-flex align-items-center" href="/">
+                                    <span class="menu-icon">
+                                        <i class="fa-solid fa-house-chimney"></i>
+                                    </span>
+                                    <span class="menu-link">
+                                        Trang chủ
+                                    </span>
+                                </a>
+                            </li>
+                            <li class="menu-item">
+                                <a class="d-flex align-items-center collapsed" href="#" data-bs-toggle="collapse"
+                                   data-bs-target="#collapseMenuItemPages" aria-expanded="false"
+                                   aria-controls="collapseMenuItemPages">
+                                    <span class="menu-icon">
+                                        <i class="fa-solid fa-list"></i>
+                                    </span>
+                                    <span class="menu-link">Danh mục</span>
+                                </a>
+                                <div class="collapse" id="collapseMenuItemPages">
+                                    <ul class="submenu">
+                                        <li><a href="#">Áo</a></li>
+                                        <li><a href="#">Quần</a></li>
+                                        <li><a href="#">Túi sách</a></li>
+                                        <li><a href="#">Giày</a></li>
+                                    </ul>
+                                </div>
+                            </li>
+                        </div>
+                        <div id="AdminLi">
+                            <li class="menu-section mt-2">Admin control</li>
+                            <li class="menu-item">
+                                <a class="d-flex align-items-center" href="/Users">
+                                    <span class="menu-icon">
+                                        <i class="fa-solid fa-users"></i>
+                                    </span>
+                                    <span class="menu-link">
+                                        Quản lý tài khoản
+                                    </span>
+                                </a>
+                            </li>
 
-                        <li class="menu-item">
-                            <a class="d-flex align-items-center" href="/SanPhams">
-                                <span class="menu-icon">
-                                    <i class="fa-solid fa-shirt"></i>
-                                </span>
-                                <span class="menu-link">Quản lý sản phẩm</span>
-                            </a>
-                        </li>
+                            <li class="menu-item">
+                                <a class="d-flex align-items-center" href="/SanPhams">
+                                    <span class="menu-icon">
+                                        <i class="fa-solid fa-shirt"></i>
+                                    </span>
+                                    <span class="menu-link">Quản lý sản phẩm</span>
+                                </a>
+                            </li>
+                        </div>
                     </ul>
                 </div>
             </div>

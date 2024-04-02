@@ -64,13 +64,30 @@ function GetUser() {
             } else {
                 console.log(response);
                 if (response == false) {
-                    document.location.href = "/Home/Login";
+                    $("#User_Name").html("Người dùng");
+                    $("#User_Role").addClass(Role[1].bg);
+                    $("#User_Role").addClass(Role[1].color);
+                    $("#User_Role").html(Role[1].name);
+                    $("#User_UserName").html("Vui lòng đăng nhập");
+                    $("#BtnLogIn").css("display", "");
+                    $("#BtnLogOut").css("display", "none");
+                    $("#AdminLi").css("display", "none");
+                    $("#UserLi").css("display", "");
                 } else {
                     $("#User_Name").html(response.name);
                     $("#User_Role").addClass(Role[Number(response.role)].bg);
                     $("#User_Role").addClass(Role[Number(response.role)].color);
                     $("#User_Role").html(Role[Number(response.role)].name);
                     $("#User_UserName").html("Username: " + response.userName);
+                    $("#BtnLogIn").css("display", "none");
+                    $("#BtnLogOut").css("display", "");
+                    if (response.role == 0) {
+                        $("#AdminLi").css("display", "");
+                        $("#UserLi").css("display", "none");
+                    } else {
+                        $("#AdminLi").css("display", "none");
+                        $("#UserLi").css("display", "");
+                    }
                 }
             }
         },

@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace DataBase.Migrations
 {
     /// <inheritdoc />
-    public partial class shyke : Migration
+    public partial class Shyke : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -47,7 +47,7 @@ namespace DataBase.Migrations
                     DiaChi = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Email = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
                     NgaySinh = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Role = table.Column<int>(type: "int", nullable: false, defaultValue: 1),
+                    Role = table.Column<int>(type: "int", nullable: false, defaultValue: 0),
                     State = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
@@ -214,8 +214,8 @@ namespace DataBase.Migrations
 
             migrationBuilder.InsertData(
                 table: "Users",
-                columns: new[] { "ID", "DiaChi", "Email", "Name", "NgaySinh", "Password", "Role", "SDT", "State", "UserName" },
-                values: new object[] { new Guid("37665620-5d8b-431d-bd16-71efd80a57e6"), "Phúc Diễn, Bắc Từ Liêm, Hà Nội", "nhatvu@gmail.com", "Nguyễn Lê Nhất Vũ", "2004-01-01", "19112004", 1, "0865805582", 0, "shyke" });
+                columns: new[] { "ID", "DiaChi", "Email", "Name", "NgaySinh", "Password", "SDT", "State", "UserName" },
+                values: new object[] { new Guid("113a6805-ec6f-4fde-979e-688cf6dca072"), "Phúc Diễn, Bắc Từ Liêm, Hà Nội", "nhatvu@gmail.com", "Nguyễn Lê Nhất Vũ", "2004-01-01", "19112004", "0865805582", 0, "shyke" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_GiaTriThuocTinhs_IDThuocTinh",

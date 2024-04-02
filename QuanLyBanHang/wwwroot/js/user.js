@@ -131,8 +131,7 @@ function OnThemTaiKhoan() {
             email: $("#Email").val(),
             ngaySinh: $("#NgaySinh").val(),
             role: $("#Role").val(),
-            state: $("#State").val(),
-
+            state: $("#State").val()
         },
         success: function (response) {
             if (response == null || response == undefined || response.length == 0) {
