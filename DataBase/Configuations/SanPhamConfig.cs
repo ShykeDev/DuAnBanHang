@@ -16,6 +16,11 @@ namespace DataBase.Configuations
             builder.Property(x => x.GiaGiamGia).HasDefaultValue(0);
             builder.Property(x => x.SoLuong).HasDefaultValue(0);
             builder.Property(x => x.TrangThai).HasDefaultValue(eTrangThaiSanPham.show);
+            builder.HasOne<DanhMucChiTiet>().WithOne(x => x.SanPham)
+                    .HasForeignKey<DanhMucChiTiet>(p => p.idSanPham)
+                    .HasPrincipalKey<SanPham>(p => p.ID)
+                    .HasConstraintName("FK_DMCT_SP");
+
         }
     }
 }

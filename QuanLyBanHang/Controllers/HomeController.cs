@@ -23,7 +23,19 @@ namespace QuanLyBanHang.Controllers
                 HttpContext.Response.Cookies.Append("Name", "Người dùng");
                 HttpContext.Response.Cookies.Append("Role", "1");
             }
+            if (HttpContext.Request.Cookies["Role"] == "0")
+            {
+                ViewData["Layout"] = "~/Views/Shared/_LayoutAdmin.cshtml";
+                return RedirectToAction("Index", "Users");
+            } else {
+                ViewData["Layout"] = "~/Views/Shared/_LayoutUser.cshtml";
+            }
             return View(await _context.SanPhams.Include(sp => sp.anhs).ToListAsync());
+        }
+
+        public IActionResult Page404()
+        {
+            return View();
         }
 
         public IActionResult Login()

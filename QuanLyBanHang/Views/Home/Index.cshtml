@@ -3,7 +3,7 @@
 @{
     ViewData["Title"] = "Home";
     ViewData["Name"] = "Home";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = ViewData["Layout"].ToString();
 }
 
 <div class="card-body">
@@ -31,8 +31,8 @@
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
             <span class="visually-hidden">Next</span>
         </button>
+        </div>
     </div>
-</div>
 </div>
 
 <div class="card benefit">

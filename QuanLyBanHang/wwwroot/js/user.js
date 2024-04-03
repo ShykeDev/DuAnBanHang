@@ -109,7 +109,7 @@ function OnLoadUser() {
             }
         },
         error: function () {
-            swal("Oops!", "Đã xảy ra lỗi!", "error");
+            location.reload();
             return;
         }
     })

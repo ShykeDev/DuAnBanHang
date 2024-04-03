@@ -255,9 +255,7 @@ Y:\C#\QuanLyBanHang\obj\Debug\net8.0\staticwebassets\msbuild.build.QuanLyBanHang
 Y:\C#\QuanLyBanHang\obj\Debug\net8.0\staticwebassets\msbuild.buildMultiTargeting.QuanLyBanHang.props
 Y:\C#\QuanLyBanHang\obj\Debug\net8.0\staticwebassets\msbuild.buildTransitive.QuanLyBanHang.props
 Y:\C#\QuanLyBanHang\obj\Debug\net8.0\staticwebassets.pack.json
-Y:\C#\QuanLyBanHang\obj\Debug\net8.0\scopedcss\Views\Shared\_Layout.cshtml.rz.scp.css
 Y:\C#\QuanLyBanHang\obj\Debug\net8.0\scopedcss\bundle\QuanLyBanHang.styles.css
-Y:\C#\QuanLyBanHang\obj\Debug\net8.0\scopedcss\projectbundle\QuanLyBanHang.bundle.scp.css
 Y:\C#\QuanLyBanHang\obj\Debug\net8.0\QuanLyBa.0E1441E5.Up2Date
 Y:\C#\QuanLyBanHang\obj\Debug\net8.0\QuanLyBanHang.dll
 Y:\C#\QuanLyBanHang\obj\Debug\net8.0\refint\QuanLyBanHang.dll

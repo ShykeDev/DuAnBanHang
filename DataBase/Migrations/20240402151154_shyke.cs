@@ -6,11 +6,23 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace DataBase.Migrations
 {
     /// <inheritdoc />
-    public partial class Shyke : Migration
+    public partial class shyke : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.CreateTable(
+                name: "DanhMucs",
+                columns: table => new
+                {
+                    ID = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Name = table.Column<string>(type: "nvarchar(150)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_DanhMucs", x => x.ID);
+                });
+
             migrationBuilder.CreateTable(
                 name: "ItemImages",
                 columns: table => new
@@ -138,6 +150,30 @@ namespace DataBase.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "DanhMucChiTiets",
+                columns: table => new
+                {
+                    idDanhMuc = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    idSanPham = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_DanhMucChiTiets", x => new { x.idDanhMuc, x.idSanPham });
+                    table.ForeignKey(
+                        name: "FK_DMCT_DM",
+                        column: x => x.idDanhMuc,
+                        principalTable: "DanhMucs",
+                        principalColumn: "ID",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_DMCT_SP",
+                        column: x => x.idSanPham,
+                        principalTable: "SanPhams",
+                        principalColumn: "ID",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "ThuocTinhs",
                 columns: table => new
                 {
@@ -215,7 +251,13 @@ namespace DataBase.Migrations
             migrationBuilder.InsertData(
                 table: "Users",
                 columns: new[] { "ID", "DiaChi", "Email", "Name", "NgaySinh", "Password", "SDT", "State", "UserName" },
-                values: new object[] { new Guid("113a6805-ec6f-4fde-979e-688cf6dca072"), "Phúc Diễn, Bắc Từ Liêm, Hà Nội", "nhatvu@gmail.com", "Nguyễn Lê Nhất Vũ", "2004-01-01", "19112004", "0865805582", 0, "shyke" });
+                values: new object[] { new Guid("f4560eef-2abe-4fea-9565-876c674e8edc"), "Phúc Diễn, Bắc Từ Liêm, Hà Nội", "nhatvu@gmail.com", "Nguyễn Lê Nhất Vũ", "2004-01-01", "19112004", "0865805582", 0, "shyke" });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_DanhMucChiTiets_idSanPham",
+                table: "DanhMucChiTiets",
+                column: "idSanPham",
+                unique: true);
 
             migrationBuilder.CreateIndex(
                 name: "IX_GiaTriThuocTinhs_IDThuocTinh",
@@ -255,6 +297,9 @@ namespace DataBase.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropTable(
+                name: "DanhMucChiTiets");
+
+            migrationBuilder.DropTable(
                 name: "GiaTriThuocTinhs");
 
             migrationBuilder.DropTable(
@@ -265,6 +310,9 @@ namespace DataBase.Migrations
 
             migrationBuilder.DropTable(
                 name: "ThuocTinhs");
+
+            migrationBuilder.DropTable(
+                name: "DanhMucs");
 
             migrationBuilder.DropTable(
                 name: "GioHangs");

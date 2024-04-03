@@ -19,6 +19,12 @@ namespace QuanLyBanHang.Controllers
         // GET: Users
         public async Task<IActionResult> Index()
         {
+            if (HttpContext.Request.Cookies["Role"] == "0")
+            {
+                ViewData["Layout"] = "~/Views/Shared/_LayoutAdmin.cshtml";
+            } else {
+                return RedirectToAction("Page404", "Home");
+            }
             return View();
         }
 

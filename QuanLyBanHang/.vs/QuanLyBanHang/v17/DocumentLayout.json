@@ -1,85 +1,38 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "E:\\DuAnBanHang\\QuanLyBanHang\\",
+  "WorkspaceRootPath": "Y:\\C#\\QuanLyBanHang\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{168EA7AA-80C7-452B-B175-A1C72F536205}|QuanLyBanHang.csproj|e:\\duanbanhang\\quanlybanhang\\wwwroot\\js\\config1.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
-      "RelativeMoniker": "D:0:0:{168EA7AA-80C7-452B-B175-A1C72F536205}|QuanLyBanHang.csproj|solutionrelative:wwwroot\\js\\config1.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+      "AbsoluteMoniker": "D:0:0:{168EA7AA-80C7-452B-B175-A1C72F536205}|QuanLyBanHang.csproj|y:\\c#\\quanlybanhang\\wwwroot\\js\\danhmuc.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{168EA7AA-80C7-452B-B175-A1C72F536205}|QuanLyBanHang.csproj|solutionrelative:wwwroot\\js\\danhmuc.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{168EA7AA-80C7-452B-B175-A1C72F536205}|QuanLyBanHang.csproj|e:\\duanbanhang\\quanlybanhang\\controllers\\basecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{168EA7AA-80C7-452B-B175-A1C72F536205}|QuanLyBanHang.csproj|solutionrelative:controllers\\basecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{168EA7AA-80C7-452B-B175-A1C72F536205}|QuanLyBanHang.csproj|E:\\DuAnBanHang\\QuanLyBanHang\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{168EA7AA-80C7-452B-B175-A1C72F536205}|QuanLyBanHang.csproj|solutionrelative:views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{168EA7AA-80C7-452B-B175-A1C72F536205}|QuanLyBanHang.csproj|e:\\duanbanhang\\quanlybanhang\\views\\users\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{168EA7AA-80C7-452B-B175-A1C72F536205}|QuanLyBanHang.csproj|solutionrelative:views\\users\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{168EA7AA-80C7-452B-B175-A1C72F536205}|QuanLyBanHang.csproj|e:\\duanbanhang\\quanlybanhang\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{168EA7AA-80C7-452B-B175-A1C72F536205}|QuanLyBanHang.csproj|solutionrelative:views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{168EA7AA-80C7-452B-B175-A1C72F536205}|QuanLyBanHang.csproj|e:\\duanbanhang\\quanlybanhang\\wwwroot\\css\\all.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
-      "RelativeMoniker": "D:0:0:{168EA7AA-80C7-452B-B175-A1C72F536205}|QuanLyBanHang.csproj|solutionrelative:wwwroot\\css\\all.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{168EA7AA-80C7-452B-B175-A1C72F536205}|QuanLyBanHang.csproj|e:\\duanbanhang\\quanlybanhang\\wwwroot\\css\\theme.bundle.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
-      "RelativeMoniker": "D:0:0:{168EA7AA-80C7-452B-B175-A1C72F536205}|QuanLyBanHang.csproj|solutionrelative:wwwroot\\css\\theme.bundle.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{168EA7AA-80C7-452B-B175-A1C72F536205}|QuanLyBanHang.csproj|e:\\duanbanhang\\quanlybanhang\\views\\home\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{168EA7AA-80C7-452B-B175-A1C72F536205}|QuanLyBanHang.csproj|solutionrelative:views\\home\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{168EA7AA-80C7-452B-B175-A1C72F536205}|QuanLyBanHang.csproj|e:\\duanbanhang\\quanlybanhang\\views\\home\\register.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{168EA7AA-80C7-452B-B175-A1C72F536205}|QuanLyBanHang.csproj|solutionrelative:views\\home\\register.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{168EA7AA-80C7-452B-B175-A1C72F536205}|QuanLyBanHang.csproj|e:\\duanbanhang\\quanlybanhang\\wwwroot\\js\\user.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "AbsoluteMoniker": "D:0:0:{168EA7AA-80C7-452B-B175-A1C72F536205}|QuanLyBanHang.csproj|y:\\c#\\quanlybanhang\\wwwroot\\js\\user.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
       "RelativeMoniker": "D:0:0:{168EA7AA-80C7-452B-B175-A1C72F536205}|QuanLyBanHang.csproj|solutionrelative:wwwroot\\js\\user.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{168EA7AA-80C7-452B-B175-A1C72F536205}|QuanLyBanHang.csproj|E:\\DuAnBanHang\\QuanLyBanHang\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{168EA7AA-80C7-452B-B175-A1C72F536205}|QuanLyBanHang.csproj|solutionrelative:controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{168EA7AA-80C7-452B-B175-A1C72F536205}|QuanLyBanHang.csproj|y:\\c#\\quanlybanhang\\wwwroot\\js\\sp.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{168EA7AA-80C7-452B-B175-A1C72F536205}|QuanLyBanHang.csproj|solutionrelative:wwwroot\\js\\sp.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{168EA7AA-80C7-452B-B175-A1C72F536205}|QuanLyBanHang.csproj|e:\\duanbanhang\\quanlybanhang\\controllers\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{168EA7AA-80C7-452B-B175-A1C72F536205}|QuanLyBanHang.csproj|y:\\c#\\quanlybanhang\\controllers\\danhmucscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{168EA7AA-80C7-452B-B175-A1C72F536205}|QuanLyBanHang.csproj|solutionrelative:controllers\\danhmucscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{168EA7AA-80C7-452B-B175-A1C72F536205}|QuanLyBanHang.csproj|y:\\c#\\quanlybanhang\\controllers\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{168EA7AA-80C7-452B-B175-A1C72F536205}|QuanLyBanHang.csproj|solutionrelative:controllers\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{168EA7AA-80C7-452B-B175-A1C72F536205}|QuanLyBanHang.csproj|e:\\duanbanhang\\quanlybanhang\\controllers\\sanphamscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{168EA7AA-80C7-452B-B175-A1C72F536205}|QuanLyBanHang.csproj|y:\\c#\\quanlybanhang\\controllers\\sanphamscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{168EA7AA-80C7-452B-B175-A1C72F536205}|QuanLyBanHang.csproj|solutionrelative:controllers\\sanphamscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{2C3BBA86-AEAF-4106-A5B1-D9FDE3377E2A}|..\\DataBase\\DataBase.csproj|e:\\duanbanhang\\database\\extensions\\mainextensions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{168EA7AA-80C7-452B-B175-A1C72F536205}|QuanLyBanHang.csproj|y:\\c#\\quanlybanhang\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{168EA7AA-80C7-452B-B175-A1C72F536205}|QuanLyBanHang.csproj|solutionrelative:controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{168EA7AA-80C7-452B-B175-A1C72F536205}|QuanLyBanHang.csproj|e:\\duanbanhang\\quanlybanhang\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{168EA7AA-80C7-452B-B175-A1C72F536205}|QuanLyBanHang.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{168EA7AA-80C7-452B-B175-A1C72F536205}|QuanLyBanHang.csproj|E:\\DuAnBanHang\\QuanLyBanHang\\views\\_viewstart.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{168EA7AA-80C7-452B-B175-A1C72F536205}|QuanLyBanHang.csproj|solutionrelative:views\\_viewstart.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|E:\\DuAnBanHang\\DataBase\\Migrations\\20240402053601_Shyke.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{2C3BBA86-AEAF-4106-A5B1-D9FDE3377E2A}|..\\DataBase\\DataBase.csproj|e:\\duanbanhang\\database\\entities\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{2C3BBA86-AEAF-4106-A5B1-D9FDE3377E2A}|..\\DataBase\\DataBase.csproj|e:\\duanbanhang\\database\\ef\\maindbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{2C3BBA86-AEAF-4106-A5B1-D9FDE3377E2A}|..\\DataBase\\DataBase.csproj|e:\\duanbanhang\\database\\configuations\\userconfig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{168EA7AA-80C7-452B-B175-A1C72F536205}|QuanLyBanHang.csproj|E:\\DuAnBanHang\\QuanLyBanHang\\views\\_viewimports.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{168EA7AA-80C7-452B-B175-A1C72F536205}|QuanLyBanHang.csproj|solutionrelative:views\\_viewimports.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{168EA7AA-80C7-452B-B175-A1C72F536205}|QuanLyBanHang.csproj|y:\\c#\\quanlybanhang\\views\\danhmucs\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{168EA7AA-80C7-452B-B175-A1C72F536205}|QuanLyBanHang.csproj|solutionrelative:views\\danhmucs\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     }
   ],
   "DocumentGroupContainers": [
@@ -89,283 +42,111 @@
       "DocumentGroups": [
         {
           "DockedWidth": 197,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "all.css",
-              "DocumentMoniker": "E:\\DuAnBanHang\\QuanLyBanHang\\wwwroot\\css\\all.css",
-              "RelativeDocumentMoniker": "wwwroot\\css\\all.css",
-              "ToolTip": "E:\\DuAnBanHang\\QuanLyBanHang\\wwwroot\\css\\all.css",
-              "RelativeToolTip": "wwwroot\\css\\all.css",
-              "ViewState": "AQIAAEwDAAAAAAAAAAAMwGoDAAAmAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
-              "WhenOpened": "2024-04-02T06:45:33.919Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "theme.bundle.css",
-              "DocumentMoniker": "E:\\DuAnBanHang\\QuanLyBanHang\\wwwroot\\css\\theme.bundle.css",
-              "RelativeDocumentMoniker": "wwwroot\\css\\theme.bundle.css",
-              "ToolTip": "E:\\DuAnBanHang\\QuanLyBanHang\\wwwroot\\css\\theme.bundle.css",
-              "RelativeToolTip": "wwwroot\\css\\theme.bundle.css",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
-              "WhenOpened": "2024-04-02T06:45:11.294Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "Register.cshtml",
-              "DocumentMoniker": "E:\\DuAnBanHang\\QuanLyBanHang\\Views\\Home\\Register.cshtml",
-              "RelativeDocumentMoniker": "Views\\Home\\Register.cshtml",
-              "ToolTip": "E:\\DuAnBanHang\\QuanLyBanHang\\Views\\Home\\Register.cshtml",
-              "RelativeToolTip": "Views\\Home\\Register.cshtml",
-              "ViewState": "AQIAAFwAAAAAAAAAAAAAAH0AAAASAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-04-02T06:20:43.708Z",
+              "DocumentIndex": 0,
+              "Title": "DanhMuc.js",
+              "DocumentMoniker": "Y:\\C#\\QuanLyBanHang\\wwwroot\\js\\DanhMuc.js",
+              "RelativeDocumentMoniker": "wwwroot\\js\\DanhMuc.js",
+              "ToolTip": "Y:\\C#\\QuanLyBanHang\\wwwroot\\js\\DanhMuc.js",
+              "RelativeToolTip": "wwwroot\\js\\DanhMuc.js",
+              "ViewState": "AQIAAEoAAAAAAAAAAAAuwDgAAAARAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2024-04-02T18:26:57.993Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "E:\\DuAnBanHang\\QuanLyBanHang\\Views\\Users\\Index.cshtml",
-              "RelativeDocumentMoniker": "Views\\Users\\Index.cshtml",
-              "ToolTip": "E:\\DuAnBanHang\\QuanLyBanHang\\Views\\Users\\Index.cshtml",
-              "RelativeToolTip": "Views\\Users\\Index.cshtml",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAE8AAAAkAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-04-02T05:33:37.349Z",
-              "EditorCaption": ""
-            },
+              "Title": "DanhMucsController.cs",
+              "DocumentMoniker": "Y:\\C#\\QuanLyBanHang\\Controllers\\DanhMucsController.cs",
+              "RelativeDocumentMoniker": "Controllers\\DanhMucsController.cs",
+              "ToolTip": "Y:\\C#\\QuanLyBanHang\\Controllers\\DanhMucsController.cs",
+              "RelativeToolTip": "Controllers\\DanhMucsController.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABoAAAA6AAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-02T18:44:32.367Z"
+            }
+          ]
+        },
+        {
+          "DockedWidth": 197,
+          "SelectedChildIndex": 0,
+          "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "config1.js",
-              "DocumentMoniker": "E:\\DuAnBanHang\\QuanLyBanHang\\wwwroot\\js\\config1.js",
-              "RelativeDocumentMoniker": "wwwroot\\js\\config1.js",
-              "ToolTip": "E:\\DuAnBanHang\\QuanLyBanHang\\wwwroot\\js\\config1.js",
-              "RelativeToolTip": "wwwroot\\js\\config1.js",
-              "ViewState": "AQIAADgAAAAAAAAAAAAgwFUAAAA8AAAA",
+              "DocumentIndex": 1,
+              "Title": "user.js",
+              "DocumentMoniker": "Y:\\C#\\QuanLyBanHang\\wwwroot\\js\\user.js",
+              "RelativeDocumentMoniker": "wwwroot\\js\\user.js",
+              "ToolTip": "Y:\\C#\\QuanLyBanHang\\wwwroot\\js\\user.js",
+              "RelativeToolTip": "wwwroot\\js\\user.js",
+              "ViewState": "AQIAAEgAAAAAAAAAAAAowG8AAAAeAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
-              "WhenOpened": "2024-03-31T19:34:20.271Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "Login.cshtml",
-              "DocumentMoniker": "E:\\DuAnBanHang\\QuanLyBanHang\\Views\\Home\\Login.cshtml",
-              "RelativeDocumentMoniker": "Views\\Home\\Login.cshtml",
-              "ToolTip": "E:\\DuAnBanHang\\QuanLyBanHang\\Views\\Home\\Login.cshtml",
-              "RelativeToolTip": "Views\\Home\\Login.cshtml",
-              "ViewState": "AQIAACcAAAAAAAAAAAAAADIAAAA4AAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-04-02T05:46:01.407Z",
+              "WhenOpened": "2024-04-02T18:58:46.437Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 4,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "E:\\DuAnBanHang\\QuanLyBanHang\\Views\\Home\\Index.cshtml",
-              "RelativeDocumentMoniker": "Views\\Home\\Index.cshtml",
-              "ToolTip": "E:\\DuAnBanHang\\QuanLyBanHang\\Views\\Home\\Index.cshtml",
-              "RelativeToolTip": "Views\\Home\\Index.cshtml",
+              "Title": "UsersController.cs",
+              "DocumentMoniker": "Y:\\C#\\QuanLyBanHang\\Controllers\\UsersController.cs",
+              "RelativeDocumentMoniker": "Controllers\\UsersController.cs",
+              "ToolTip": "Y:\\C#\\QuanLyBanHang\\Controllers\\UsersController.cs",
+              "RelativeToolTip": "Controllers\\UsersController.cs",
+              "ViewState": "AQIAAKoAAAAAAAAAAAAAAMEAAABPAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-02T18:56:58.723Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "SanPhamsController.cs",
+              "DocumentMoniker": "Y:\\C#\\QuanLyBanHang\\Controllers\\SanPhamsController.cs",
+              "RelativeDocumentMoniker": "Controllers\\SanPhamsController.cs",
+              "ToolTip": "Y:\\C#\\QuanLyBanHang\\Controllers\\SanPhamsController.cs",
+              "RelativeToolTip": "Controllers\\SanPhamsController.cs",
               "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-04-02T05:46:13.151Z",
-              "EditorCaption": ""
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-02T18:56:47.194Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "HomeController.cs",
+              "DocumentMoniker": "Y:\\C#\\QuanLyBanHang\\Controllers\\HomeController.cs",
+              "RelativeDocumentMoniker": "Controllers\\HomeController.cs",
+              "ToolTip": "Y:\\C#\\QuanLyBanHang\\Controllers\\HomeController.cs",
+              "RelativeToolTip": "Controllers\\HomeController.cs",
+              "ViewState": "AQIAAF4AAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-02T18:44:34.234Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "_Layout.cshtml",
-              "DocumentMoniker": "E:\\DuAnBanHang\\QuanLyBanHang\\Views\\Shared\\_Layout.cshtml",
-              "RelativeDocumentMoniker": "Views\\Shared\\_Layout.cshtml",
-              "ToolTip": "E:\\DuAnBanHang\\QuanLyBanHang\\Views\\Shared\\_Layout.cshtml",
-              "RelativeToolTip": "Views\\Shared\\_Layout.cshtml",
-              "ViewState": "AQIAAAkAAAAAAAAAAAAAABYAAAAyAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-03-31T19:33:23.004Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "BaseController.cs",
-              "DocumentMoniker": "E:\\DuAnBanHang\\QuanLyBanHang\\Controllers\\BaseController.cs",
-              "RelativeDocumentMoniker": "Controllers\\BaseController.cs",
-              "ToolTip": "E:\\DuAnBanHang\\QuanLyBanHang\\Controllers\\BaseController.cs",
-              "RelativeToolTip": "Controllers\\BaseController.cs",
-              "ViewState": "AQIAABoAAAAAAAAAAAAgwDIAAABDAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-02T05:30:07.926Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "user.js",
-              "DocumentMoniker": "E:\\DuAnBanHang\\QuanLyBanHang\\wwwroot\\js\\user.js",
-              "RelativeDocumentMoniker": "wwwroot\\js\\user.js",
-              "ToolTip": "E:\\DuAnBanHang\\QuanLyBanHang\\wwwroot\\js\\user.js",
-              "RelativeToolTip": "wwwroot\\js\\user.js",
-              "ViewState": "AQIAAPcAAAAAAAAAAAAqwAgBAAAQAAAA",
+              "Title": "Sp.js",
+              "DocumentMoniker": "Y:\\C#\\QuanLyBanHang\\wwwroot\\js\\Sp.js",
+              "RelativeDocumentMoniker": "wwwroot\\js\\Sp.js",
+              "ToolTip": "Y:\\C#\\QuanLyBanHang\\wwwroot\\js\\Sp.js",
+              "RelativeToolTip": "wwwroot\\js\\Sp.js",
+              "ViewState": "AQIAAD4AAAAAAAAAAAAwwGIAAAAeAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
-              "WhenOpened": "2024-04-02T06:28:23.57Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-04-02T18:26:59.231Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "HomeController.cs",
-              "DocumentMoniker": "E:\\DuAnBanHang\\QuanLyBanHang\\Controllers\\HomeController.cs",
-              "RelativeDocumentMoniker": "Controllers\\HomeController.cs",
-              "ToolTip": "E:\\DuAnBanHang\\QuanLyBanHang\\Controllers\\HomeController.cs",
-              "RelativeToolTip": "Controllers\\HomeController.cs",
-              "ViewState": "AQIAADgAAAAAAAAAAAAmwDwAAAAwAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-31T19:29:56.042Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "SanPhamsController.cs",
-              "DocumentMoniker": "E:\\DuAnBanHang\\QuanLyBanHang\\Controllers\\SanPhamsController.cs",
-              "RelativeDocumentMoniker": "Controllers\\SanPhamsController.cs",
-              "ToolTip": "E:\\DuAnBanHang\\QuanLyBanHang\\Controllers\\SanPhamsController.cs",
-              "RelativeToolTip": "Controllers\\SanPhamsController.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-02T06:23:50.389Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "UsersController.cs",
-              "DocumentMoniker": "E:\\DuAnBanHang\\QuanLyBanHang\\Controllers\\UsersController.cs",
-              "RelativeDocumentMoniker": "Controllers\\UsersController.cs",
-              "ToolTip": "E:\\DuAnBanHang\\QuanLyBanHang\\Controllers\\UsersController.cs",
-              "RelativeToolTip": "Controllers\\UsersController.cs",
-              "ViewState": "AQIAAJ8AAAAAAAAAAAAiwLQAAAAIAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-02T05:33:30.753Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 13,
-              "Title": "MainExtensions.cs",
-              "DocumentMoniker": "E:\\DuAnBanHang\\DataBase\\Extensions\\MainExtensions.cs",
-              "RelativeDocumentMoniker": "..\\DataBase\\Extensions\\MainExtensions.cs",
-              "ToolTip": "E:\\DuAnBanHang\\DataBase\\Extensions\\MainExtensions.cs",
-              "RelativeToolTip": "..\\DataBase\\Extensions\\MainExtensions.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA8AAAAYAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-02T05:28:21.611Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 17,
-              "Title": "User.cs",
-              "DocumentMoniker": "E:\\DuAnBanHang\\DataBase\\Entities\\User.cs",
-              "RelativeDocumentMoniker": "..\\DataBase\\Entities\\User.cs",
-              "ToolTip": "E:\\DuAnBanHang\\DataBase\\Entities\\User.cs",
-              "RelativeToolTip": "..\\DataBase\\Entities\\User.cs",
-              "ViewState": "AQIAABAAAAAAAAAAAAA6wCUAAAAcAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-02T05:33:08.17Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 19,
-              "Title": "UserConfig.cs",
-              "DocumentMoniker": "E:\\DuAnBanHang\\DataBase\\Configuations\\UserConfig.cs",
-              "RelativeDocumentMoniker": "..\\DataBase\\Configuations\\UserConfig.cs",
-              "ToolTip": "E:\\DuAnBanHang\\DataBase\\Configuations\\UserConfig.cs",
-              "RelativeToolTip": "..\\DataBase\\Configuations\\UserConfig.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABIAAABCAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-02T05:34:59.248Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 14,
-              "Title": "Program.cs",
-              "DocumentMoniker": "E:\\DuAnBanHang\\QuanLyBanHang\\Program.cs",
-              "RelativeDocumentMoniker": "Program.cs",
-              "ToolTip": "E:\\DuAnBanHang\\QuanLyBanHang\\Program.cs",
-              "RelativeToolTip": "Program.cs",
-              "ViewState": "AQIAABIAAAAAAAAAAAAAACMAAAAKAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-02T05:55:43.815Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{e1b7d1f8-9b3c-49b1-8f4f-bfc63a88835d}"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 15,
-              "Title": "_ViewStart.cshtml",
-              "DocumentMoniker": "E:\\DuAnBanHang\\QuanLyBanHang\\Views\\_ViewStart.cshtml",
-              "RelativeDocumentMoniker": "Views\\_ViewStart.cshtml",
-              "ToolTip": "E:\\DuAnBanHang\\QuanLyBanHang\\Views\\_ViewStart.cshtml",
-              "RelativeToolTip": "Views\\_ViewStart.cshtml",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "DocumentIndex": 7,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "Y:\\C#\\QuanLyBanHang\\Views\\DanhMucs\\Index.cshtml",
+              "RelativeDocumentMoniker": "Views\\DanhMucs\\Index.cshtml",
+              "ToolTip": "Y:\\C#\\QuanLyBanHang\\Views\\DanhMucs\\Index.cshtml",
+              "RelativeToolTip": "Views\\DanhMucs\\Index.cshtml",
+              "ViewState": "AQIAAA8AAAAAAAAAAAAAACkAAAAQAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-03-31T19:29:44.332Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 16,
-              "Title": "20240402053601_Shyke.cs",
-              "DocumentMoniker": "E:\\DuAnBanHang\\DataBase\\Migrations\\20240402053601_Shyke.cs",
-              "RelativeDocumentMoniker": "..\\DataBase\\Migrations\\20240402053601_Shyke.cs",
-              "ToolTip": "E:\\DuAnBanHang\\DataBase\\Migrations\\20240402053601_Shyke.cs",
-              "RelativeToolTip": "..\\DataBase\\Migrations\\20240402053601_Shyke.cs",
-              "ViewState": "AQIAAHkAAAAAAAAAAAAQwBwAAAARAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-02T05:36:01.458Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 18,
-              "Title": "MainDbContext.cs",
-              "DocumentMoniker": "E:\\DuAnBanHang\\DataBase\\EF\\MainDbContext.cs",
-              "RelativeDocumentMoniker": "..\\DataBase\\EF\\MainDbContext.cs",
-              "ToolTip": "E:\\DuAnBanHang\\DataBase\\EF\\MainDbContext.cs",
-              "RelativeToolTip": "..\\DataBase\\EF\\MainDbContext.cs",
-              "ViewState": "AQIAAAsAAAAAAAAAAAAmwBUAAAAMAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-02T05:27:34.295Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 20,
-              "Title": "_ViewImports.cshtml",
-              "DocumentMoniker": "E:\\DuAnBanHang\\QuanLyBanHang\\Views\\_ViewImports.cshtml",
-              "RelativeDocumentMoniker": "Views\\_ViewImports.cshtml",
-              "ToolTip": "E:\\DuAnBanHang\\QuanLyBanHang\\Views\\_ViewImports.cshtml",
-              "RelativeToolTip": "Views\\_ViewImports.cshtml",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-03-31T19:29:46.414Z"
+              "WhenOpened": "2024-04-02T18:27:37.939Z"
             }
           ]
         }

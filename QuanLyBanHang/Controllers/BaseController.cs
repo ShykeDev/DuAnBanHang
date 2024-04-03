@@ -22,11 +22,6 @@ namespace QuanLyBanHang.Controllers
     {
         public static MainDbContext _context = new MainDbContext();
 
-        public BaseController()
-        {
-            Console.WriteLine("Call");
-        }
-
         public static int CalculateAge(DateTime dateOfBirth)
         {
             int age = 0;

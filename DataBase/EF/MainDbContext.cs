@@ -19,8 +19,8 @@ namespace DataBase.EF
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            optionsBuilder.UseSqlServer("Data Source=ADMIN-PC\\SHYKE;Initial Catalog=QuanLyShop;Integrated Security=True;Trust Server Certificate=True");
-            //optionsBuilder.UseSqlServer("Data Source=SHYKE\\SQLEXPRESS;Initial Catalog=QuanLyShop;Integrated Security=True;Trust Server Certificate=True");
+            //optionsBuilder.UseSqlServer("Data Source=ADMIN-PC\\SHYKE;Initial Catalog=QuanLyShop;Integrated Security=True;Trust Server Certificate=True");
+            optionsBuilder.UseSqlServer("Data Source=SHYKE\\SQLEXPRESS;Initial Catalog=QuanLyShop;Integrated Security=True;Trust Server Certificate=True");
 
             optionsBuilder.EnableSensitiveDataLogging(true);
         }
@@ -35,6 +35,8 @@ namespace DataBase.EF
             modelBuilder.ApplyConfiguration(new HoaDonConfig());
             modelBuilder.ApplyConfiguration(new HoaDonChiTietConfig());
             modelBuilder.ApplyConfiguration(new SanPhamConfig());
+            modelBuilder.ApplyConfiguration(new DanhMucConfig());
+            modelBuilder.ApplyConfiguration(new DanhMucChiTietConfig());
             modelBuilder.ApplyConfiguration(new ThuocTinhChungConfig());
             modelBuilder.ApplyConfiguration(new ThuocTinhConfig());
             modelBuilder.ApplyConfiguration(new GiaTriThuocTinhConfig());
@@ -45,6 +47,8 @@ namespace DataBase.EF
         public DbSet<User> Users { get; set; }
         public DbSet<SanPham> SanPhams { get; set; }
         public DbSet<ItemImage> ItemImages { get; set; }
+        public DbSet<DanhMuc> DanhMucs { get; set; }
+        public DbSet<DanhMucChiTiet> DanhMucChiTiets { get; set; }
         public DbSet<GioHang> GioHangs { get; set; }
         public DbSet<GioHangChiTiet> GioHangChiTiets { get; set; }
         public DbSet<ThuocTinh> ThuocTinhs { get; set; }

@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace DataBase.Migrations
 {
     [DbContext(typeof(MainDbContext))]
-    [Migration("20240402053601_Shyke")]
-    partial class Shyke
+    [Migration("20240402151154_shyke")]
+    partial class shyke
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -24,6 +24,37 @@ namespace DataBase.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
+
+            modelBuilder.Entity("DataBase.Entities.DanhMuc", b =>
+                {
+                    b.Property<Guid>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(150)");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("DanhMucs", (string)null);
+                });
+
+            modelBuilder.Entity("DataBase.Entities.DanhMucChiTiet", b =>
+                {
+                    b.Property<Guid>("idDanhMuc")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("idSanPham")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("idDanhMuc", "idSanPham");
+
+                    b.HasIndex("idSanPham")
+                        .IsUnique();
+
+                    b.ToTable("DanhMucChiTiets", (string)null);
+                });
 
             modelBuilder.Entity("DataBase.Entities.GiaTriThuocTinh", b =>
                 {
@@ -272,7 +303,7 @@ namespace DataBase.Migrations
                     b.HasData(
                         new
                         {
-                            ID = new Guid("113a6805-ec6f-4fde-979e-688cf6dca072"),
+                            ID = new Guid("f4560eef-2abe-4fea-9565-876c674e8edc"),
                             DiaChi = "Phúc Diễn, Bắc Từ Liêm, Hà Nội",
                             Email = "nhatvu@gmail.com",
                             Name = "Nguyễn Lê Nhất Vũ",
@@ -283,6 +314,25 @@ namespace DataBase.Migrations
                             State = 0,
                             UserName = "shyke"
                         });
+                });
+
+            modelBuilder.Entity("DataBase.Entities.DanhMucChiTiet", b =>
+                {
+                    b.HasOne("DataBase.Entities.DanhMuc", null)
+                        .WithMany("DanhMucChiTiets")
+                        .HasForeignKey("idDanhMuc")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired()
+                        .HasConstraintName("FK_DMCT_DM");
+
+                    b.HasOne("DataBase.Entities.SanPham", "SanPham")
+                        .WithOne()
+                        .HasForeignKey("DataBase.Entities.DanhMucChiTiet", "idSanPham")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired()
+                        .HasConstraintName("FK_DMCT_SP");
+
+                    b.Navigation("SanPham");
                 });
 
             modelBuilder.Entity("DataBase.Entities.GiaTriThuocTinh", b =>
@@ -388,6 +438,11 @@ namespace DataBase.Migrations
                         .HasConstraintName("FK_TT_SP");
 
                     b.Navigation("thuocTinhChung");
+                });
+
+            modelBuilder.Entity("DataBase.Entities.DanhMuc", b =>
+                {
+                    b.Navigation("DanhMucChiTiets");
                 });
 
             modelBuilder.Entity("DataBase.Entities.GioHang", b =>

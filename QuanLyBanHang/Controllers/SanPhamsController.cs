@@ -23,6 +23,10 @@ namespace QuanLyBanHang.Controllers
 
         public async Task<IActionResult> Index()
         {
+            if (HttpContext.Request.Cookies["Role"] != "0")
+            {
+                return RedirectToAction("Page404", "Home");
+            }
             return View();
         }
 
