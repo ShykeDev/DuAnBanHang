@@ -37,6 +37,8 @@ function OnLoadUser() {
         type: "GET",
         success: function (response) {
             if (response == null || response == undefined || response.length == 0) {
+                sleep(1500);
+                OnLoadUser();
                 return;
             } else {
                 var model = response;
@@ -109,7 +111,8 @@ function OnLoadUser() {
             }
         },
         error: function () {
-            location.reload();
+            sleep(1500);
+            OnLoadUser();
             return;
         }
     })
@@ -173,7 +176,6 @@ function ThemTaiKhoan() {
 }
 
 function OnSaveUser() {
-
     $.ajax({
         url: '/Users/SaveUser',
         type: 'post',

@@ -33,6 +33,8 @@ function OnLoadSanPham() {
         type: "GET",
         success: function (response) {
             if (response == null || response == undefined || response.length == 0) {
+                sleep(1500);
+                OnLoadSanPham();
                 return;
             } else {
                 var model = response;
@@ -96,11 +98,35 @@ function OnLoadSanPham() {
             }
         },
         error: function () {
-            location.reload();
+            sleep(1500);
+            OnLoadSanPham();
             return;
         }
     })
 }
+
+
+LoadDanhMuc()
+function LoadDanhMuc() {
+    $.ajax({
+        url: '/DanhMucs/GetDanhMuc',
+        type: "GET",
+        success: function (response) {
+            if (response == null || response == undefined || response.length == 0) {
+                sleep(1500);
+                LoadDanhMuc();
+            } else {
+                console.log(response)
+            }
+        },
+        error: function () {
+            sleep(1500);
+            LoadDanhMuc();
+        }
+    })
+
+}
+
 
 function OnThemSanPham() {
     sanPhamModel2 = {

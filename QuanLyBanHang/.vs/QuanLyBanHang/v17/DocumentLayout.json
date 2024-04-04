@@ -3,16 +3,16 @@
   "WorkspaceRootPath": "Y:\\C#\\QuanLyBanHang\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{168EA7AA-80C7-452B-B175-A1C72F536205}|QuanLyBanHang.csproj|y:\\c#\\quanlybanhang\\wwwroot\\js\\danhmuc.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
-      "RelativeMoniker": "D:0:0:{168EA7AA-80C7-452B-B175-A1C72F536205}|QuanLyBanHang.csproj|solutionrelative:wwwroot\\js\\danhmuc.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{168EA7AA-80C7-452B-B175-A1C72F536205}|QuanLyBanHang.csproj|y:\\c#\\quanlybanhang\\wwwroot\\js\\user.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
       "RelativeMoniker": "D:0:0:{168EA7AA-80C7-452B-B175-A1C72F536205}|QuanLyBanHang.csproj|solutionrelative:wwwroot\\js\\user.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{168EA7AA-80C7-452B-B175-A1C72F536205}|QuanLyBanHang.csproj|y:\\c#\\quanlybanhang\\wwwroot\\js\\sp.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
-      "RelativeMoniker": "D:0:0:{168EA7AA-80C7-452B-B175-A1C72F536205}|QuanLyBanHang.csproj|solutionrelative:wwwroot\\js\\sp.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+      "AbsoluteMoniker": "D:0:0:{168EA7AA-80C7-452B-B175-A1C72F536205}|QuanLyBanHang.csproj|y:\\c#\\quanlybanhang\\wwwroot\\js\\config1.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{168EA7AA-80C7-452B-B175-A1C72F536205}|QuanLyBanHang.csproj|solutionrelative:wwwroot\\js\\config1.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{168EA7AA-80C7-452B-B175-A1C72F536205}|QuanLyBanHang.csproj|y:\\c#\\quanlybanhang\\wwwroot\\js\\danhmuc.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{168EA7AA-80C7-452B-B175-A1C72F536205}|QuanLyBanHang.csproj|solutionrelative:wwwroot\\js\\danhmuc.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{168EA7AA-80C7-452B-B175-A1C72F536205}|QuanLyBanHang.csproj|y:\\c#\\quanlybanhang\\controllers\\danhmucscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -46,13 +46,26 @@
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
+              "Title": "config1.js",
+              "DocumentMoniker": "Y:\\C#\\QuanLyBanHang\\wwwroot\\js\\config1.js",
+              "RelativeDocumentMoniker": "wwwroot\\js\\config1.js",
+              "ToolTip": "Y:\\C#\\QuanLyBanHang\\wwwroot\\js\\config1.js",
+              "RelativeToolTip": "wwwroot\\js\\config1.js",
+              "ViewState": "AQIAABIAAAAAAAAAAAAowCMAAAABAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2024-04-03T10:24:16.18Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
               "Title": "DanhMuc.js",
               "DocumentMoniker": "Y:\\C#\\QuanLyBanHang\\wwwroot\\js\\DanhMuc.js",
               "RelativeDocumentMoniker": "wwwroot\\js\\DanhMuc.js",
               "ToolTip": "Y:\\C#\\QuanLyBanHang\\wwwroot\\js\\DanhMuc.js",
               "RelativeToolTip": "wwwroot\\js\\DanhMuc.js",
-              "ViewState": "AQIAAEoAAAAAAAAAAAAuwDgAAAARAAAA",
+              "ViewState": "AQIAADMAAAAAAAAAAAAmwEoAAAAMAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
               "WhenOpened": "2024-04-02T18:26:57.993Z",
               "EditorCaption": ""
@@ -77,13 +90,13 @@
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "user.js",
               "DocumentMoniker": "Y:\\C#\\QuanLyBanHang\\wwwroot\\js\\user.js",
               "RelativeDocumentMoniker": "wwwroot\\js\\user.js",
               "ToolTip": "Y:\\C#\\QuanLyBanHang\\wwwroot\\js\\user.js",
               "RelativeToolTip": "wwwroot\\js\\user.js",
-              "ViewState": "AQIAAEgAAAAAAAAAAAAowG8AAAAeAAAA",
+              "ViewState": "AQIAAEoAAAAAAAAAAAAowFYAAABeAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
               "WhenOpened": "2024-04-02T18:58:46.437Z",
               "EditorCaption": ""
@@ -123,18 +136,6 @@
               "ViewState": "AQIAAF4AAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-04-02T18:44:34.234Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Sp.js",
-              "DocumentMoniker": "Y:\\C#\\QuanLyBanHang\\wwwroot\\js\\Sp.js",
-              "RelativeDocumentMoniker": "wwwroot\\js\\Sp.js",
-              "ToolTip": "Y:\\C#\\QuanLyBanHang\\wwwroot\\js\\Sp.js",
-              "RelativeToolTip": "wwwroot\\js\\Sp.js",
-              "ViewState": "AQIAAD4AAAAAAAAAAAAwwGIAAAAeAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
-              "WhenOpened": "2024-04-02T18:26:59.231Z"
             },
             {
               "$type": "Document",

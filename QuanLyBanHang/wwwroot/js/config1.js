@@ -3,6 +3,10 @@ toastr.options.closeButton = true;
 toastr.options.closeHtml = '<button><i class="icon-off"></i></button>';
 toastr.options.timeOut = 3000;
 
+function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
+
 function setCookie(cname, cvalue) {
     document.cookie = cname + "=" + cvalue
 }
@@ -92,7 +96,8 @@ function GetUser() {
             }
         },
         error: function () {
-            swal("Oops!", "Đã xảy ra lỗi!", "error");
+            sleep(1500);
+            GetUser();
         }
     })
 }

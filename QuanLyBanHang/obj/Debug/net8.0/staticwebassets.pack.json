@@ -2537,10 +2537,6 @@
       "PackagePath": "staticwebassets\\js\\DanhMuc.js"
     },
     {
-      "Id": "Y:\\C#\\QuanLyBanHang\\wwwroot\\js\\Sp.js",
-      "PackagePath": "staticwebassets\\js\\Sp.js"
-    },
-    {
       "Id": "Y:\\C#\\QuanLyBanHang\\wwwroot\\js\\config1.js",
       "PackagePath": "staticwebassets\\js\\config1.js"
     },
@@ -2551,6 +2547,10 @@
     {
       "Id": "Y:\\C#\\QuanLyBanHang\\wwwroot\\js\\font-fontawesome.js",
       "PackagePath": "staticwebassets\\js\\font-fontawesome.js"
+    },
+    {
+      "Id": "Y:\\C#\\QuanLyBanHang\\wwwroot\\js\\sanpham1.js",
+      "PackagePath": "staticwebassets\\js\\sanpham1.js"
     },
     {
       "Id": "Y:\\C#\\QuanLyBanHang\\wwwroot\\js\\sweetalert.min.js",

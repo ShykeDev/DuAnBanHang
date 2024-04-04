@@ -58,7 +58,8 @@ function LoadDanhMuc() {
             }
         },
         error: function () {
-            location.reload();
+            sleep(1500);
+            LoadDanhMuc();
             return;
         }
     })

@@ -1,6 +1,4 @@
-﻿
-
-@{
+﻿@{
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
@@ -14,11 +12,11 @@
     <div class="d-flex justify-content-between align-items-center mb-3">
         <div class="bg-light rounded px-3 py-1 flex-shrink-0 d-flex align-items-center">
             <input class="form-control border-0 bg-transparent px-0 py-2 fw-bolder" type="search" placeholder="Search"
-                   aria-label="Search" id="searchText">
+                aria-label="Search" id="searchText">
         </div>
         <div class="d-flex justify-content-end">
             <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#MainModal"
-                    onclick="ThemDanhMuc()">
+                onclick="ThemDanhMuc()">
                 Thêm
             </button>
         </div>
@@ -39,7 +37,7 @@
                 </tr>
             </thead>
             <tbody id="myTable">
-                
+
             </tbody>
         </table>
     </div>
@@ -47,7 +45,7 @@
 
 <!-- Modal -->
 <div class="modal fade" id="MainModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-     aria-labelledby="MainModalLabel" aria-hidden="true">
+    aria-labelledby="MainModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content rounded">
             <div class="modal-header">
@@ -63,12 +61,10 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" id="ThemDanhMuc" class="btn btn-primary display-none"
-                        onclick="OnThemDanhMuc()">
+                <button type="button" id="ThemDanhMuc" class="btn btn-primary display-none" onclick="OnThemDanhMuc()">
                     Thêm
                 </button>
-                <button type="button" id="SuaDanhMuc" class="btn btn-primary display-none"
-                        onclick="OnSuaDanhMuc()">
+                <button type="button" id="SuaDanhMuc" class="btn btn-primary display-none" onclick="OnSuaDanhMuc()">
                     Lưu
                 </button>
             </div>

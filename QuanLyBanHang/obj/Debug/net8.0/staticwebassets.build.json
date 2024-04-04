@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "OWPj3CByY7cLHREM6ZHApnNFNHMT2dDAI81K1S+kbow=",
+  "Hash": "NCDr6HMQaE/Rv0X2AvmhKBpFfwBk7RhLZYv1ZZJ2zRs=",
   "Source": "QuanLyBanHang",
   "BasePath": "_content/QuanLyBanHang",
   "Mode": "Default",
@@ -12177,12 +12177,12 @@
       "OriginalItemSpec": "wwwroot\\js\\font-fontawesome.js"
     },
     {
-      "Identity": "Y:\\C#\\QuanLyBanHang\\wwwroot\\js\\Sp.js",
+      "Identity": "Y:\\C#\\QuanLyBanHang\\wwwroot\\js\\sanpham1.js",
       "SourceId": "QuanLyBanHang",
       "SourceType": "Discovered",
       "ContentRoot": "Y:\\C#\\QuanLyBanHang\\wwwroot\\",
       "BasePath": "_content/QuanLyBanHang",
-      "RelativePath": "js/Sp.js",
+      "RelativePath": "js/sanpham1.js",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -12193,7 +12193,7 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\js\\Sp.js"
+      "OriginalItemSpec": "wwwroot\\js\\sanpham1.js"
     },
     {
       "Identity": "Y:\\C#\\QuanLyBanHang\\wwwroot\\js\\sweetalert.min.js",

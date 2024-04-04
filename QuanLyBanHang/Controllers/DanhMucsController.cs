@@ -17,13 +17,14 @@ namespace QuanLyBanHang.Controllers
         {
             return View(await _context.DanhMucs.Include(x => x.DanhMucChiTiets).ToListAsync());
         }
-
-        public async Task<IActionResult> GetDanhMuc()
+        
+        [HttpGet]
+        public async Task<JsonResult> GetDanhMuc()
         {
             return Json(await _context.DanhMucs.Include(x => x.DanhMucChiTiets).ToListAsync());
         }
 
-
+        
         public async Task<IActionResult> Details(Guid? id)
         {
             if (id == null)
@@ -53,7 +54,8 @@ namespace QuanLyBanHang.Controllers
                 _context.Add(danhMuc);
                 await _context.SaveChangesAsync();
                 return Json(true);
-            } catch
+            }
+            catch
             {
                 return Json("Đã xảy ra lỗi!");
             }
