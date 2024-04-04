@@ -6,7 +6,7 @@
 <div class="card-header justify-content-between align-items-center d-flex">
     <h6 class="card-title m-0">Quản lý Danh mục</h6>
 </div>
-<div class="card-body">
+<div class="card-body" ng-controller="DanhMucsCtrl">
 
     <!-- User listing Actions-->
     <div class="d-flex justify-content-between align-items-center mb-3">
@@ -16,7 +16,7 @@
         </div>
         <div class="d-flex justify-content-end">
             <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#MainModal"
-                onclick="ThemDanhMuc()">
+                ng-click="ThemDanhMuc()">
                 Thêm
             </button>
         </div>
@@ -37,42 +37,61 @@
                 </tr>
             </thead>
             <tbody id="myTable">
-
+                <tr ng-repeat="item in ListDanhMuc">
+                    <td>{{item.name}}</td>
+                    <td>{{item.danhMucChiTiets.length}}</td>
+                    <td>
+                        <button class="btn btn-primary text-white btn-sm ps-3 pe-3 me-2" data-bs-toggle="modal"
+                            data-bs-target="#MainModal" data-target="#MainModal" 
+                            ng-click="EditDanhMuc(item.id)">
+                            Sửa
+                            <i class="fa fa-pen ms-2" aria-hidden="true"></i>
+                        </button>
+                        <button class="btn btn-danger text-white btn-sm ps-3 pe-3"
+                            ng-click="Delete(item.id)">
+                            Xóa
+                            <i class="fa fa-trash ms-2" aria-hidden="true"></i>
+                        </button>
+                    </td>
+                </tr>
             </tbody>
         </table>
     </div>
-</div>
 
-<!-- Modal -->
-<div class="modal fade" id="MainModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-    aria-labelledby="MainModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content rounded">
-            <div class="modal-header">
-                <h5 class="modal-title" id="MainModalLabel">Thêm danh mục</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Đóng"></button>
-            </div>
-            <div class="modal-body">
-                <input type="hidden" id="ID" />
-                <div class="form-group">
-                    <label for="Name" class="control-label">Tên danh mục</label>
-                    <input id="Name" class="form-control" />
+
+    <!-- Modal -->
+    <div class="modal fade" id="MainModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="MainModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content rounded">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="MainModalLabel">Thêm danh mục</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Đóng"></button>
                 </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" id="ThemDanhMuc" class="btn btn-primary display-none" onclick="OnThemDanhMuc()">
-                    Thêm
-                </button>
-                <button type="button" id="SuaDanhMuc" class="btn btn-primary display-none" onclick="OnSuaDanhMuc()">
-                    Lưu
-                </button>
+                <div class="modal-body">
+                    <input type="hidden" id="ID" />
+                    <div class="form-group">
+                        <label for="Name" class="control-label">Tên danh mục</label>
+                        <input id="Name" class="form-control" ng-model="DanhMucModel.name"/>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" id="ThemDanhMuc" class="btn btn-primary display-none"
+                        ng-click="OnThemDanhMuc()">
+                        Thêm
+                    </button>
+                    <button type="button" id="SuaDanhMuc" class="btn btn-primary display-none" ng-click="OnSave()">
+                        Lưu
+                    </button>
+                </div>
             </div>
         </div>
     </div>
 </div>
 
-<script src="~/js/DanhMuc.js"></script>
+
+@* <script src="~/js/DanhMuc.js"></script> *@
 @section Scripts {
     @{
         await Html.RenderPartialAsync("_ValidationScriptsPartial");

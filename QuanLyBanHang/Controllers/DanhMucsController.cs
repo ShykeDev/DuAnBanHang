@@ -17,41 +17,26 @@ namespace QuanLyBanHang.Controllers
         {
             return View(await _context.DanhMucs.Include(x => x.DanhMucChiTiets).ToListAsync());
         }
-        
+
         [HttpGet]
         public async Task<JsonResult> GetDanhMuc()
         {
             return Json(await _context.DanhMucs.Include(x => x.DanhMucChiTiets).ToListAsync());
         }
 
-        
-        public async Task<IActionResult> Details(Guid? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var danhMuc = await _context.DanhMucs
-                .FirstOrDefaultAsync(m => m.ID == id);
-            if (danhMuc == null)
-            {
-                return NotFound();
-            }
-
-            return View(danhMuc);
-        }
 
         [HttpPost]
         public async Task<JsonResult> Create(string name)
         {
             try
             {
+                if (DanhMucExists(name)) {
+                    return Json("Tên danh mục đã tồn tại");
+                }
                 var danhMuc = new DanhMuc();
                 danhMuc.ID = Guid.NewGuid();
                 danhMuc.Name = name;
-
-                _context.Add(danhMuc);
+                _context.DanhMucs.Add(danhMuc);
                 await _context.SaveChangesAsync();
                 return Json(true);
             }
@@ -61,88 +46,64 @@ namespace QuanLyBanHang.Controllers
             }
         }
 
-        public async Task<IActionResult> Edit(Guid? id)
+        [HttpGet]
+        public async Task<JsonResult> GetDanhMucByID(Guid? id)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
             var danhMuc = await _context.DanhMucs.FindAsync(id);
-            if (danhMuc == null)
-            {
-                return NotFound();
-            }
-            return View(danhMuc);
+            return Json(danhMuc);
         }
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(Guid id, [Bind("ID,Name")] DanhMuc danhMuc)
+        public async Task<JsonResult> SaveDanhMuc(DanhMuc danhMuc)
         {
-            if (id != danhMuc.ID)
+            try
             {
-                return NotFound();
-            }
-
-            if (ModelState.IsValid)
-            {
-                try
+                var tmpDanhMuc = await _context.DanhMucs.FindAsync(danhMuc.ID);
+                if (DanhMucExists(danhMuc.ID, danhMuc.Name))
                 {
-                    _context.Update(danhMuc);
+                    return Json("Tên danh mục đã tồn tại");
+                }
+                if (tmpDanhMuc == null)
+                {
+                    return Json("Có lỗi xảy ra");
+                }
+                tmpDanhMuc.Name = danhMuc.Name;
+                _context.Update(tmpDanhMuc);
+                await _context.SaveChangesAsync();
+                return Json(true);
+            }
+            catch (DbUpdateConcurrencyException)
+            {
+                return Json("Có lỗi xảy ra");
+            }
+        }
+
+        [HttpGet]
+        public async Task<JsonResult> DeleteDanhMuc(Guid id)
+        {
+            try
+            {
+                var danhMuc = await _context.DanhMucs.FirstOrDefaultAsync(x => x.ID == id);
+                var danhMucChiTiets = await _context.DanhMucChiTiets.Where(x => x.idDanhMuc == id).ToListAsync();
+                if (danhMuc != null)
+                {
+                    _context.DanhMucChiTiets.RemoveRange(danhMucChiTiets);
+                    _context.DanhMucs.Remove(danhMuc);
                     await _context.SaveChangesAsync();
+                    return Json(true);
                 }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!DanhMucExists(danhMuc.ID))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-                return RedirectToAction(nameof(Index));
+                return Json("Xóa thất bại");
             }
-            return View(danhMuc);
+            catch (Exception e)
+            {
+                Console.WriteLine(e.ToString());
+                return Json("Xóa thất bại");
+            }
         }
 
-        public async Task<IActionResult> Delete(Guid? id)
+        private bool DanhMucExists(string name)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var danhMuc = await _context.DanhMucs
-                .FirstOrDefaultAsync(m => m.ID == id);
-            if (danhMuc == null)
-            {
-                return NotFound();
-            }
-
-            return View(danhMuc);
-        }
-
-        // POST: DanhMucs/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(Guid id)
-        {
-            var danhMuc = await _context.DanhMucs.FindAsync(id);
-            if (danhMuc != null)
-            {
-                _context.DanhMucs.Remove(danhMuc);
-            }
-
-            await _context.SaveChangesAsync();
-            return RedirectToAction(nameof(Index));
-        }
-
-        private bool DanhMucExists(Guid id)
-        {
-            return _context.DanhMucs.Any(e => e.ID == id);
+            return _context.DanhMucs.Any(e => e.Name == name);
         }
 
         private bool DanhMucExists(Guid id, string name)

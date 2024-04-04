@@ -178,7 +178,9 @@ namespace QuanLyBanHang.Controllers
         {
             try
             {
-                return Json(await _context.SanPhams.ToListAsync());
+                return Json(await _context.SanPhams
+                                            .Include(p => p.thuocTinhs)
+                                            .Include(p => p.anhs).ToListAsync());
             }
             catch (Exception)
             {

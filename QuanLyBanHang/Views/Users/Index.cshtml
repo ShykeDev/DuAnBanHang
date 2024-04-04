@@ -10,16 +10,14 @@
 <div class="card-header justify-content-between align-items-center d-flex">
     <h6 class="card-title m-0">Quản lý tài khoản</h6>
 </div>
-<div class="card-body">
-
-    <!-- User listing Actions-->
+<div class="card-body" ng-controller="UsersCtrl">
     <div class="d-flex justify-content-between align-items-center mb-3">
         <div class="bg-light rounded px-3 py-1 flex-shrink-0 d-flex align-items-center">
             <input class="form-control border-0 bg-transparent px-0 py-2 fw-bolder" type="search" placeholder="Search"
                 aria-label="Search" id="searchText">
         </div>
         <div class="d-flex justify-content-end">
-            <button class="btn btn-sm btn-primary" onclick="ThemTaiKhoan()">
+            <button class="btn btn-sm btn-primary" ng-click="OnAddUser()">
                 <i class="fa-solid fa-user-plus me-2"></i>Thêm tài khoản
             </button>
         </div>
@@ -38,8 +36,31 @@
                     <th>Action</th>
                 </tr>
             </thead>
-            <tbody id="myTable">
-
+            <tbody id="myTable" ng-repeat="item in ListUsers">
+                <tr>
+                    <td>{{item.name}}</td>
+                    <td>{{item.userName}}</td>
+                    <td>{{item.password}}</td>
+                    <td><small
+                            class="badge rounded-pill {{RoleClass[item.role].bg}} {{RoleClass[item.role].color}}">{{RoleClass[item.role].name}}</small>
+                    </td>
+                    <td>
+                        <div class="d-flex align-items-center justify-content-center"><span
+                                class="{{StateClass[item.state].class}}"></span><span
+                                class="small text-muted">{{StateClass[item.state].name}}</span></div>
+                    </td>
+                    <td>
+                        <button class="btn btn-primary text-white btn-sm ps-3 pe-3 me-2" data-target="#MainModal"
+                            ng-click="OnEditUser(item.id)">
+                            Sửa
+                            <i class="fa fa-pen ms-2" aria-hidden="true"></i>
+                        </button>
+                        <button class="btn btn-danger text-white btn-sm ps-3 pe-3 me-2" ng-if="item.role != 0" ng-click="Delete(item.id)">
+                            Xóa
+                            <i class="fa fa-trash ms-2" aria-hidden="true"></i>
+                        </button>
+                    </td>
+                </tr>
             </tbody>
         </table>
 
@@ -58,66 +79,66 @@
                                     <input id="ID" type="hidden" />
                                     <div class="form-group col-6">
                                         <label for="Name" class="control-label">Họ và tên</label>
-                                        <input id="Name" class="form-control" />
+                                        <input id="Name" class="form-control" ng-model="userModel.name" />
                                         <span id="ValidName" class="text-danger"></span>
                                     </div>
                                     <div class="form-group col-6">
                                         <label for="SDT" class="control-label">Số điện thoại</label>
-                                        <input id="SDT" class="form-control" />
+                                        <input id="SDT" class="form-control" ng-model="userModel.sdt" />
                                         <span id="ValidSDT" class="text-danger"></span>
                                     </div>
                                     <div class="form-group col-6">
                                         <label for="UserName" class="control-label">UserName</label>
-                                        <input id="UserName" class="form-control" />
+                                        <input id="UserName" class="form-control" ng-model="userModel.userName" />
                                         <span id="ValidUserName" class="text-danger"></span>
                                     </div>
                                     <div class="form-group col-6">
                                         <label for="Password" class="control-label">Password</label>
-                                        <input id="Password" class="form-control" />
+                                        <input id="Password" class="form-control" ng-model="userModel.password" />
                                         <span id="ValidPassword" class="text-danger"></span>
                                     </div>
 
                                     <div class="form-group col-6">
                                         <label for="DiaChi" class="control-label">Địa chỉ</label>
-                                        <input id="DiaChi" class="form-control" />
+                                        <input id="DiaChi" class="form-control" ng-model="userModel.diaChi" />
                                         <span id="ValidDiaChi" class="text-danger"></span>
                                     </div>
                                     <div class="form-group col-6">
                                         <label for="Email" class="control-label">Email</label>
-                                        <input id="Email" type="email" class="form-control" />
+                                        <input id="Email" type="email" class="form-control" ng-model="userModel.email" />
                                         <span id="ValidEmail" class="text-danger"></span>
                                     </div>
                                     <div class="form-group col-6">
                                         <label for="NgaySinh" class="control-label">Ngày sinh</label>
-                                        <input id="NgaySinh" class="form-control" type="date" />
+                                        <input id="NgaySinh" class="form-control" type="date" ng-model="userModel.ngaySinh"/>
                                         <span id="ValidNgaySinh" class="text-danger"></span>
                                     </div>
                                     <div class="form-group col-3">
                                         <label for="Role" class="control-label">Role</label>
-                                        <select id="Role" class="form-control">
-                                            <option value=0 disabled>Admin (Người quản trị)</option>
-                                            <option value=1>User (Người dùng)</option>
+                                        <select id="Role" class="form-control"  ng-model="userModel.role" >
+                                            <option value="0" disabled>Admin (Người quản trị)</option>
+                                            <option value="1">User (Người dùng)</option>
                                         </select>
                                         <span id="ValidRole" class="text-danger"></span>
                                     </div>
+                                    
                                     <div class="form-group col-3">
                                         <label for="State" class="control-label">State</label>
-                                        <select id="State" class="form-control">
-                                            <option value=0>Active</option>
-                                            <option value=1>Disable</option>
+                                        <select id="State" class="form-control" ng-model="userModel.state">
+                                            <option value="0">Active</option>
+                                            <option value="1">Disable</option>
                                         </select>
                                         <span id="ValidState" class="text-danger"></span>
                                     </div>
                                     <div class="d-flex justify-content-between">
                                         <div class="form-group w-100 pe-3">
-                                            <button type="button" class="btn w-100 btn-secondary"
-                                                data-bs-dismiss="modal">Close</button>
+                                            <button type="button" class="btn w-100 btn-secondary" data-bs-dismiss="modal">Close</button>
                                         </div>
                                         <div class="form-group w-100 ps-2">
                                             <button type="button" id="ThemTaiKhoan" class="btn btn-primary w-100"
-                                                onclick="OnThemTaiKhoan()">Thêm</button>
+                                                ng-click="AddUser()">Thêm</button>
                                             <button type="button" id="SuaTaiKhoan" class="btn btn-primary w-100"
-                                                onclick="OnSaveUser()">Lưu</button>
+                                                ng-click="SaveUser()">Lưu</button>
                                         </div>
                                     </div>
                                 </div>
@@ -131,4 +152,4 @@
     </div>
 </div>
 
-<script src="~/js/user.js"></script>
+@* <script src="~/js/user.js"></script> *@

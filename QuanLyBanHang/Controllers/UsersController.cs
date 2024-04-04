@@ -11,7 +11,7 @@ using Microsoft.VisualStudio.Web.CodeGenerators.Mvc.Templates.BlazorIdentity.Pag
 using System.Data;
 using QuanLyBanHang.Models;
 using System.Diagnostics;
-
+using System.Text.Json;
 namespace QuanLyBanHang.Controllers
 {
     public class UsersController : BaseController
@@ -117,6 +117,7 @@ namespace QuanLyBanHang.Controllers
         [HttpPost]
         public async Task<JsonResult> SaveUser(User user)
         {
+            Console.WriteLine(JsonSerializer.Serialize(user));
             if (user.Name == "" || user.Name == null)
             {
                 return Json("Vui lòng nhập Họ và tên");
