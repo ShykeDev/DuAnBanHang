@@ -5,7 +5,7 @@
 <div class="card-header justify-content-between align-items-center d-flex">
     <h6 class="card-title m-0">Quản lý Sản phẩm</h6>
 </div>
-<div class="card-body">
+<div class="card-body" ng-controller="SanPhamCtrl">
 
     <!-- User listing Actions-->
     <div class="d-flex justify-content-between align-items-center mb-3">
@@ -24,6 +24,9 @@
         <table class="table m-0 text-center table-bordered" id="MainTable">
             <thead>
                 <tr>
+                    <th>
+                        Img
+                    </th>
                     <th>
                         Tên sản phẩm
                     </th>
@@ -45,90 +48,110 @@
                 </tr>
             </thead>
             <tbody id="myTable">
-
+                <tr ng-repeat="item in ListSanPham">
+                    <td><img src="{{item.anhs.img}}" class="img-thumbnail" width="60px"></td>
+                    <td>{{item.name}}</td>
+                    <td>{{item.giaGoc}}</td>
+                    <td>{{item.giaGiamGia}}</td>
+                    <td>{{item.soLuong}}</td>
+                    <td>{{item.trangThai}}</td>
+                    <td>
+                        <button class="btn btn-primary text-white btn-sm ps-3 pe-3 me-2" ng-click="OnEditSP(item.id)">
+                            Sửa
+                            <i class="fa fa-pen ms-2"></i>
+                        </button>
+                        <button class="btn btn-danger text-white btn-sm ps-3 pe-3">
+                            Xóa
+                            <i class="fa fa-trash ms-2"></i>
+                        </button>
+                    </td>
+                </tr>
             </tbody>
         </table>
     </div>
+
+    <div class="modal fade" id="MainModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="MainModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content rounded">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="MainModalLabel">Thêm sản phẩm</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Đóng"></button>
+                </div>
+                <div class="modal-body">
+                    <input type="hidden" id="ID" />
+                    <div asp-action="AddImg" class="form-group" enctype="multipart/form-data">
+                        <label for="imgItem" class="control-label">Ảnh sản phẩm</label>
+                        <br>
+                        <div class="w-100 text-center">
+                            <img id="ImgView" class="bg-white img-fluid" src="{{SanPhamModel.anhs.img}}">
+                        </div>
+                        <input type="file" id="imgItem" class="form-control" onchange="UpdateImage()" hidden></input>
+                        <button class="btn btn-primary w-100 rounded"
+                            onclick="document.getElementById('imgItem').click()">Chọn ảnh
+                        </button>
+                    </div>
+                    <div class="form-group">
+                        <label for="Name" class="control-label">Tên sản phẩm</label>
+                        <input id="Name" class="form-control" ng-model="SanPhamModel.name"/>
+                    </div>
+                    <div class="form-group">
+                        <label for="GiaGoc" class="control-label">Giá sản phẩm</label>
+                        <input id="GiaGoc" class="form-control" value="0" type="number" min="0" max="10000000000" ng-model="SanPhamModel.giaGoc"/>
+                    </div>
+                    <div class="form-group">
+                        <label for="GiaGiamGia" class="control-label">Giá bán</label>
+                        <input id="GiaGiamGia" class="form-control" value="0" type="number" min="0" max="10000000000" ng-model="SanPhamModel.giaGiamGia"/>
+                    </div>
+                    <div class="form-group">
+                        <label for="SoLuong" class="control-label">Số lượng</label>
+                        <input id="SoLuong" class="form-control" value="0" type="number" min="0" max="10000" ng-model="SanPhamModel.soLuong"/>
+                    </div>
+                    <div class="form-group">
+                        <label for="MoTa" class="control-label">Mô tả</label>
+                        <textarea id="MoTa" class="form-control" ng-model="SanPhamModel.moTa"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label mb-2">Danh mục</label>
+                        <div ng-repeat="item in ListDanhMuc">
+                            <input class="form-check-input" type="checkbox" value="" id="{{item.id}}">
+                            <label class="form-check-label" for="{{item.id}}">
+                                {{item.name}}
+                            </label>
+                        </div>
+
+                    </div>
+                    <div class="form-group">
+                        <label for="TenThuocTinh" class="control-label">Thuộc tính</label>
+                        <div class="d-flex">
+                            <input type="text" id="TenThuocTinh" class="form-control" placeholder="Tên thuộc tính">
+                            <button type="button" class="btn btn-primary ms-3" onclick="addThuocTinh()">Thêm</button>
+                        </div>
+                    </div>
+
+                    <hr />
+                    <div id="ListThuocTinh" class="accordion">
+
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="button" id="ThemThuocTinh" class="btn btn-primary display-none"
+                        onclick="OnThemSanPham()">Thêm</button>
+                    <button type="button" id="SuaThuocTinh" class="btn btn-primary display-none"
+                        onclick="OnSuaSanPham()">Lưu</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </div>
 
 
 <!-- Modal -->
-<div class="modal fade" id="MainModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
-    aria-labelledby="MainModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content rounded">
-            <div class="modal-header">
-                <h5 class="modal-title" id="MainModalLabel">Thêm sản phẩm</h5>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Đóng"></button>
-            </div>
-            <div class="modal-body">
-                <input type="hidden" id="ID" />
-                <div asp-action="AddImg" class="form-group" enctype="multipart/form-data">
-                    <label for="imgItem" class="control-label">Ảnh sản phẩm</label>
-                    <br>
-                    <div class="w-100 text-center">
-                        <img id="ImgView" class="bg-white img-fluid">
-                    </div>
-                    <input type="file" id="imgItem" class="form-control" onchange="UpdateImage()" hidden></input>
-                    <button class="btn btn-primary w-100 rounded"
-                        onclick="document.getElementById('imgItem').click()">Chọn ảnh</button>
-                </div>
-                <div class="form-group">
-                    <label for="Name" class="control-label">Tên sản phẩm</label>
-                    <input id="Name" class="form-control" />
-                </div>
-                <div class="form-group">
-                    <label for="GiaGoc" class="control-label">Giá sản phẩm</label>
-                    <input id="GiaGoc" class="form-control" value="0" type="number" min="0" max="10000000000" />
-                </div>
-                <div class="form-group">
-                    <label for="GiaGiamGia" class="control-label">Giá bán</label>
-                    <input id="GiaGiamGia" class="form-control" value="0" type="number" min="0" max="10000000000" />
-                </div>
-                <div class="form-group">
-                    <label for="SoLuong" class="control-label">Số lượng</label>
-                    <input id="SoLuong" class="form-control" value="0" type="number" min="0" max="10000" />
-                </div>
-                <div class="form-group">
-                    <label for="MoTa" class="control-label">Mô tả</label>
-                    <textarea id="MoTa" class="form-control"></textarea>
-                </div>
-                <div class="form-group">
-                    <label class="control-label mb-2">Danh mục</label>
-                    <div id="ListDanhMucg   ">
-                        <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault">
-                        <label class="form-check-label" for="flexCheckDefault">
-                            Quần
-                        </label>
-                    </div>
 
-                </div>
 
-                <div class="form-group">
-                    <label for="TenThuocTinh" class="control-label">Thuộc tính</label>
-                    <div class="d-flex">
-                        <input type="text" id="TenThuocTinh" class="form-control" placeholder="Tên thuộc tính">
-                        <button type="button" class="btn btn-primary ms-3" onclick="addThuocTinh()">Thêm</button>
-                    </div>
-                </div>
-
-                <hr />
-                <div id="ListThuocTinh" class="accordion">
-
-                </div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" id="ThemThuocTinh" class="btn btn-primary display-none"
-                    onclick="OnThemSanPham()">Thêm</button>
-                <button type="button" id="SuaThuocTinh" class="btn btn-primary display-none"
-                    onclick="OnSuaSanPham()">Lưu</button>
-            </div>
-        </div>
-    </div>
-</div>
-
-<script src="~/js/sanpham1.js"></script>
+@* <script src="~/js/sanpham1.js"></script> *@
 @section Scripts {
     @{
         await Html.RenderPartialAsync("_ValidationScriptsPartial");

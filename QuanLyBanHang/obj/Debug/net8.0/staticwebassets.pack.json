@@ -2533,10 +2533,6 @@
       "PackagePath": "staticwebassets\\images\\slideshows\\slide3.png"
     },
     {
-      "Id": "Y:\\C#\\QuanLyBanHang\\wwwroot\\js\\DanhMuc.js",
-      "PackagePath": "staticwebassets\\js\\DanhMuc.js"
-    },
-    {
       "Id": "Y:\\C#\\QuanLyBanHang\\wwwroot\\js\\angular-route.js",
       "PackagePath": "staticwebassets\\js\\angular-route.js"
     },

@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "vnns+NqDZFUAJGs8oQW5yJSNkMfFiE07Elqd/Ik23CM=",
+  "Hash": "tZzPLGRGCk/zVSkzKKsR/RJBAU8xFyN9dWsrJf1lqSM=",
   "Source": "QuanLyBanHang",
   "BasePath": "_content/QuanLyBanHang",
   "Mode": "Default",
@@ -12175,25 +12175,6 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\js\\config1.js"
-    },
-    {
-      "Identity": "Y:\\C#\\QuanLyBanHang\\wwwroot\\js\\DanhMuc.js",
-      "SourceId": "QuanLyBanHang",
-      "SourceType": "Discovered",
-      "ContentRoot": "Y:\\C#\\QuanLyBanHang\\wwwroot\\",
-      "BasePath": "_content/QuanLyBanHang",
-      "RelativePath": "js/DanhMuc.js",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "AssetMergeBehavior": "PreferTarget",
-      "AssetMergeSource": "",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\js\\DanhMuc.js"
     },
     {
       "Identity": "Y:\\C#\\QuanLyBanHang\\wwwroot\\js\\desktop.ini",

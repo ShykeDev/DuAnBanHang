@@ -320,6 +320,56 @@ myApp.controller('DanhMucsCtrl', function ($scope, $http) {
     }
 });
 
+myApp.controller('SanPhamCtrl', function ($scope, $http) {
+    $scope.ListSanPham = [];
+    $scope.ListDanhMuc = [];
+    $scope.SanPhamModel = {};
+    $scope.getSanPham = function () {
+        $http.get("/SanPhams/ListSanPham").then(function (response) {
+            $scope.ListSanPham = response.data;
+            console.log($scope.ListSanPham);
+            sleep(1500);
+            $scope.getDanhMucs();
+        }).catch(function (error) {
+            $scope.getSanPham();
+        });
+    }
+    $scope.getSanPham();
+    $scope.getDanhMucs = function () {
+        $http.get("/DanhMucs/GetDanhMuc").then(function (response) {
+            $scope.ListDanhMuc = response.data;
+            console.log($scope.ListDanhMuc);
+        }).catch(function (error) {
+            sleep(1500);
+            $scope.getDanhMucs();
+        });
+    }
+
+    $scope.OnEditSP = function (id) {
+        
+        $("#MainModalLabel").html("Sửa sản phẩm");
+        $("#ThemThuocTinh").css("display", "none");
+        $("#SuaThuocTinh").css("display", "block");
+        $('#MainModal').modal('show');
+        $http.get("/SanPhams/GetSanPham?id=" + id).then(function (response) {
+            $scope.SanPhamModel = response.data;
+        }).catch(function (error) {
+            swal("Oops!", "Đã xảy ra lỗi!", "error");
+        });
+    }
+
+
+});
+
+function UpdateImage() {
+    const file = $("#imgItem").prop('files')[0];
+    const reader = new FileReader();
+    reader.onloadend = () => {
+        const base64String = reader.result;
+        document.getElementById('ImgView').src = base64String;
+    };
+    reader.readAsDataURL(file);
+}
 
 function formatDate(date) {
     var year = date.getFullYear();

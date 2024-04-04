@@ -30,6 +30,19 @@ namespace QuanLyBanHang.Controllers
             return View();
         }
 
+        [HttpGet]
+        public async Task<IActionResult> ChiTiet(Guid? id)
+        {
+            var sp = await _context.SanPhams.Include(p => p.thuocTinhs)
+            .Include(p => p.anhs)
+            .FirstOrDefaultAsync(m => m.ID == id);
+            if (sp == null)
+            {
+                return RedirectToAction("Page404", "Home");
+            }
+            return View(sp);
+        }
+
         [HttpPost]
         public async Task<JsonResult> CreateSanPham(SanPhamModelAdd result)
         {
