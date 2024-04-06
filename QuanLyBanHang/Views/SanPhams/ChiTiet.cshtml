@@ -1,53 +1,62 @@
 @model SanPham;
+@using System.Text.Json;
 
 @{
     ViewData["Title"] = "Chi Tiết sản phẩm";
     Layout = "~/Views/Shared/_LayoutUser.cshtml";
 }
 
-<div class="row g-5">
-    <div class="col-12 col-lg-7">
+<script src="~/JsController/SPCTController.js"></script>
+
+<div class="row g-5 pt-5 pb-5 ps-3 pe-3" ng-controller="SPChiTietCtrl">
+    <a class="mt-2 ms-2" onclick="window.history.back()" style="cursor: pointer;"><i class="fa-solid fa-backward"></i>
+        Quay lại</a>
+    <input id="ThongTinSanPham" type="hidden" value="@Model.ID">
+    <div class="col-6 ms-5">
         <div class="row g-1">
             <div class="h-auto">
                 <picture>
-                    <img class="img-fluid d-table mx-auto" src="@Model.anhs.Img"
-                        alt="Bootstrap 5 Template by Pixel Rocket" data-zoomable>
+                    <img class="img-fluid d-table mx-auto" src="@Model.anhs.Img" alt="Image" data-zoomable>
                 </picture>
             </div>
         </div>
     </div>
-    <!-- /Images Section-->
-
-    <!-- Product Info Section-->
     <div class="col-12 col-lg-5">
         <div class="pt-3">
-            <h1 class="mb-2 fs-2 fw-bold">@Model.Name</h1>
+            <h1 class="mb-2 fs-2 fw-bold">{{SanPham.name}}</h1>
             <div class="d-flex justify-content-start align-items-center">
                 <p class="lead fw-bolder m-0 fs-3 lh-1 text-danger me-2">
-                    @String.Format(System.Globalization.CultureInfo.GetCultureInfo("vi-VN"), "{0:c}", Model.GiaGiamGia)
+                    {{SanPham.giaGiamGia.toLocaleString('vi-VN', {style : 'currency', currency : 'VND'})}}
                 </p>
             </div>
-            <div class="border-top mt-4 mb-3">
+            <div class="d-flex justify-content-start align-items-center pt-5">
+                {{SanPham.moTa}}
+            </div>
+
+            <div class="d-flex justify-content-start align-items-center pt-5">
+                Số lượng
+            </div>
+            <div class="input-group">
+                <button class="btn btn-light border" ng-click="soLuongTru()">-</button>
+                <input id="form1" min="1" min="20" name="quantity" value="1" type="number" class="form-control" ng-model="GioHangChiTiet.soLuong"/>
+                <button class="btn btn-light border" ng-click="soLuongCong()">+</button>
+            </div>
+            <div class="mt-4 mb-3 pt-3" ng-repeat="item in SanPham.thuocTinhs">
                 <div class="product-option">
                     <small class="text-uppercase d-block fw-bolder mb-2">
-                        Size (UK) : <span class="selected-option fw-bold"></span>
+                        {{item.thuocTinhChung.tenThuocTinh}} : <span class="selected-option fw-bold"></span>
                     </small>
                     <div class="form-group">
-                        <select name="@Model.thuocTinhs" class="form-control" data-choices>
-                            <option value="">Please Select Size</option>
-                            <option value="Extra Small">XS</option>
-                            <option value="Medium">M</option>
-                            <option value="Large">L</option>
-                            <option value="Extra Large">XL</option>
+                        <select name="{{item.thuocTinhChung.id}}" class="form-control ThuocTinh" data-choices>
+                            <option ng-repeat="item2 in item.thuocTinhChung.giaTriThuocTinhs" value="{{item2.giaTri}}">
+                                {{item2.giaTri}}
+                            </option>
                         </select>
                     </div>
                 </div>
             </div>
-            <!-- /Product Options-->
-
-            <!-- Add To Cart-->
-            <div class="d-flex justify-content-between mt-3">
-                <button class="btn btn-primary flex-grow-1 me-2 text-white">Thêm vào giỏ hàng</button>
+            <div class="d-flex justify-content-between mt-3 pt-3">
+                <button class="btn btn-primary flex-grow-1 me-2 text-white" ng-click="ThemGioHang()">Thêm vào giỏ hàng</button>
             </div>
         </div>
     </div>

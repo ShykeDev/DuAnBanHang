@@ -54,55 +54,6 @@ var Role = [
 ]
 
 
-GetUser()
-function GetUser() {
-    $.ajax({
-        url: '/Home/GetUser',
-        data: {
-            id: getCookie("ID"),
-        },
-        type: "GET",
-        success: function (response) {
-            if (response == null || response == undefined || response.length == 0) {
-                swal("Oops!", "Đã xảy ra lỗi!", "error");
-            } else {
-                console.log(response);
-                if (response == false) {
-                    $("#User_Name").html("Người dùng");
-                    $("#User_Role").addClass(Role[1].bg);
-                    $("#User_Role").addClass(Role[1].color);
-                    $("#User_Role").html(Role[1].name);
-                    $("#User_UserName").html("Vui lòng đăng nhập");
-                    $("#BtnLogIn").css("display", "");
-                    $("#BtnLogOut").css("display", "none");
-                    $("#AdminLi").css("display", "none");
-                    $("#UserLi").css("display", "");
-                } else {
-                    $("#User_Name").html(response.name);
-                    $("#User_Role").addClass(Role[Number(response.role)].bg);
-                    $("#User_Role").addClass(Role[Number(response.role)].color);
-                    $("#User_Role").html(Role[Number(response.role)].name);
-                    $("#User_UserName").html("Username: " + response.userName);
-                    $("#BtnLogIn").css("display", "none");
-                    $("#BtnLogOut").css("display", "");
-                    if (response.role == 0) {
-                        $("#AdminLi").css("display", "");
-                        $("#UserLi").css("display", "none");
-                    } else {
-                        $("#AdminLi").css("display", "none");
-                        $("#UserLi").css("display", "");
-                    }
-                }
-            }
-        },
-        error: function () {
-            sleep(1500);
-            GetUser();
-        }
-    })
-}
-
-
 
 $(document).ready(function () {
     $("#searchText").change(function () {

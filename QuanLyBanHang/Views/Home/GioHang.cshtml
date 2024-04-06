@@ -1,0 +1,249 @@
+@{
+    ViewData["Title"] = "Giỏ hàng";
+    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+}
+
+<script src="~/JsController/GioHang.js"></script>
+
+<div class="row g-2" ng-controller="GioHangCtrl">
+    <div class="col-12 m-0 card">
+        <a class="mt-2 ms-2 mb-3 mt-3" onclick="window.history.back()" style="cursor: pointer;"><i
+                class="fa-solid fa-backward"></i> Quay lại</a>
+    </div>
+
+    <!-- Cart Items -->
+    <div class="col-6 m-0 card">
+        <div class="table-responsive">
+            <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th><input class="form-check-input" type="checkbox" ng-model="SelectAll"
+                                ng-click="ChangeCheckBoxSelectAll()"></th>
+                        <th class="ps-4">Ảnh</th>
+                        <th>Thông tin</th>
+                        <th>Số lượng</th>
+                        <th>Giá bán</th>
+                        <th>Tổng</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr ng-repeat="item in ListSanPham">
+                        <td class="d-none d-sm-table-cell">
+                            <input class="form-check-input" type="checkbox" ng-model="item.checked"
+                                ng-click="ChangeCheckbox()">
+                        </td>
+                        <td class="d-none d-sm-table-cell">
+                            <picture class="d-block bg-light p-3 f-w-20 border rounded">
+                                <img class="img-fluid" src="{{item.sanPham.anhs.img}}">
+                            </picture>
+                        </td>
+                        <td>
+                            <div>
+                                <h6 class="mb-2 fw-bolder">
+                                    {{item.sanPham.name}}
+                                </h6>
+                                <small class="d-block text-muted">{{item.thuocTinh}}</small>
+                            </div>
+                        </td>
+                        <td>
+                            <div class="form-outline" style="max-width: 5em;">
+                                <input id="form1" min="1" min="20" name="quantity" value="1" type="number"
+                                    class="form-control" ng-model="item.soLuong" />
+                            </div>
+                        </td>
+                        <td>
+                            <div>
+                                <span class="small text-muted mt-1">{{item.sanPham.giaGiamGia.toLocaleString('vi-VN',
+                                    {style : 'currency', currency : 'VND'})}}</span>
+                            </div>
+                        </td>
+                        <td>
+                            <div>
+                                <span class="small text-muted mt-1">{{(item.sanPham.giaGiamGia *
+                                    item.soLuong).toLocaleString('vi-VN', {style : 'currency', currency :
+                                    'VND'})}}
+                                </span>
+                            </div>
+                        </td>
+                        <td>
+                            <div>
+                                <button class="btn btn-outline-danger" ng-click="deleteItem(item.id)"><i
+                                        class="fa-solid fa-trash"></i></button>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <!-- /Cart Items -->
+    <div class="col-6 m-0 p-2 card">
+        <div class="p-4 p-md-5 text-white">
+            <h3 class="fs-3 fw-bold m-0 text-center">Giỏ hàng</h3>
+            <div class="py-3 border-bottom-white-opacity">
+                <div class="d-flex justify-content-between align-items-center mb-2 flex-column flex-sm-row">
+                    <p class="m-0 fw-bolder fs-6">Giá trị tiền hàng</p>
+                    <p class="m-0 fs-6 fw-bolder">{{getTongTien()}}</p>
+                </div>
+            </div>
+            <div class="py-3 border-bottom-white-opacity">
+                <div class="d-flex justify-content-between align-items-center mb-2 flex-column flex-sm-row">
+                    <p class="m-0 fw-bolder fs-6">Giảm giá</p>
+                    <p class="m-0 fs-6 fw-bolder">- 0 đ</p>
+                </div>
+                <!-- Coupon Code-->
+                <button class="btn btn-link p-0 mt-2 text-primary fw-bolder text-decoration-none" type="button"
+                    data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false"
+                    aria-controls="collapseExample">
+                    Have a coupon code?
+                </button>
+                <div class="collapse" id="collapseExample">
+                    <div class="card card-body bg-transparent p-0">
+                        <div class="input-group mb-0 mt-2">
+                            <input type="text" class="form-control border-0" placeholder="Enter coupon code">
+                            <button
+                                class="btn btn-white text-dark px-3 btn-sm border-0 d-flex justify-content-center align-items-center"><i
+                                    class="ri-checkbox-circle-line ri-lg"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="py-3 border-bottom-white-opacity">
+                <div class="d-flex justify-content-between align-items-center flex-column flex-sm-row">
+                    <div>
+                        <p class="m-0 fs-5 fw-bold">Tổng</p>
+                    </div>
+                    <p class="mt-3 m-sm-0 fs-5 fw-bold">{{getTongTien()}}</p>
+                </div>
+            </div>
+            <button class="btn btn-primary w-100 text-center mt-3 fw-bold" ng-click="XacNhanThanhToan()">
+                <i class="fa fa-money align-bottom pe-2"></i>
+                Thanh toán ngay
+            </button>
+            <!-- Checkout Button-->
+        </div>
+    </div>
+    <div class="modal fade" id="MainModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="MainModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content rounded">
+                <div class="modal-header">
+                    <h3 class="modal-title w-100 text-center" id="MainModalLabel">Xác nhân đơn hàng</h3>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Đóng"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row g-md-6">
+                        <!-- Checkout Panel Left -->
+                        <div class="col-12 col-lg-6 col-xl-7">
+                            <!-- Checkout Panel Contact -->
+                            <div class="checkout-panel">
+                                <h5 class="title-checkout">Thông tin nhận hàng</h5>
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label for="Name" class="form-label">Họ và tên</label>
+                                            <input type="text" class="form-control" id="Name" ng-model="UserInfo.name"
+                                                required>
+                                        </div>
+                                    </div>
+
+                                    <!-- Last Name-->
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label for="Tel" class="form-label">Số điện thoại</label>
+                                            <input type="tel" class="form-control" id="Tel" maxlength="10"
+                                                pattern="0[0-9]{9}" ng-model="UserInfo.sdt" required>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-12">
+                                        <div class="form-group">
+                                            <label for="email" class="form-label">Email</label>
+                                            <input type="email" class="form-control" id="email"
+                                                ng-model="UserInfo.email" placeholder="you@example.com">
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label for="state" class="form-label">Địa chỉ chi tiết</label>
+                                            <input type="text" class="form-control" id="address" placeholder=""
+                                                ng-model="UserInfo.diaChi" required>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label for="state" class="form-label">Chú thích</label>
+                                            <input type="text" class="form-control" id="address" placeholder=""
+                                                ng-model="chuthich" required>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-lg-6 col-xl-5">
+                            <div class="p-4 sticky-md-top top-5">
+                                <div class="border-bottom pb-3">
+                                    <!-- Cart Item-->
+                                    <div class="d-none d-md-flex justify-content-between align-items-start py-2"
+                                        ng-repeat="item in ListThanhToan">
+                                        <div class="d-flex flex-grow-1 justify-content-start align-items-start">
+                                            <div class="position-relative f-w-20 border p-2 me-4">
+                                                <img src="{{item.sanPham.anhs.img}}" alt="" class="rounded img-fluid">
+                                            </div>
+                                            <div>
+                                                <p class="mb-1 fs-6 fw-bolder">{{item.sanPham.name}}</p>
+                                                <span
+                                                    class="fs-xs text-uppercase fw-bolder text-muted">{{item.thuocTinh}}</span>
+                                                <br>
+                                                <span class="fs-xs  fw-bolder text-muted">Số lượng:
+                                                    {{item.soLuong}}</span>
+                                            </div>
+                                        </div>
+                                        <div class="flex-shrink-0 fw-bolder">
+                                            <span>{{(item.sanPham.giaGiamGia *
+                                                item.soLuong).toLocaleString('vi-VN', {style : 'currency', currency :
+                                                'VND'})}}</span>
+                                        </div>
+                                    </div>
+                                    <!-- / Cart Item-->
+                                </div>
+                                <div class="py-3 border-bottom">
+                                    <div class="d-flex justify-content-between align-items-center mb-2">
+                                        <p class="m-0 fw-bolder fs-6">Giá trị đơn hàng</p>
+                                        <p class="m-0 fs-6 fw-bolder">{{getTongTien()}}</p>
+                                    </div>
+                                    <div class="d-flex justify-content-between align-items-center ">
+                                        <p class="m-0 fw-bolder fs-6">Tiền ship</p>
+                                        <p class="m-0 fs-6 fw-bolder">0 đ</p>
+                                    </div>
+                                </div>
+                                <div class="py-3 border-bottom">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div>
+                                            <p class="m-0 fw-bolder fs-6">Tổng</p>
+                                        </div>
+                                        <p class="m-0 fs-5 fw-bold fs-6">{{getTongTien()}}</p>
+                                    </div>
+                                </div>
+                                <div class="py-3 border-bottom mb-2">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div>
+                                            <p class="m-0 fw-bolder fs-6">Phương thức thanh toán</p>
+                                        </div>
+                                        <p class="m-0 fw-bolder fs-6">Thanh toán khi nhận hàng</p>
+                                    </div>
+                                </div>
+                                <a href="#" class="btn btn-primary w-100" role="button">Xác nhận đơn hàng</a>
+                            </div>
+                        </div>
+                        <!-- /Checkout Panel Summary -->
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

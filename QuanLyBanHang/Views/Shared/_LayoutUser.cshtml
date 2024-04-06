@@ -24,13 +24,13 @@
     <link rel="stylesheet" href="~/css/theme.bundle.css" />
     <link rel="stylesheet" href="~/css/toastr.min.css" />
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/js/vendor.bundle.js"></script>
-    <script src="~/js/theme.bundle.js"></script>
+    <script src="~/js/angular.js"></script>
+    <script src="~/js/angular-route.js"></script>
     <script src="~/js/font-fontawesome.js"></script>
-
     <script src="~/js/toastr.min.js"></script>
     <script src="~/js/sweetalert.min.js"></script>
     <script src="~/js/config1.js"></script>
+    <script src="~/JsController/MyApp.js"></script>
     <title>@ViewData["Title"]</title>
 </head>
 
@@ -47,11 +47,17 @@
                 <div class="d-flex align-items-center">
                     <div
                         class="menu-toggle cursor-pointer me-4 text-primary-hover transition-color disable-child-pointer">
+                        <i class="ri-skip-back-mini-line ri-lg fold align-middle" data-bs-toggle="tooltip"
+                            data-bs-placement="right" title="" data-bs-original-title="Close menu"
+                            aria-label="Close menu"></i>
+                        <i class="ri-skip-forward-mini-line ri-lg unfold align-middle" data-bs-toggle="tooltip"
+                            data-bs-placement="right" title="" data-bs-original-title="Open Menu"
+                            aria-label="Open Menu"></i>
                     </div>
                 </div>
                 <div class="d-flex align-items-center">
                     <div class="dropdown me-3">
-                        <a href="giohang.html">
+                        <a href="/Home/Giohang">
                             <button class="btn btn-link p-0 position-relative" type="button">
                                 <i class="fa-solid fa-cart-shopping fa-xl"></i>
                             </button>
@@ -89,7 +95,7 @@
         </div>
     </nav>
 
-    <main id="main">
+    <main ng-app="shykeApp" id="main">
         <section class="container-fluid">
             <div class="card mb-4">
                 @RenderBody()
@@ -132,34 +138,14 @@
                                 </div>
                             </li>
                         </div>
-                        <div id="AdminLi">
-                            <li class="menu-section mt-2">Admin control</li>
-                            <li class="menu-item">
-                                <a class="d-flex align-items-center" href="/Users">
-                                    <span class="menu-icon">
-                                        <i class="fa-solid fa-users"></i>
-                                    </span>
-                                    <span class="menu-link">
-                                        Quản lý tài khoản
-                                    </span>
-                                </a>
-                            </li>
-
-                            <li class="menu-item">
-                                <a class="d-flex align-items-center" href="/SanPhams">
-                                    <span class="menu-icon">
-                                        <i class="fa-solid fa-shirt"></i>
-                                    </span>
-                                    <span class="menu-link">Quản lý sản phẩm</span>
-                                </a>
-                            </li>
-                        </div>
                     </ul>
                 </div>
             </div>
         </div>
     </aside>
-
+    <script src="~/js/vendor.bundle.js"></script>
+    <script src="~/js/theme.bundle.js"></script>
+    
     @await RenderSectionAsync("Scripts", required: false)
     @await Html.PartialAsync("_notificationPartial")
 

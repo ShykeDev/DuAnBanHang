@@ -37,7 +37,7 @@ namespace QuanLyBanHang.Controllers
         [HttpGet]
         public async Task<JsonResult> GetUsersByID(Guid id)
         {
-            return Json(await _context.Users.FirstOrDefaultAsync(u => u.ID == id));
+            return Json(await _context.Users.Include(u => u.GioHangChiTiets).FirstOrDefaultAsync(u => u.ID == id));
         }
 
         [HttpGet]
@@ -47,7 +47,7 @@ namespace QuanLyBanHang.Controllers
             {
                 var user = await _context.Users
                     .Include(u => u.HoaDons)
-                    .Include(u => u.GioHangs)
+                    .Include(u => u.GioHangChiTiets)
                     .FirstAsync(u => u.ID == id);
                 if (user != null)
                 {
@@ -117,7 +117,6 @@ namespace QuanLyBanHang.Controllers
         [HttpPost]
         public async Task<JsonResult> SaveUser(User user)
         {
-            Console.WriteLine(JsonSerializer.Serialize(user));
             if (user.Name == "" || user.Name == null)
             {
                 return Json("Vui lòng nhập Họ và tên");

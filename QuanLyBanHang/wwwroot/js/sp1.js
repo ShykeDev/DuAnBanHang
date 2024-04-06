@@ -10,6 +10,7 @@ var sanPhamModel2 = {
 }
 
 
+
 function UpdateImage() {
     const file = [0];
     const reader = new FileReader();
@@ -33,8 +34,7 @@ function OnLoadSanPham() {
         type: "GET",
         success: function (response) {
             if (response == null || response == undefined || response.length == 0) {
-                sleep(1500);
-                OnLoadSanPham();
+                setTimeout(() => OnLoadSanPham(), 500);
                 return;
             } else {
                 var model = response;
@@ -43,6 +43,14 @@ function OnLoadSanPham() {
 
                 function addTable(item) {
                     var row = document.createElement("tr");
+                    var imgCell = document.createElement("td");
+                    //<img src="{{item.anhs.img}}" class="img-thumbnail" width="60px">
+                    var img = document.createElement("img");
+                    img.src = item.anhs.img;
+                    img.classList.add("img-thumbnail");
+                    img.style.width = "60px";
+                    imgCell.appendChild(img);
+                    row.appendChild(imgCell);
 
                     // Tạo các cột cho mỗi dòng
                     var nameCell = document.createElement("td");
@@ -98,8 +106,7 @@ function OnLoadSanPham() {
             }
         },
         error: function () {
-            sleep(1500);
-            OnLoadSanPham();
+            setTimeout(() => OnLoadSanPham(), 500);
             return;
         }
     })
@@ -113,15 +120,13 @@ function LoadDanhMuc() {
         type: "GET",
         success: function (response) {
             if (response == null || response == undefined || response.length == 0) {
-                sleep(1500);
-                LoadDanhMuc();
+                setTimeout(() => LoadDanhMuc(), 500);
             } else {
                 console.log(response)
             }
         },
         error: function () {
-            sleep(1500);
-            LoadDanhMuc();
+            setTimeout(() => LoadDanhMuc(), 500);
         }
     })
 

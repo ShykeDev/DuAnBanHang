@@ -16,10 +16,17 @@ namespace DataBase.Configuations
             builder.Property(x => x.GiaGiamGia).HasDefaultValue(0);
             builder.Property(x => x.SoLuong).HasDefaultValue(0);
             builder.Property(x => x.TrangThai).HasDefaultValue(eTrangThaiSanPham.show);
-            builder.HasOne<DanhMucChiTiet>().WithOne(x => x.SanPham)
-                    .HasForeignKey<DanhMucChiTiet>(p => p.idSanPham)
-                    .HasPrincipalKey<SanPham>(p => p.ID)
+            builder.HasMany<DanhMucChiTiet>().WithOne(x => x.SanPham)
+                    .HasForeignKey(p => p.idSanPham)
                     .HasConstraintName("FK_DMCT_SP");
+
+            builder.HasMany<GioHangChiTiet>().WithOne(p => p.sanPham)
+                    .HasForeignKey(p => p.IDSanPham)
+                    .HasConstraintName("FK_GHCT_SP");
+
+            builder.HasMany<HoaDonChiTiet>().WithOne(p => p.sanPham)
+                    .HasForeignKey(p => p.IDSanPham)
+                    .HasConstraintName("FK_HDCT_SP");
 
         }
     }

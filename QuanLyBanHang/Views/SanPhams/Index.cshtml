@@ -2,6 +2,7 @@
     ViewData["Title"] = "Quản lý sản phẩm";
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
+@* <script src="~/JsController/SPController.js"></script> *@
 <div class="card-header justify-content-between align-items-center d-flex">
     <h6 class="card-title m-0">Quản lý Sản phẩm</h6>
 </div>
@@ -93,19 +94,22 @@
                     </div>
                     <div class="form-group">
                         <label for="Name" class="control-label">Tên sản phẩm</label>
-                        <input id="Name" class="form-control" ng-model="SanPhamModel.name"/>
+                        <input id="Name" class="form-control" ng-model="SanPhamModel.name" />
                     </div>
                     <div class="form-group">
                         <label for="GiaGoc" class="control-label">Giá sản phẩm</label>
-                        <input id="GiaGoc" class="form-control" value="0" type="number" min="0" max="10000000000" ng-model="SanPhamModel.giaGoc"/>
+                        <input id="GiaGoc" class="form-control" value="0" type="number" min="0" max="10000000000"
+                            ng-model="SanPhamModel.giaGoc" />
                     </div>
                     <div class="form-group">
                         <label for="GiaGiamGia" class="control-label">Giá bán</label>
-                        <input id="GiaGiamGia" class="form-control" value="0" type="number" min="0" max="10000000000" ng-model="SanPhamModel.giaGiamGia"/>
+                        <input id="GiaGiamGia" class="form-control" value="0" type="number" min="0" max="10000000000"
+                            ng-model="SanPhamModel.giaGiamGia" />
                     </div>
                     <div class="form-group">
                         <label for="SoLuong" class="control-label">Số lượng</label>
-                        <input id="SoLuong" class="form-control" value="0" type="number" min="0" max="10000" ng-model="SanPhamModel.soLuong"/>
+                        <input id="SoLuong" class="form-control" value="0" type="number" min="0" max="10000"
+                            ng-model="SanPhamModel.soLuong" />
                     </div>
                     <div class="form-group">
                         <label for="MoTa" class="control-label">Mô tả</label>
@@ -131,8 +135,33 @@
 
                     <hr />
                     <div id="ListThuocTinh" class="accordion">
-
-                    </div>
+                        @* <div class="accordion-item position-relative mt-2">
+                            <h2 class="accordion-header"><button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseA" aria-expanded="true">A</button></h2>
+                            <div class="accordion-collapse collapse show" id="collapseA"
+                                data-bs-parent="#ListThuocTinh">
+                                <div class="accordion-body">
+                                    <div class="d-flex">
+                                        <input type="text" class="form-control" placeholder="Nhập giá trị">
+                                        <button class="btn btn-primary ms-2">Thêm
+                                        </button>
+                                    </div>
+                                    <ul class="nav mt-3">
+                                        <button
+                                            class="btn btn-primary-faded position-relative border me-3 mt-2">XXL
+                                            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
+                                                style="cursor: pointer;">X</span>
+                                        </button>
+                                        <button class="btn btn-primary-faded position-relative border me-3 mt-2">XL
+                                            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
+                                                style="cursor: pointer;">X</span>
+                                        </button>
+                                    </ul>
+                                </div>
+                            </div>
+                            <span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger"
+                                style="cursor: pointer; z-index: 10;">X</span>
+                        </div>
+                    </div> *@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
@@ -151,7 +180,7 @@
 <!-- Modal -->
 
 
-@* <script src="~/js/sanpham1.js"></script> *@
+<script src="~/js/sp1.js"></script>
 @section Scripts {
     @{
         await Html.RenderPartialAsync("_ValidationScriptsPartial");

@@ -187,6 +187,12 @@ namespace QuanLyBanHang.Controllers
         }
 
         [HttpGet]
+        public async Task<JsonResult> GetThuocTinhChungsSanPham()
+        {
+            return Json(await _context.ThuocTinhChungs.Include(x => x.GiaTriThuocTinhs).ToListAsync());
+        }
+
+        [HttpGet]
         public async Task<JsonResult> ListSanPham()
         {
             try

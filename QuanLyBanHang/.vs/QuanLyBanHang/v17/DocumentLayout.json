@@ -3,41 +3,12 @@
   "WorkspaceRootPath": "Y:\\C#\\QuanLyBanHang\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{2C3BBA86-AEAF-4106-A5B1-D9FDE3377E2A}|..\\DataBase\\DataBase.csproj|y:\\c#\\database\\configuations\\danhmucchitietconfig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{168EA7AA-80C7-452B-B175-A1C72F536205}|QuanLyBanHang.csproj|y:\\c#\\quanlybanhang\\views\\home\\giohang.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{168EA7AA-80C7-452B-B175-A1C72F536205}|QuanLyBanHang.csproj|solutionrelative:views\\home\\giohang.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{168EA7AA-80C7-452B-B175-A1C72F536205}|QuanLyBanHang.csproj|y:\\c#\\quanlybanhang\\controllers\\sanphamscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{168EA7AA-80C7-452B-B175-A1C72F536205}|QuanLyBanHang.csproj|solutionrelative:controllers\\sanphamscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{2C3BBA86-AEAF-4106-A5B1-D9FDE3377E2A}|..\\DataBase\\DataBase.csproj|y:\\c#\\database\\configuations\\danhmucconfig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{2C3BBA86-AEAF-4106-A5B1-D9FDE3377E2A}|..\\DataBase\\DataBase.csproj|y:\\c#\\database\\configuations\\giatrithuoctinhconfig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{168EA7AA-80C7-452B-B175-A1C72F536205}|QuanLyBanHang.csproj|y:\\c#\\quanlybanhang\\wwwroot\\js\\config1.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
-      "RelativeMoniker": "D:0:0:{168EA7AA-80C7-452B-B175-A1C72F536205}|QuanLyBanHang.csproj|solutionrelative:wwwroot\\js\\config1.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{168EA7AA-80C7-452B-B175-A1C72F536205}|QuanLyBanHang.csproj|y:\\c#\\quanlybanhang\\wwwroot\\js\\danhmuc.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
-      "RelativeMoniker": "D:0:0:{168EA7AA-80C7-452B-B175-A1C72F536205}|QuanLyBanHang.csproj|solutionrelative:wwwroot\\js\\danhmuc.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{168EA7AA-80C7-452B-B175-A1C72F536205}|QuanLyBanHang.csproj|y:\\c#\\quanlybanhang\\controllers\\danhmucscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{168EA7AA-80C7-452B-B175-A1C72F536205}|QuanLyBanHang.csproj|solutionrelative:controllers\\danhmucscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{168EA7AA-80C7-452B-B175-A1C72F536205}|QuanLyBanHang.csproj|y:\\c#\\quanlybanhang\\controllers\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{168EA7AA-80C7-452B-B175-A1C72F536205}|QuanLyBanHang.csproj|solutionrelative:controllers\\userscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{168EA7AA-80C7-452B-B175-A1C72F536205}|QuanLyBanHang.csproj|y:\\c#\\quanlybanhang\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{168EA7AA-80C7-452B-B175-A1C72F536205}|QuanLyBanHang.csproj|solutionrelative:controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{168EA7AA-80C7-452B-B175-A1C72F536205}|QuanLyBanHang.csproj|y:\\c#\\quanlybanhang\\views\\danhmucs\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{168EA7AA-80C7-452B-B175-A1C72F536205}|QuanLyBanHang.csproj|solutionrelative:views\\danhmucs\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{168EA7AA-80C7-452B-B175-A1C72F536205}|QuanLyBanHang.csproj|y:\\c#\\quanlybanhang\\views\\sanphams\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{168EA7AA-80C7-452B-B175-A1C72F536205}|QuanLyBanHang.csproj|solutionrelative:views\\sanphams\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     }
   ],
   "DocumentGroupContainers": [
@@ -47,144 +18,33 @@
       "DocumentGroups": [
         {
           "DockedWidth": 197,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 0,
           "Children": [
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{e1b7d1f8-9b3c-49b1-8f4f-bfc63a88835d}"
-            },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "DanhMucChiTietConfig.cs",
-              "DocumentMoniker": "Y:\\C#\\DataBase\\Configuations\\DanhMucChiTietConfig.cs",
-              "RelativeDocumentMoniker": "..\\DataBase\\Configuations\\DanhMucChiTietConfig.cs",
-              "ToolTip": "Y:\\C#\\DataBase\\Configuations\\DanhMucChiTietConfig.cs",
-              "RelativeToolTip": "..\\DataBase\\Configuations\\DanhMucChiTietConfig.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABgAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-04T20:09:35.522Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "DanhMucConfig.cs",
-              "DocumentMoniker": "Y:\\C#\\DataBase\\Configuations\\DanhMucConfig.cs",
-              "RelativeDocumentMoniker": "..\\DataBase\\Configuations\\DanhMucConfig.cs",
-              "ToolTip": "Y:\\C#\\DataBase\\Configuations\\DanhMucConfig.cs",
-              "RelativeToolTip": "..\\DataBase\\Configuations\\DanhMucConfig.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-04T20:09:35.015Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "GiaTriThuocTinhConfig.cs",
-              "DocumentMoniker": "Y:\\C#\\DataBase\\Configuations\\GiaTriThuocTinhConfig.cs",
-              "RelativeDocumentMoniker": "..\\DataBase\\Configuations\\GiaTriThuocTinhConfig.cs",
-              "ToolTip": "Y:\\C#\\DataBase\\Configuations\\GiaTriThuocTinhConfig.cs",
-              "RelativeToolTip": "..\\DataBase\\Configuations\\GiaTriThuocTinhConfig.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-04T20:09:28.825Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "config1.js",
-              "DocumentMoniker": "Y:\\C#\\QuanLyBanHang\\wwwroot\\js\\config1.js",
-              "RelativeDocumentMoniker": "wwwroot\\js\\config1.js",
-              "ToolTip": "Y:\\C#\\QuanLyBanHang\\wwwroot\\js\\config1.js",
-              "RelativeToolTip": "wwwroot\\js\\config1.js",
-              "ViewState": "AQIAABIAAAAAAAAAAAAowCMAAAABAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
-              "WhenOpened": "2024-04-03T10:24:16.18Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "DanhMucsController.cs",
-              "DocumentMoniker": "Y:\\C#\\QuanLyBanHang\\Controllers\\DanhMucsController.cs",
-              "RelativeDocumentMoniker": "Controllers\\DanhMucsController.cs",
-              "ToolTip": "Y:\\C#\\QuanLyBanHang\\Controllers\\DanhMucsController.cs",
-              "RelativeToolTip": "Controllers\\DanhMucsController.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABoAAAA6AAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-02T18:44:32.367Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "DanhMuc.js",
-              "DocumentMoniker": "Y:\\C#\\QuanLyBanHang\\wwwroot\\js\\DanhMuc.js",
-              "RelativeDocumentMoniker": "wwwroot\\js\\DanhMuc.js",
-              "ToolTip": "Y:\\C#\\QuanLyBanHang\\wwwroot\\js\\DanhMuc.js",
-              "RelativeToolTip": "wwwroot\\js\\DanhMuc.js",
-              "ViewState": "AQIAADMAAAAAAAAAAAAmwEoAAAAMAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
-              "WhenOpened": "2024-04-02T18:26:57.993Z"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{eefa5220-e298-11d0-8f78-00a0c9110057}"
-            }
-          ]
-        },
-        {
-          "DockedWidth": 197,
-          "SelectedChildIndex": 1,
-          "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "UsersController.cs",
-              "DocumentMoniker": "Y:\\C#\\QuanLyBanHang\\Controllers\\UsersController.cs",
-              "RelativeDocumentMoniker": "Controllers\\UsersController.cs",
-              "ToolTip": "Y:\\C#\\QuanLyBanHang\\Controllers\\UsersController.cs",
-              "RelativeToolTip": "Controllers\\UsersController.cs",
-              "ViewState": "AQIAAKoAAAAAAAAAAAAAAMEAAAAJAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-02T18:56:58.723Z",
+              "Title": "GioHang.cshtml",
+              "DocumentMoniker": "Y:\\C#\\QuanLyBanHang\\Views\\Home\\GioHang.cshtml",
+              "RelativeDocumentMoniker": "Views\\Home\\GioHang.cshtml",
+              "ToolTip": "Y:\\C#\\QuanLyBanHang\\Views\\Home\\GioHang.cshtml",
+              "RelativeToolTip": "Views\\Home\\GioHang.cshtml",
+              "ViewState": "AQIAAPAAAAAAAAAAAAAswPcAAAAKAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-04-06T00:28:37.352Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "SanPhamsController.cs",
-              "DocumentMoniker": "Y:\\C#\\QuanLyBanHang\\Controllers\\SanPhamsController.cs",
-              "RelativeDocumentMoniker": "Controllers\\SanPhamsController.cs",
-              "ToolTip": "Y:\\C#\\QuanLyBanHang\\Controllers\\SanPhamsController.cs",
-              "RelativeToolTip": "Controllers\\SanPhamsController.cs",
-              "ViewState": "AQIAAAsAAAAAAAAAAAAlwCUAAAAhAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-02T18:56:47.194Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "HomeController.cs",
-              "DocumentMoniker": "Y:\\C#\\QuanLyBanHang\\Controllers\\HomeController.cs",
-              "RelativeDocumentMoniker": "Controllers\\HomeController.cs",
-              "ToolTip": "Y:\\C#\\QuanLyBanHang\\Controllers\\HomeController.cs",
-              "RelativeToolTip": "Controllers\\HomeController.cs",
-              "ViewState": "AQIAAF4AAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-04-02T18:44:34.234Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
               "Title": "Index.cshtml",
-              "DocumentMoniker": "Y:\\C#\\QuanLyBanHang\\Views\\DanhMucs\\Index.cshtml",
-              "RelativeDocumentMoniker": "Views\\DanhMucs\\Index.cshtml",
-              "ToolTip": "Y:\\C#\\QuanLyBanHang\\Views\\DanhMucs\\Index.cshtml",
-              "RelativeToolTip": "Views\\DanhMucs\\Index.cshtml",
-              "ViewState": "AQIAAA8AAAAAAAAAAAAAACkAAAAQAAAA",
+              "DocumentMoniker": "Y:\\C#\\QuanLyBanHang\\Views\\SanPhams\\Index.cshtml",
+              "RelativeDocumentMoniker": "Views\\SanPhams\\Index.cshtml",
+              "ToolTip": "Y:\\C#\\QuanLyBanHang\\Views\\SanPhams\\Index.cshtml",
+              "RelativeToolTip": "Views\\SanPhams\\Index.cshtml",
+              "ViewState": "AQIAACcAAAAAAAAAAAAAAAAAAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-04-02T18:27:37.939Z"
+              "WhenOpened": "2024-04-06T00:28:32.371Z",
+              "EditorCaption": ""
             }
           ]
         }

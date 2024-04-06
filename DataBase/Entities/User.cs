@@ -22,7 +22,7 @@ namespace DataBase.Entities
         public int State { get; set; }
 
         public virtual ICollection<HoaDon>? HoaDons { get; set; }
-        public virtual GioHang? GioHangs { get; set; }
+        public virtual ICollection<GioHangChiTiet>? GioHangChiTiets { get; set; }
 
         public User() { }
         public User(Guid ID, string name, string username, string password, string sdt, string email, string diaChi, string ngaySinh, int role)

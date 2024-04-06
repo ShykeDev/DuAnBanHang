@@ -9,12 +9,10 @@ namespace DataBase.Configuations
         public void Configure(EntityTypeBuilder<GioHangChiTiet> builder)
         {
             builder.ToTable("GioHangChiTiets");
-            builder.HasKey(x => new { x.ID, x.IDSanPham });
+            builder.HasKey(x => x.ID);
             builder.Property(x => x.SoLuong).HasDefaultValue(0);
-            builder.HasOne(p => p.gioHang).WithMany(p => p.GioHangChiTiets).HasForeignKey(p => p.ID)
+            builder.HasOne<User>().WithMany(p => p.GioHangChiTiets).HasForeignKey(p => p.UserID)
                 .HasConstraintName("FK_GHCT_GH");
-            builder.HasOne(p => p.sanPham).WithOne(p => p.GioHangChiTiets).HasForeignKey<GioHangChiTiet>(p => p.IDSanPham)
-                .HasConstraintName("FK_GHCT_SP");
         }
     }
 }

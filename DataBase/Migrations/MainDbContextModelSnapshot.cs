@@ -47,8 +47,7 @@ namespace DataBase.Migrations
 
                     b.HasKey("idDanhMuc", "idSanPham");
 
-                    b.HasIndex("idSanPham")
-                        .IsUnique();
+                    b.HasIndex("idSanPham");
 
                     b.ToTable("DanhMucChiTiets", (string)null);
                 });
@@ -74,24 +73,10 @@ namespace DataBase.Migrations
                     b.ToTable("GiaTriThuocTinhs", (string)null);
                 });
 
-            modelBuilder.Entity("DataBase.Entities.GioHang", b =>
-                {
-                    b.Property<Guid>("ID")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<int>("SoLuong")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasDefaultValue(0);
-
-                    b.HasKey("ID");
-
-                    b.ToTable("GioHangs", (string)null);
-                });
-
             modelBuilder.Entity("DataBase.Entities.GioHangChiTiet", b =>
                 {
                     b.Property<Guid>("ID")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<Guid>("IDSanPham")
@@ -102,10 +87,18 @@ namespace DataBase.Migrations
                         .HasColumnType("int")
                         .HasDefaultValue(0);
 
-                    b.HasKey("ID", "IDSanPham");
+                    b.Property<string>("ThuocTinh")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
-                    b.HasIndex("IDSanPham")
-                        .IsUnique();
+                    b.Property<Guid>("UserID")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("ID");
+
+                    b.HasIndex("IDSanPham");
+
+                    b.HasIndex("UserID");
 
                     b.ToTable("GioHangChiTiets", (string)null);
                 });
@@ -156,8 +149,7 @@ namespace DataBase.Migrations
 
                     b.HasKey("ID", "IDSanPham");
 
-                    b.HasIndex("IDSanPham")
-                        .IsUnique();
+                    b.HasIndex("IDSanPham");
 
                     b.ToTable("HoaDonChiTiets", (string)null);
                 });
@@ -300,7 +292,7 @@ namespace DataBase.Migrations
                     b.HasData(
                         new
                         {
-                            ID = new Guid("f4560eef-2abe-4fea-9565-876c674e8edc"),
+                            ID = new Guid("734116d0-fc9c-46f6-814d-bbfc6420b175"),
                             DiaChi = "Phúc Diễn, Bắc Từ Liêm, Hà Nội",
                             Email = "nhatvu@gmail.com",
                             Name = "Nguyễn Lê Nhất Vũ",
@@ -310,6 +302,19 @@ namespace DataBase.Migrations
                             SDT = "0865805582",
                             State = 0,
                             UserName = "shyke"
+                        },
+                        new
+                        {
+                            ID = new Guid("b6fb3483-6950-45db-b698-40784e1f125a"),
+                            DiaChi = "Phúc Diễn, Bắc Từ Liêm, Hà Nội",
+                            Email = "nhatvu@gmail.com",
+                            Name = "Nguyễn Lê Nhất Vũ",
+                            NgaySinh = "2004-01-01",
+                            Password = "19112004",
+                            Role = 1,
+                            SDT = "0865805582",
+                            State = 0,
+                            UserName = "shykeuser"
                         });
                 });
 
@@ -323,8 +328,8 @@ namespace DataBase.Migrations
                         .HasConstraintName("FK_DMCT_DM");
 
                     b.HasOne("DataBase.Entities.SanPham", "SanPham")
-                        .WithOne()
-                        .HasForeignKey("DataBase.Entities.DanhMucChiTiet", "idSanPham")
+                        .WithMany()
+                        .HasForeignKey("idSanPham")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired()
                         .HasConstraintName("FK_DMCT_SP");
@@ -342,35 +347,21 @@ namespace DataBase.Migrations
                         .HasConstraintName("FK_TT_GTTT");
                 });
 
-            modelBuilder.Entity("DataBase.Entities.GioHang", b =>
-                {
-                    b.HasOne("DataBase.Entities.User", "user")
-                        .WithOne("GioHangs")
-                        .HasForeignKey("DataBase.Entities.GioHang", "ID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired()
-                        .HasConstraintName("FK_GH_KH");
-
-                    b.Navigation("user");
-                });
-
             modelBuilder.Entity("DataBase.Entities.GioHangChiTiet", b =>
                 {
-                    b.HasOne("DataBase.Entities.GioHang", "gioHang")
-                        .WithMany("GioHangChiTiets")
-                        .HasForeignKey("ID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired()
-                        .HasConstraintName("FK_GHCT_GH");
-
                     b.HasOne("DataBase.Entities.SanPham", "sanPham")
-                        .WithOne("GioHangChiTiets")
-                        .HasForeignKey("DataBase.Entities.GioHangChiTiet", "IDSanPham")
+                        .WithMany()
+                        .HasForeignKey("IDSanPham")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired()
                         .HasConstraintName("FK_GHCT_SP");
 
-                    b.Navigation("gioHang");
+                    b.HasOne("DataBase.Entities.User", null)
+                        .WithMany("GioHangChiTiets")
+                        .HasForeignKey("UserID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired()
+                        .HasConstraintName("FK_GHCT_GH");
 
                     b.Navigation("sanPham");
                 });
@@ -387,7 +378,7 @@ namespace DataBase.Migrations
 
             modelBuilder.Entity("DataBase.Entities.HoaDonChiTiet", b =>
                 {
-                    b.HasOne("DataBase.Entities.HoaDon", "hoaDon")
+                    b.HasOne("DataBase.Entities.HoaDon", null)
                         .WithMany("HoaDonChiTiets")
                         .HasForeignKey("ID")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -395,13 +386,11 @@ namespace DataBase.Migrations
                         .HasConstraintName("FK_HDCT");
 
                     b.HasOne("DataBase.Entities.SanPham", "sanPham")
-                        .WithOne("HoaDonChiTiets")
-                        .HasForeignKey("DataBase.Entities.HoaDonChiTiet", "IDSanPham")
+                        .WithMany()
+                        .HasForeignKey("IDSanPham")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired()
                         .HasConstraintName("FK_HDCT_SP");
-
-                    b.Navigation("hoaDon");
 
                     b.Navigation("sanPham");
                 });
@@ -442,11 +431,6 @@ namespace DataBase.Migrations
                     b.Navigation("DanhMucChiTiets");
                 });
 
-            modelBuilder.Entity("DataBase.Entities.GioHang", b =>
-                {
-                    b.Navigation("GioHangChiTiets");
-                });
-
             modelBuilder.Entity("DataBase.Entities.HoaDon", b =>
                 {
                     b.Navigation("HoaDonChiTiets");
@@ -454,10 +438,6 @@ namespace DataBase.Migrations
 
             modelBuilder.Entity("DataBase.Entities.SanPham", b =>
                 {
-                    b.Navigation("GioHangChiTiets");
-
-                    b.Navigation("HoaDonChiTiets");
-
                     b.Navigation("thuocTinhs");
                 });
 
@@ -468,7 +448,7 @@ namespace DataBase.Migrations
 
             modelBuilder.Entity("DataBase.Entities.User", b =>
                 {
-                    b.Navigation("GioHangs");
+                    b.Navigation("GioHangChiTiets");
 
                     b.Navigation("HoaDons");
                 });

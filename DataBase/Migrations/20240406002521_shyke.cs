@@ -110,24 +110,6 @@ namespace DataBase.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "GioHangs",
-                columns: table => new
-                {
-                    ID = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    SoLuong = table.Column<int>(type: "int", nullable: false, defaultValue: 0)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_GioHangs", x => x.ID);
-                    table.ForeignKey(
-                        name: "FK_GH_KH",
-                        column: x => x.ID,
-                        principalTable: "Users",
-                        principalColumn: "ID",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
                 name: "HoaDons",
                 columns: table => new
                 {
@@ -174,6 +156,33 @@ namespace DataBase.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "GioHangChiTiets",
+                columns: table => new
+                {
+                    ID = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    IDSanPham = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    UserID = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    SoLuong = table.Column<int>(type: "int", nullable: false, defaultValue: 0),
+                    ThuocTinh = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_GioHangChiTiets", x => x.ID);
+                    table.ForeignKey(
+                        name: "FK_GHCT_GH",
+                        column: x => x.UserID,
+                        principalTable: "Users",
+                        principalColumn: "ID",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_GHCT_SP",
+                        column: x => x.IDSanPham,
+                        principalTable: "SanPhams",
+                        principalColumn: "ID",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "ThuocTinhs",
                 columns: table => new
                 {
@@ -191,31 +200,6 @@ namespace DataBase.Migrations
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
                         name: "FK_TT_SP",
-                        column: x => x.IDSanPham,
-                        principalTable: "SanPhams",
-                        principalColumn: "ID",
-                        onDelete: ReferentialAction.Cascade);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "GioHangChiTiets",
-                columns: table => new
-                {
-                    ID = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    IDSanPham = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    SoLuong = table.Column<int>(type: "int", nullable: false, defaultValue: 0)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_GioHangChiTiets", x => new { x.ID, x.IDSanPham });
-                    table.ForeignKey(
-                        name: "FK_GHCT_GH",
-                        column: x => x.ID,
-                        principalTable: "GioHangs",
-                        principalColumn: "ID",
-                        onDelete: ReferentialAction.Cascade);
-                    table.ForeignKey(
-                        name: "FK_GHCT_SP",
                         column: x => x.IDSanPham,
                         principalTable: "SanPhams",
                         principalColumn: "ID",
@@ -251,13 +235,17 @@ namespace DataBase.Migrations
             migrationBuilder.InsertData(
                 table: "Users",
                 columns: new[] { "ID", "DiaChi", "Email", "Name", "NgaySinh", "Password", "SDT", "State", "UserName" },
-                values: new object[] { new Guid("f4560eef-2abe-4fea-9565-876c674e8edc"), "Phúc Diễn, Bắc Từ Liêm, Hà Nội", "nhatvu@gmail.com", "Nguyễn Lê Nhất Vũ", "2004-01-01", "19112004", "0865805582", 0, "shyke" });
+                values: new object[] { new Guid("734116d0-fc9c-46f6-814d-bbfc6420b175"), "Phúc Diễn, Bắc Từ Liêm, Hà Nội", "nhatvu@gmail.com", "Nguyễn Lê Nhất Vũ", "2004-01-01", "19112004", "0865805582", 0, "shyke" });
+
+            migrationBuilder.InsertData(
+                table: "Users",
+                columns: new[] { "ID", "DiaChi", "Email", "Name", "NgaySinh", "Password", "Role", "SDT", "State", "UserName" },
+                values: new object[] { new Guid("b6fb3483-6950-45db-b698-40784e1f125a"), "Phúc Diễn, Bắc Từ Liêm, Hà Nội", "nhatvu@gmail.com", "Nguyễn Lê Nhất Vũ", "2004-01-01", "19112004", 1, "0865805582", 0, "shykeuser" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_DanhMucChiTiets_idSanPham",
                 table: "DanhMucChiTiets",
-                column: "idSanPham",
-                unique: true);
+                column: "idSanPham");
 
             migrationBuilder.CreateIndex(
                 name: "IX_GiaTriThuocTinhs_IDThuocTinh",
@@ -267,14 +255,17 @@ namespace DataBase.Migrations
             migrationBuilder.CreateIndex(
                 name: "IX_GioHangChiTiets_IDSanPham",
                 table: "GioHangChiTiets",
-                column: "IDSanPham",
-                unique: true);
+                column: "IDSanPham");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_GioHangChiTiets_UserID",
+                table: "GioHangChiTiets",
+                column: "UserID");
 
             migrationBuilder.CreateIndex(
                 name: "IX_HoaDonChiTiets_IDSanPham",
                 table: "HoaDonChiTiets",
-                column: "IDSanPham",
-                unique: true);
+                column: "IDSanPham");
 
             migrationBuilder.CreateIndex(
                 name: "IX_HoaDons_UserID",
@@ -313,9 +304,6 @@ namespace DataBase.Migrations
 
             migrationBuilder.DropTable(
                 name: "DanhMucs");
-
-            migrationBuilder.DropTable(
-                name: "GioHangs");
 
             migrationBuilder.DropTable(
                 name: "HoaDons");

@@ -18,8 +18,6 @@ namespace DataBase.Entities
         public int TrangThai { get; set; }
         public string? MoTa { get; set; }
 
-        public HoaDonChiTiet? HoaDonChiTiets { get; set; }
-        public GioHangChiTiet? GioHangChiTiets { get; set; }
         public virtual ICollection<ThuocTinh>? thuocTinhs { get; set; }
         public virtual ItemImage anhs { get; set; }
 

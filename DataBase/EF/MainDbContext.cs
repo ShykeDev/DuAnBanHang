@@ -30,7 +30,6 @@ namespace DataBase.EF
             base.OnModelCreating(modelBuilder);
             modelBuilder.ApplyConfigurationsFromAssembly(typeof(MainDbContext).Assembly);
             modelBuilder.ApplyConfiguration(new UserConfig());
-            modelBuilder.ApplyConfiguration(new GioHangConfig());
             modelBuilder.ApplyConfiguration(new GioHangChiTietConfig());
             modelBuilder.ApplyConfiguration(new HoaDonConfig());
             modelBuilder.ApplyConfiguration(new HoaDonChiTietConfig());
@@ -49,7 +48,6 @@ namespace DataBase.EF
         public DbSet<ItemImage> ItemImages { get; set; }
         public DbSet<DanhMuc> DanhMucs { get; set; }
         public DbSet<DanhMucChiTiet> DanhMucChiTiets { get; set; }
-        public DbSet<GioHang> GioHangs { get; set; }
         public DbSet<GioHangChiTiet> GioHangChiTiets { get; set; }
         public DbSet<ThuocTinh> ThuocTinhs { get; set; }
         public DbSet<ThuocTinhChung> ThuocTinhChungs { get; set; }

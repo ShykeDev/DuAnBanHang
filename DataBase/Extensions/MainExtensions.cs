@@ -13,7 +13,9 @@ namespace DataBase.Extensions
         public static void SeedData(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<User>().HasData(
-                new User(Guid.NewGuid(), "Nguyễn Lê Nhất Vũ", "shyke", "19112004", "0865805582", "nhatvu@gmail.com", "Phúc Diễn, Bắc Từ Liêm, Hà Nội", "2004-01-01", 0)
+                new User(Guid.NewGuid(), "Nguyễn Lê Nhất Vũ", "shyke", "19112004", "0865805582", "nhatvu@gmail.com", "Phúc Diễn, Bắc Từ Liêm, Hà Nội", "2004-01-01", 0),
+                new User(Guid.NewGuid(), "Nguyễn Lê Nhất Vũ", "shykeuser", "19112004", "0865805582", "nhatvu@gmail.com", "Phúc Diễn, Bắc Từ Liêm, Hà Nội", "2004-01-01", 1)
+
             );
             /*
                 modelBuilder.Entity<SanPham>().HasData(

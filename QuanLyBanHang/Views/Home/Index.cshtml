@@ -1,10 +1,10 @@
-﻿@model IEnumerable<DataBase.Entities.SanPham>
-@using Microsoft.AspNetCore.Mvc
-@{
+﻿@{
     ViewData["Title"] = "Home";
     ViewData["Name"] = "Home";
     Layout = ViewData["Layout"].ToString();
 }
+
+<script src="~/JsController/HomeController.js"></script>
 
 <div class="card-body">
     <div id="carouselExampleInterval" class="carousel slide" data-bs-ride="carousel">
@@ -30,11 +30,10 @@
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
             <span class="visually-hidden">Next</span>
         </button>
-        </div>
     </div>
 </div>
 
-<div class="card benefit">
+<div class="card benefit" ng-controller="HomeCtrl">
     <div class="container">
         <div class="row benefit_row">
             <div class="col-lg-3 benefit_col">
@@ -75,29 +74,33 @@
             </div>
         </div>
     </div>
-</div>
-<div class="card pb-5">
-    <div class="row m-0 p-0">
-        <h3 class="mt-3 mb-3 text-center text-black fw-bolder">Sản phẩm mới nhất</h3>
-        <hr class="bg-secondary">
+    <div class="card pb-5">
+        <div class="row m-0 p-0">
+            <h3 class="mt-3 mb-3 text-center text-black fw-bolder">Sản phẩm mới nhất</h3>
+            <hr class="bg-secondary">
 
-        @foreach (var item in Model)
-        {
-            <div class="product-item m-0 p-0 col-2">
+            <div class="product-item m-0 p-0 col-2" ng-repeat="item in ListSanPham">
                 <div class="product discount product_filter">
                     <div class="product_image">
-                        <img src="@item.anhs.Img" alt="">
+                        <img src="{{item.anhs.img}}" alt="">
                     </div>
                     <div class="product_info">
                         <h6 class="product_name">
-                            <a href="/SanPhams/ChiTiet?id=@item.ID">
-                                @item.Name
+                            <a href="/SanPhams/ChiTiet?id={{item.id}}">
+                                {{item.name}}
                             </a>
                         </h6>
-                        <div class="product_price">@String.Format(System.Globalization.CultureInfo.GetCultureInfo("vi-VN"),
-                        "{0:c}", item.GiaGiamGia)</div>
+                        <div class="product_price">
+                            {{formatter(item.giaGiamGia)}}
+                        </div>
                     </div>
                 </div>
-                <button class="red_button add_to_cart_button border-0">Thêm vào giỏ hàng</button>
+                <button class="red_button add_to_cart_button border-0">
+                    <a href="/SanPhams/ChiTiet?id={{item.id}}">
+                        Chi tiết sản phẩm
+                    </a>
+                </button>
             </div>
-        }
+        </div>
+    </div>
+</div>

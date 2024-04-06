@@ -1,10 +1,10 @@
-﻿
-
-using DataBase.Entities;
+﻿using DataBase.Entities;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using QuanLyBanHang.Models;
 using System.Diagnostics;
+using System.Text.Json;
 
 namespace QuanLyBanHang.Controllers
 {
@@ -20,8 +20,8 @@ namespace QuanLyBanHang.Controllers
         {
             if (HttpContext.Request.Cookies["Name"] == null || HttpContext.Request.Cookies["Name"] == "")
             {
-                HttpContext.Response.Cookies.Append("Name", "Người dùng");
                 HttpContext.Response.Cookies.Append("Role", "1");
+                HttpContext.Response.Cookies.Append("Name", "Người dùng");
             }
             if (HttpContext.Request.Cookies["Role"] == "0")
             {
@@ -30,7 +30,7 @@ namespace QuanLyBanHang.Controllers
             } else {
                 ViewData["Layout"] = "~/Views/Shared/_LayoutUser.cshtml";
             }
-            return View(await _context.SanPhams.Include(sp => sp.anhs).ToListAsync());
+            return View();
         }
 
         public IActionResult Page404()
@@ -48,6 +48,11 @@ namespace QuanLyBanHang.Controllers
             return View();
         }
 
+        public IActionResult GioHang()
+        {
+            return View();
+        }
+    
 
         [HttpGet]
         public async Task<JsonResult> OnLogin(string username, string password)
@@ -124,15 +129,99 @@ namespace QuanLyBanHang.Controllers
         [HttpGet]
         public async Task<JsonResult> GetUser(Guid ID)
         {
-            if (_context.Users.Any(user => user.ID == ID))
+            try
             {
-                var User = _context.Users.First(user => user.ID == ID);
-                return Json(User);
+                if (_context.Users.Any(user => user.ID == ID))
+                {
+                    var User = _context.Users.Include(u => u.GioHangChiTiets).First(user => user.ID == ID);
+                    return Json(User);
+                }
+                else
+                {
+                    return Json(false);
+                }
             }
-            else
+            catch (Exception)
+            {
+                return Json("Lỗi");
+            }
+            
+        }
+
+        [HttpGet]
+        public async Task<JsonResult> GetSanPhamGioHang(Guid id)
+        {
+            try
+            {
+                if (id != null && id.ToString() != "")
+                {
+                    var tmp = _context.GioHangChiTiets.Include(sp => sp.sanPham).Where(gh => gh.UserID == id).ToList();
+                    for (int i = 0; i < tmp.Count; i++)
+                    {
+                        tmp[i].sanPham.anhs = _context.ItemImages.FirstOrDefault(sp => sp.ID == tmp[i].IDSanPham);
+                    }
+                    return Json(tmp);
+                }
+            }
+            catch (Exception)
             {
                 return Json(false);
             }
+            
+            return Json(false);
+        }
+
+        [HttpGet]
+        public async Task<JsonResult> RemoveSanPhamGioHang(string id)
+        {
+            try
+            {
+                _context.GioHangChiTiets.Remove(_context.GioHangChiTiets.First(gh => gh.ID.ToString() == id));
+                await _context.SaveChangesAsync();
+                return Json(true);
+            }
+            catch (Exception)
+            {
+                return Json(false);
+            }
+        }
+
+
+        [HttpPost]
+        public async Task<JsonResult> AddGioHang(Guid userID, Guid sanPhamID, string thuocTinh, int soLuong)
+        {
+            try
+            {
+                var giohangTmp = _context.GioHangChiTiets.FirstOrDefault(gh => gh.UserID == userID && gh.IDSanPham == sanPhamID && gh.ThuocTinh == thuocTinh);
+                if (giohangTmp == null)
+                {
+                    if (!await _context.Users.AnyAsync(u => u.ID == userID))
+                    {
+                        return Json(false);
+                    }
+                    else
+                    {
+                        Console.WriteLine("Thêm");
+                        _context.GioHangChiTiets.Add(new GioHangChiTiet(Guid.NewGuid(), sanPhamID, userID, soLuong, thuocTinh));
+                        await _context.SaveChangesAsync();
+                        return Json(true);
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("Update");
+                    giohangTmp.SoLuong += soLuong;
+                    _context.Update(giohangTmp);
+                    await _context.SaveChangesAsync();
+                    return Json(true);
+                }
+            }
+            catch (Exception e)
+            {
+                Console.WriteLine(e.ToString());
+                return Json(false);
+            }
+            
         }
 
         private bool UserExists(string userName)

@@ -14,7 +14,6 @@ namespace DataBase.Entities
         public int GiaSanPham { get; set; }
         public int SoLuong { get; set; }
 
-        public virtual HoaDon hoaDon { get; set; }
         public virtual SanPham sanPham { get; set; }
     }
 }

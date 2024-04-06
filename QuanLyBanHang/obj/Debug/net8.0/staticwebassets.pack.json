@@ -1,6 +1,34 @@
 {
   "Files": [
     {
+      "Id": "Y:\\C#\\QuanLyBanHang\\wwwroot\\JsController\\DanhMucsController.js",
+      "PackagePath": "staticwebassets\\JsController\\DanhMucsController.js"
+    },
+    {
+      "Id": "Y:\\C#\\QuanLyBanHang\\wwwroot\\JsController\\HomeController.js",
+      "PackagePath": "staticwebassets\\JsController\\HomeController.js"
+    },
+    {
+      "Id": "Y:\\C#\\QuanLyBanHang\\wwwroot\\JsController\\MyApp.js",
+      "PackagePath": "staticwebassets\\JsController\\MyApp.js"
+    },
+    {
+      "Id": "Y:\\C#\\QuanLyBanHang\\wwwroot\\JsController\\SPCTController.js",
+      "PackagePath": "staticwebassets\\JsController\\SPCTController.js"
+    },
+    {
+      "Id": "Y:\\C#\\QuanLyBanHang\\wwwroot\\JsController\\SPController.js",
+      "PackagePath": "staticwebassets\\JsController\\SPController.js"
+    },
+    {
+      "Id": "Y:\\C#\\QuanLyBanHang\\wwwroot\\JsController\\UserController.js",
+      "PackagePath": "staticwebassets\\JsController\\UserController.js"
+    },
+    {
+      "Id": "Y:\\C#\\QuanLyBanHang\\wwwroot\\JsController\\giohang.js",
+      "PackagePath": "staticwebassets\\JsController\\giohang.js"
+    },
+    {
       "Id": "Y:\\C#\\QuanLyBanHang\\wwwroot\\css\\all.css",
       "PackagePath": "staticwebassets\\css\\all.css"
     },
@@ -2541,10 +2569,6 @@
       "PackagePath": "staticwebassets\\js\\angular.js"
     },
     {
-      "Id": "Y:\\C#\\QuanLyBanHang\\wwwroot\\js\\app.js",
-      "PackagePath": "staticwebassets\\js\\app.js"
-    },
-    {
       "Id": "Y:\\C#\\QuanLyBanHang\\wwwroot\\js\\config1.js",
       "PackagePath": "staticwebassets\\js\\config1.js"
     },
@@ -2557,8 +2581,8 @@
       "PackagePath": "staticwebassets\\js\\font-fontawesome.js"
     },
     {
-      "Id": "Y:\\C#\\QuanLyBanHang\\wwwroot\\js\\sanpham1.js",
-      "PackagePath": "staticwebassets\\js\\sanpham1.js"
+      "Id": "Y:\\C#\\QuanLyBanHang\\wwwroot\\js\\sp1.js",
+      "PackagePath": "staticwebassets\\js\\sp1.js"
     },
     {
       "Id": "Y:\\C#\\QuanLyBanHang\\wwwroot\\js\\sweetalert.min.js",

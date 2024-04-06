@@ -24,7 +24,6 @@ namespace QuanLyBanHang.Controllers
             return Json(await _context.DanhMucs.Include(x => x.DanhMucChiTiets).ToListAsync());
         }
 
-
         [HttpPost]
         public async Task<JsonResult> Create(string name)
         {
