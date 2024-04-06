@@ -18,6 +18,7 @@ namespace QuanLyBanHang.Controllers
 
         public async Task<IActionResult> Index()
         {
+
             if (HttpContext.Request.Cookies["Name"] == null || HttpContext.Request.Cookies["Name"] == "")
             {
                 HttpContext.Response.Cookies.Append("Role", "1");
@@ -27,7 +28,9 @@ namespace QuanLyBanHang.Controllers
             {
                 ViewData["Layout"] = "~/Views/Shared/_LayoutAdmin.cshtml";
                 return RedirectToAction("Index", "Users");
-            } else {
+            }
+            else
+            {
                 ViewData["Layout"] = "~/Views/Shared/_LayoutUser.cshtml";
             }
             return View();
@@ -52,7 +55,7 @@ namespace QuanLyBanHang.Controllers
         {
             return View();
         }
-    
+
 
         [HttpGet]
         public async Task<JsonResult> OnLogin(string username, string password)
@@ -60,6 +63,11 @@ namespace QuanLyBanHang.Controllers
             if (_context.Users.Any(user => user.UserName == username && user.Password == password))
             {
                 var User = _context.Users.First(user => user.UserName == username && user.Password == password);
+                HttpContext.Response.Cookies.Delete("ID");
+                HttpContext.Response.Cookies.Delete("Name");
+                HttpContext.Response.Cookies.Delete("UserName");
+                HttpContext.Response.Cookies.Delete("Password");
+                HttpContext.Response.Cookies.Delete("Role");
                 HttpContext.Response.Cookies.Append("ID", User.ID.ToString());
                 HttpContext.Response.Cookies.Append("Name", User.Name);
                 HttpContext.Response.Cookies.Append("UserName", User.UserName);
@@ -145,7 +153,7 @@ namespace QuanLyBanHang.Controllers
             {
                 return Json("Lỗi");
             }
-            
+
         }
 
         [HttpGet]
@@ -167,7 +175,7 @@ namespace QuanLyBanHang.Controllers
             {
                 return Json(false);
             }
-            
+
             return Json(false);
         }
 
@@ -192,20 +200,18 @@ namespace QuanLyBanHang.Controllers
         {
             try
             {
+                if (!await _context.Users.AnyAsync(u => u.ID == userID))
+                {
+                    //Chưa đăng nhập
+                    return Json(false);
+                }
                 var giohangTmp = _context.GioHangChiTiets.FirstOrDefault(gh => gh.UserID == userID && gh.IDSanPham == sanPhamID && gh.ThuocTinh == thuocTinh);
                 if (giohangTmp == null)
                 {
-                    if (!await _context.Users.AnyAsync(u => u.ID == userID))
-                    {
-                        return Json(false);
-                    }
-                    else
-                    {
-                        Console.WriteLine("Thêm");
-                        _context.GioHangChiTiets.Add(new GioHangChiTiet(Guid.NewGuid(), sanPhamID, userID, soLuong, thuocTinh));
-                        await _context.SaveChangesAsync();
-                        return Json(true);
-                    }
+                    Console.WriteLine("Thêm");
+                    _context.GioHangChiTiets.Add(new GioHangChiTiet(Guid.NewGuid(), sanPhamID, userID, soLuong, thuocTinh));
+                    await _context.SaveChangesAsync();
+                    return Json(true);
                 }
                 else
                 {
@@ -219,9 +225,9 @@ namespace QuanLyBanHang.Controllers
             catch (Exception e)
             {
                 Console.WriteLine(e.ToString());
-                return Json(false);
+                return Json("Đã xảy ra lỗi");
             }
-            
+
         }
 
         private bool UserExists(string userName)

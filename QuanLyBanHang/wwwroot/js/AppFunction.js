@@ -7,6 +7,13 @@ function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
 
+function deleteCookies() {
+    var Cookies = document.cookie.split(';');
+
+    // set 1 Jan, 1970 expiry for every cookies
+    for (var i = 0; i < Cookies.length; i++)
+    document.cookie = Cookies[i] + "=;expires=" + new Date(0).toUTCString();
+ }
 function setCookie(cname, cvalue) {
     document.cookie = cname + "=" + cvalue
 }
@@ -27,11 +34,7 @@ function getCookie(cname) {
 }
 
 function LogOut() {
-    setCookie("ID", "");
-    setCookie("Name", "");
-    setCookie("UserName", "");
-    setCookie("Password", "");
-    setCookie("Role", "");
+    deleteCookies();
     document.location.href = "/"
 }
 

@@ -14,10 +14,13 @@ myApp.controller('HomeCtrl', function ($scope, $http) {
     $scope.getSanPham = function () {
         $http.get("/SanPhams/ListSanPham").then(function (response) {
             $scope.ListSanPham = response.data;
-            console.log($scope.ListSanPham);
-            setTimeout(() => $scope.getDanhMucs(), 500);
+            if ($scope.ListSanPham.lenght == 0) {
+                setTimeout(() => $scope.getSanPham(), 500);
+                return;
+            }
+            setTimeout(() => $scope.getDanhMucs(), 1500);
         }).catch(function (error) {
-            $scope.getSanPham();
+            setTimeout(() => $scope.getSanPham(), 500);
         });
     }
     $scope.getSanPham();
@@ -29,4 +32,5 @@ myApp.controller('HomeCtrl', function ($scope, $http) {
             setTimeout(() => $scope.getDanhMucs(), 500);
         });
     }
+
 });
