@@ -6,13 +6,19 @@ myApp.controller('SPChiTietCtrl', function ($scope, $http) {
         thuocTinh: "",
         soLuong: 1
     }
-
-    $http.get("/SanPhams/GetSanPham?id=" + $("#ThongTinSanPham").val()).then(function (response) {
-        $scope.SanPham = response.data;
-        console.log($scope.SanPham)
-    }).catch(function (error) {
-        swal("Oops!", "Đã xảy ra lỗi!", "error");
-    });
+    $scope.GetThongTin = function () {
+        $http.get("/SanPhams/GetSanPham?id=" + $("#ThongTinSanPham").val()).then(function (response) {
+            $scope.SanPham = response.data;
+            if ($scope.SanPham == null) {
+                setTimeout(() => $scope.GetThongTin(), 500);
+                return;
+            }
+        }).catch(function (error) {
+            swal("Oops!", "Đã xảy ra lỗi!", "error");
+            setTimeout(() => $scope.GetThongTin(), 500);
+        });
+    }
+    $scope.GetThongTin();
 
     $scope.ThemGioHang = function () {
         $scope.GioHangChiTiet.thuocTinh = "";
@@ -34,8 +40,21 @@ myApp.controller('SPChiTietCtrl', function ($scope, $http) {
                 } else {
                     if (response == true) {
                         toastr.success("Thêm thành công");
-                    } else {
-                        toastr.error("Thêm thất bại");
+                    } else if (response == false) {
+                        swal({
+                            title: "Thông báo",
+                            text: "Vui lòng đăng nhập để thêm vào giỏ hàng",
+                            icon: "warning",
+                            buttons: true,
+                            dangerMode: true,
+                        }).then((willLogin) => {
+                            if (willLogin) {
+                                location.href = "/Home/Login";
+                            }
+                        });
+                    }
+                    else {
+                        swal("Oops!", response, "error");
                     }
                 }
             },

@@ -15,18 +15,21 @@ namespace QuanLyBanHang.Controllers
     {
         public async Task<IActionResult> Index()
         {
+            MainDbContext _context = new MainDbContext();
             return View(await _context.DanhMucs.Include(x => x.DanhMucChiTiets).ToListAsync());
         }
 
         [HttpGet]
         public async Task<JsonResult> GetDanhMuc()
         {
+            MainDbContext _context = new MainDbContext();
             return Json(await _context.DanhMucs.Include(x => x.DanhMucChiTiets).ToListAsync());
         }
 
         [HttpPost]
         public async Task<JsonResult> Create(string name)
         {
+            MainDbContext _context = new MainDbContext();
             try
             {
                 if (DanhMucExists(name)) {
@@ -48,6 +51,7 @@ namespace QuanLyBanHang.Controllers
         [HttpGet]
         public async Task<JsonResult> GetDanhMucByID(Guid? id)
         {
+            MainDbContext _context = new MainDbContext();
             var danhMuc = await _context.DanhMucs.FindAsync(id);
             return Json(danhMuc);
         }
@@ -55,6 +59,7 @@ namespace QuanLyBanHang.Controllers
         [HttpPost]
         public async Task<JsonResult> SaveDanhMuc(DanhMuc danhMuc)
         {
+            MainDbContext _context = new MainDbContext();
             try
             {
                 var tmpDanhMuc = await _context.DanhMucs.FindAsync(danhMuc.ID);
@@ -80,6 +85,7 @@ namespace QuanLyBanHang.Controllers
         [HttpGet]
         public async Task<JsonResult> DeleteDanhMuc(Guid id)
         {
+            MainDbContext _context = new MainDbContext();
             try
             {
                 var danhMuc = await _context.DanhMucs.FirstOrDefaultAsync(x => x.ID == id);
@@ -102,11 +108,13 @@ namespace QuanLyBanHang.Controllers
 
         private bool DanhMucExists(string name)
         {
+            MainDbContext _context = new MainDbContext();
             return _context.DanhMucs.Any(e => e.Name == name);
         }
 
         private bool DanhMucExists(Guid id, string name)
         {
+            MainDbContext _context = new MainDbContext();
             return _context.DanhMucs.Any(e => e.ID != id && e.Name == name);
         }
     }

@@ -27,7 +27,7 @@ namespace DataBase.Entities
         public Guid UserID { get; set; }
         public int SoLuong { get; set; }
 
-        public string ThuocTinh { get; set; }
+        public string? ThuocTinh { get; set; }
 
         public virtual SanPham sanPham { get; set; }
     }

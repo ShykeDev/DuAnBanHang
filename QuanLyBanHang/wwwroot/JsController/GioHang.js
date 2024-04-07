@@ -25,14 +25,14 @@ myApp.controller('GioHangCtrl', function ($rootScope, $scope, $http) {
         }
     }
 
-    $scope.getTongTien = function () { 
+    $scope.getTongTien = function () {
         $scope.sum = 0;
         for (var i = 0; i < $scope.ListSanPham.length; i++) {
             if ($scope.ListSanPham[i].checked == true) {
-                $scope.sum+= ($scope.ListSanPham[i].soLuong * $scope.ListSanPham[i].sanPham.giaGiamGia);
+                $scope.sum += ($scope.ListSanPham[i].soLuong * $scope.ListSanPham[i].sanPham.giaGiamGia);
             }
         }
-        return $scope.sum.toLocaleString('vi-VN', {style : 'currency', currency : 'VND'});
+        return $scope.sum.toLocaleString('vi-VN', { style: 'currency', currency: 'VND' });
     };
 
 
@@ -82,7 +82,7 @@ myApp.controller('GioHangCtrl', function ($rootScope, $scope, $http) {
     };
 
 
-    $scope.XacNhanThanhToan = function () { 
+    $scope.XacNhanThanhToan = function () {
         $scope.ListThanhToan = [];
         for (var i = 0; i < $scope.ListSanPham.length; i++) {
             if ($scope.ListSanPham[i].checked == true) {

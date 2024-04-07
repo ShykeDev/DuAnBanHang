@@ -31,18 +31,21 @@ namespace QuanLyBanHang.Controllers
         [HttpGet]
         public async Task<JsonResult> GetAllUsers()
         {
+            MainDbContext _context = new MainDbContext();
             return Json(await _context.Users.ToListAsync());
         }
 
         [HttpGet]
         public async Task<JsonResult> GetUsersByID(Guid id)
         {
+            MainDbContext _context = new MainDbContext();
             return Json(await _context.Users.Include(u => u.GioHangChiTiets).FirstOrDefaultAsync(u => u.ID == id));
         }
 
         [HttpGet]
         public async Task<JsonResult> DeleteUser(Guid id)
         {
+            MainDbContext _context = new MainDbContext();
             try
             {
                 var user = await _context.Users
@@ -65,6 +68,7 @@ namespace QuanLyBanHang.Controllers
         [HttpPost]
         public async Task<JsonResult> AddUser(User user)
         {
+            MainDbContext _context = new MainDbContext();
             if (user.Name == "" || user.Name == null)
             {
                 return Json("Vui lòng nhập Họ và tên");
@@ -117,6 +121,7 @@ namespace QuanLyBanHang.Controllers
         [HttpPost]
         public async Task<JsonResult> SaveUser(User user)
         {
+            MainDbContext _context = new MainDbContext();
             if (user.Name == "" || user.Name == null)
             {
                 return Json("Vui lòng nhập Họ và tên");
@@ -181,16 +186,19 @@ namespace QuanLyBanHang.Controllers
 
         private bool UserExists(Guid id)
         {
+            MainDbContext _context = new MainDbContext();
             return _context.Users.Any(e => e.ID == id);
         }
 
         private bool UserExists(string userName)
         {
+            MainDbContext _context = new MainDbContext();
             return _context.Users.Any(e => e.UserName == userName);
         }
 
         private bool UserExists(string userName, Guid id)
         {
+            MainDbContext _context = new MainDbContext();
             return _context.Users.Any(e => e.UserName == userName && e.ID != id);
         }
 

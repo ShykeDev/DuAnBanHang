@@ -22,3 +22,4 @@ namespace DataBase.Entities
         public string Img { get; set; }
     }
 }
+  

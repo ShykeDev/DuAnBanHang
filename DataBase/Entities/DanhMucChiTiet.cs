@@ -8,6 +8,16 @@ namespace DataBase.Entities
 {
     public class DanhMucChiTiet
     {
+        public DanhMucChiTiet()
+        {
+        }
+
+        public DanhMucChiTiet(Guid idDanhMuc, Guid idSanPham)
+        {
+            this.idDanhMuc = idDanhMuc;
+            this.idSanPham = idSanPham;
+        }
+
         public Guid idDanhMuc { get; set; }
         public Guid idSanPham { get; set; }
 

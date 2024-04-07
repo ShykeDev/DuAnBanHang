@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "K6isaTSAUyuxKkhP0cKSqznL4KHSdaq5KLSwcrxDXu0=",
+  "Hash": "L8fk1boZqD+C9ehuMxE1hui8elJK3wLxxVLuJlcJhYQ=",
   "Source": "QuanLyBanHang",
   "BasePath": "_content/QuanLyBanHang",
   "Mode": "Default",
@@ -12139,6 +12139,25 @@
       "OriginalItemSpec": "wwwroot\\js\\angular.js"
     },
     {
+      "Identity": "Y:\\C#\\QuanLyBanHang\\wwwroot\\js\\AppFunction.js",
+      "SourceId": "QuanLyBanHang",
+      "SourceType": "Discovered",
+      "ContentRoot": "Y:\\C#\\QuanLyBanHang\\wwwroot\\",
+      "BasePath": "_content/QuanLyBanHang",
+      "RelativePath": "js/AppFunction.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\AppFunction.js"
+    },
+    {
       "Identity": "Y:\\C#\\QuanLyBanHang\\wwwroot\\js\\config1.js",
       "SourceId": "QuanLyBanHang",
       "SourceType": "Discovered",
@@ -12310,12 +12329,12 @@
       "OriginalItemSpec": "wwwroot\\JsController\\DanhMucsController.js"
     },
     {
-      "Identity": "Y:\\C#\\QuanLyBanHang\\wwwroot\\JsController\\giohang.js",
+      "Identity": "Y:\\C#\\QuanLyBanHang\\wwwroot\\JsController\\GioHang.js",
       "SourceId": "QuanLyBanHang",
       "SourceType": "Discovered",
       "ContentRoot": "Y:\\C#\\QuanLyBanHang\\wwwroot\\",
       "BasePath": "_content/QuanLyBanHang",
-      "RelativePath": "JsController/giohang.js",
+      "RelativePath": "JsController/GioHang.js",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -12326,7 +12345,7 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\JsController\\giohang.js"
+      "OriginalItemSpec": "wwwroot\\JsController\\GioHang.js"
     },
     {
       "Identity": "Y:\\C#\\QuanLyBanHang\\wwwroot\\JsController\\HomeController.js",

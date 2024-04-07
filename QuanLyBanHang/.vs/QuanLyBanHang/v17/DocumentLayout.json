@@ -3,12 +3,10 @@
   "WorkspaceRootPath": "Y:\\C#\\QuanLyBanHang\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{168EA7AA-80C7-452B-B175-A1C72F536205}|QuanLyBanHang.csproj|y:\\c#\\quanlybanhang\\views\\home\\giohang.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{168EA7AA-80C7-452B-B175-A1C72F536205}|QuanLyBanHang.csproj|solutionrelative:views\\home\\giohang.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|Y:\\C#\\DataBase\\Migrations\\20240407140645_shyke.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{168EA7AA-80C7-452B-B175-A1C72F536205}|QuanLyBanHang.csproj|y:\\c#\\quanlybanhang\\views\\sanphams\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{168EA7AA-80C7-452B-B175-A1C72F536205}|QuanLyBanHang.csproj|solutionrelative:views\\sanphams\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{2C3BBA86-AEAF-4106-A5B1-D9FDE3377E2A}|..\\DataBase\\DataBase.csproj|y:\\c#\\database\\entities\\itemimage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -23,27 +21,27 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "GioHang.cshtml",
-              "DocumentMoniker": "Y:\\C#\\QuanLyBanHang\\Views\\Home\\GioHang.cshtml",
-              "RelativeDocumentMoniker": "Views\\Home\\GioHang.cshtml",
-              "ToolTip": "Y:\\C#\\QuanLyBanHang\\Views\\Home\\GioHang.cshtml",
-              "RelativeToolTip": "Views\\Home\\GioHang.cshtml",
-              "ViewState": "AQIAAPAAAAAAAAAAAAAswPcAAAAKAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-04-06T00:28:37.352Z",
+              "Title": "20240407140645_shyke.cs",
+              "DocumentMoniker": "Y:\\C#\\DataBase\\Migrations\\20240407140645_shyke.cs",
+              "RelativeDocumentMoniker": "..\\DataBase\\Migrations\\20240407140645_shyke.cs",
+              "ToolTip": "Y:\\C#\\DataBase\\Migrations\\20240407140645_shyke.cs",
+              "RelativeToolTip": "..\\DataBase\\Migrations\\20240407140645_shyke.cs",
+              "ViewState": "AQIAAA0AAAAAAAAAAAAqwC0AAAARAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-07T14:06:45.457Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "Y:\\C#\\QuanLyBanHang\\Views\\SanPhams\\Index.cshtml",
-              "RelativeDocumentMoniker": "Views\\SanPhams\\Index.cshtml",
-              "ToolTip": "Y:\\C#\\QuanLyBanHang\\Views\\SanPhams\\Index.cshtml",
-              "RelativeToolTip": "Views\\SanPhams\\Index.cshtml",
-              "ViewState": "AQIAACcAAAAAAAAAAAAAAAAAAAAAAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-04-06T00:28:32.371Z",
+              "Title": "ItemImage.cs",
+              "DocumentMoniker": "Y:\\C#\\DataBase\\Entities\\ItemImage.cs",
+              "RelativeDocumentMoniker": "..\\DataBase\\Entities\\ItemImage.cs",
+              "ToolTip": "Y:\\C#\\DataBase\\Entities\\ItemImage.cs",
+              "RelativeToolTip": "..\\DataBase\\Entities\\ItemImage.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAABYAAAAFAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-04-07T12:39:22.052Z",
               "EditorCaption": ""
             }
           ]

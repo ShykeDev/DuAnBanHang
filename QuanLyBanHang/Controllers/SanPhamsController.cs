@@ -23,6 +23,7 @@ namespace QuanLyBanHang.Controllers
 
         public async Task<IActionResult> Index()
         {
+            MainDbContext _context = new MainDbContext();
             if (HttpContext.Request.Cookies["Role"] != "0")
             {
                 return RedirectToAction("Page404", "Home");
@@ -33,6 +34,7 @@ namespace QuanLyBanHang.Controllers
         [HttpGet]
         public async Task<IActionResult> ChiTiet(Guid? id)
         {
+            MainDbContext _context = new MainDbContext();
             var sp = await _context.SanPhams.Include(p => p.thuocTinhs)
             .Include(p => p.anhs)
             .FirstOrDefaultAsync(m => m.ID == id);
@@ -46,6 +48,7 @@ namespace QuanLyBanHang.Controllers
         [HttpPost]
         public async Task<JsonResult> CreateSanPham(SanPhamModelAdd result)
         {
+            MainDbContext _context = new MainDbContext();
             result.sanPham.ID = Guid.NewGuid();
             if (result.ThuocTinhChungs != null)
             {
@@ -79,6 +82,7 @@ namespace QuanLyBanHang.Controllers
         [HttpPost]
         public async Task<JsonResult> EditSanPham(SanPhamModelAdd result)
         {
+            MainDbContext _context = new MainDbContext();
             try
             {
                 var sanPham = await _context.SanPhams
@@ -134,6 +138,7 @@ namespace QuanLyBanHang.Controllers
         [HttpPost]
         public async Task<JsonResult> DeleteSanPham(Guid? id)
         {
+            MainDbContext _context = new MainDbContext();
             if (id == null) return Json("thất bại");
             try
             {
@@ -164,6 +169,7 @@ namespace QuanLyBanHang.Controllers
         [HttpGet]
         public async Task<JsonResult> GetSanPham(Guid? id)
         {
+            MainDbContext _context = new MainDbContext();
             if (id == null) return Json(null);
             try
             {
@@ -189,12 +195,14 @@ namespace QuanLyBanHang.Controllers
         [HttpGet]
         public async Task<JsonResult> GetThuocTinhChungsSanPham()
         {
+            MainDbContext _context = new MainDbContext();
             return Json(await _context.ThuocTinhChungs.Include(x => x.GiaTriThuocTinhs).ToListAsync());
         }
 
         [HttpGet]
         public async Task<JsonResult> ListSanPham()
         {
+            MainDbContext _context = new MainDbContext();
             try
             {
                 return Json(await _context.SanPhams

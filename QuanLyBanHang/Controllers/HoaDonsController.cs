@@ -19,12 +19,14 @@ namespace QuanLyBanHang.Controllers
         // GET: HoaDons
         public async Task<IActionResult> Index()
         {
+            MainDbContext _context = new MainDbContext();
             return View(await _context.HoaDons.ToListAsync());
         }
 
         // GET: HoaDons/Details/5
         public async Task<IActionResult> Details(Guid? id)
         {
+            MainDbContext _context = new MainDbContext();
             if (id == null)
             {
                 return NotFound();
@@ -53,6 +55,7 @@ namespace QuanLyBanHang.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("ID,UserID,NgayMua,SDT,DiaChi,TrangThaiDonHang")] HoaDon hoaDon)
         {
+            MainDbContext _context = new MainDbContext();
             if (ModelState.IsValid)
             {
                 hoaDon.ID = Guid.NewGuid();
@@ -66,6 +69,7 @@ namespace QuanLyBanHang.Controllers
         // GET: HoaDons/Edit/5
         public async Task<IActionResult> Edit(Guid? id)
         {
+            MainDbContext _context = new MainDbContext();
             if (id == null)
             {
                 return NotFound();
@@ -86,6 +90,7 @@ namespace QuanLyBanHang.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(Guid id, [Bind("ID,UserID,NgayMua,SDT,DiaChi,TrangThaiDonHang")] HoaDon hoaDon)
         {
+            MainDbContext _context = new MainDbContext();
             if (id != hoaDon.ID)
             {
                 return NotFound();
@@ -117,6 +122,7 @@ namespace QuanLyBanHang.Controllers
         // GET: HoaDons/Delete/5
         public async Task<IActionResult> Delete(Guid? id)
         {
+            MainDbContext _context = new MainDbContext();
             if (id == null)
             {
                 return NotFound();
@@ -137,6 +143,7 @@ namespace QuanLyBanHang.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(Guid id)
         {
+            MainDbContext _context = new MainDbContext();
             var hoaDon = await _context.HoaDons.FindAsync(id);
             if (hoaDon != null)
             {
@@ -149,6 +156,7 @@ namespace QuanLyBanHang.Controllers
 
         private bool HoaDonExists(Guid id)
         {
+            MainDbContext _context = new MainDbContext();
             return _context.HoaDons.Any(e => e.ID == id);
         }
     }

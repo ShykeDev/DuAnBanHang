@@ -5,6 +5,10 @@
       "PackagePath": "staticwebassets\\JsController\\DanhMucsController.js"
     },
     {
+      "Id": "Y:\\C#\\QuanLyBanHang\\wwwroot\\JsController\\GioHang.js",
+      "PackagePath": "staticwebassets\\JsController\\GioHang.js"
+    },
+    {
       "Id": "Y:\\C#\\QuanLyBanHang\\wwwroot\\JsController\\HomeController.js",
       "PackagePath": "staticwebassets\\JsController\\HomeController.js"
     },
@@ -23,10 +27,6 @@
     {
       "Id": "Y:\\C#\\QuanLyBanHang\\wwwroot\\JsController\\UserController.js",
       "PackagePath": "staticwebassets\\JsController\\UserController.js"
-    },
-    {
-      "Id": "Y:\\C#\\QuanLyBanHang\\wwwroot\\JsController\\giohang.js",
-      "PackagePath": "staticwebassets\\JsController\\giohang.js"
     },
     {
       "Id": "Y:\\C#\\QuanLyBanHang\\wwwroot\\css\\all.css",
@@ -2559,6 +2559,10 @@
     {
       "Id": "Y:\\C#\\QuanLyBanHang\\wwwroot\\images\\slideshows\\slide3.png",
       "PackagePath": "staticwebassets\\images\\slideshows\\slide3.png"
+    },
+    {
+      "Id": "Y:\\C#\\QuanLyBanHang\\wwwroot\\js\\AppFunction.js",
+      "PackagePath": "staticwebassets\\js\\AppFunction.js"
     },
     {
       "Id": "Y:\\C#\\QuanLyBanHang\\wwwroot\\js\\angular-route.js",

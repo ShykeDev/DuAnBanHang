@@ -88,7 +88,6 @@ namespace DataBase.Migrations
                         .HasDefaultValue(0);
 
                     b.Property<string>("ThuocTinh")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<Guid>("UserID")
@@ -109,7 +108,14 @@ namespace DataBase.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
+                    b.Property<string>("ChuThich")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("DiaChi")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Email")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -146,6 +152,9 @@ namespace DataBase.Migrations
 
                     b.Property<int>("SoLuong")
                         .HasColumnType("int");
+
+                    b.Property<string>("ThuocTinh")
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("ID", "IDSanPham");
 
@@ -292,7 +301,7 @@ namespace DataBase.Migrations
                     b.HasData(
                         new
                         {
-                            ID = new Guid("734116d0-fc9c-46f6-814d-bbfc6420b175"),
+                            ID = new Guid("54c95334-b66a-4669-984f-806615449a96"),
                             DiaChi = "Phúc Diễn, Bắc Từ Liêm, Hà Nội",
                             Email = "nhatvu@gmail.com",
                             Name = "Nguyễn Lê Nhất Vũ",
@@ -305,7 +314,7 @@ namespace DataBase.Migrations
                         },
                         new
                         {
-                            ID = new Guid("b6fb3483-6950-45db-b698-40784e1f125a"),
+                            ID = new Guid("083fc65c-fbd0-4f92-b03f-e466903e8667"),
                             DiaChi = "Phúc Diễn, Bắc Từ Liêm, Hà Nội",
                             Email = "nhatvu@gmail.com",
                             Name = "Nguyễn Lê Nhất Vũ",

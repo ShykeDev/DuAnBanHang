@@ -10,8 +10,7 @@ namespace DataBase.Entities.Enum
 	{
 		None = 0,
 		ChoXacNhan = 1,
-		DangChuanBiHang = 2,
-		DangVanChuyen = 3,
-		DaNhanHang = 4
+		DangVanChuyen = 2,
+		DaNhanHang = 3
 	}
 }

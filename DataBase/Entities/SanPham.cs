@@ -10,6 +10,18 @@ namespace DataBase.Entities
 {
     public class SanPham
     {
+        public SanPham() { }
+        public SanPham(Guid iD, string name, int giaGoc, int giaGiamGia, int soLuong, int trangThai, string? moTa)
+        {
+            ID = iD;
+            Name = name;
+            GiaGoc = giaGoc;
+            GiaGiamGia = giaGiamGia;
+            SoLuong = soLuong;
+            TrangThai = trangThai;
+            MoTa = moTa;
+        }
+
         public Guid ID { get; set; }
         public string Name { get; set; }
         public int GiaGoc { get; set; }
@@ -21,17 +33,5 @@ namespace DataBase.Entities
         public virtual ICollection<ThuocTinh>? thuocTinhs { get; set; }
         public virtual ItemImage anhs { get; set; }
 
-        public SanPham() { }
-
-        public SanPham(Guid iD, string name, int giaGoc, int giaGiamGia, int soLuong, int trangThai, string? moTa)
-        {
-            ID = iD;
-            Name = name;
-            GiaGoc = giaGoc;
-            GiaGiamGia = giaGiamGia;
-            SoLuong = soLuong;
-            TrangThai = trangThai;
-            MoTa = moTa;
-        }
     }
 }

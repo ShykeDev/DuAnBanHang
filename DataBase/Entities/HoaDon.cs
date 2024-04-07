@@ -10,12 +10,30 @@ namespace DataBase.Entities
 {
     public class HoaDon
     {
+        public HoaDon()
+        {
+        }
+
+        public HoaDon(Guid iD, Guid userID, DateTime ngayMua, string sDT, string email, string diaChi, string? chuThich, int trangThaiDonHang)
+        {
+            ID = iD;
+            UserID = userID;
+            NgayMua = ngayMua;
+            SDT = sDT;
+            Email = email;
+            DiaChi = diaChi;
+            ChuThich = chuThich;
+            TrangThaiDonHang = trangThaiDonHang;
+        }
+
         public Guid ID { get; set; }
         public Guid UserID { get; set; }
         public DateTime NgayMua { get; set; }
         public string SDT { get; set; }
+        public string Email { get; set; }
         public string DiaChi { get; set; }
-        public TrangThaiDonHang TrangThaiDonHang { get; set; }
+        public string? ChuThich { get; set; }
+        public int TrangThaiDonHang { get; set; }
 
         public virtual ICollection<HoaDonChiTiet> HoaDonChiTiets { get; set; }
 

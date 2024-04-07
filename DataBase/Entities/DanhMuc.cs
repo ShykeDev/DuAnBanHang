@@ -8,6 +8,16 @@ namespace DataBase.Entities
 {
     public class DanhMuc
     {
+        public DanhMuc()
+        {
+        }
+
+        public DanhMuc(Guid iD, string name)
+        {
+            ID = iD;
+            Name = name;
+        }
+
         public Guid ID { get; set; }
         public string Name { get; set; }
 
