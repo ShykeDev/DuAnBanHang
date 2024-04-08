@@ -12,13 +12,8 @@ function deleteCookies() {
 
     // set 1 Jan, 1970 expiry for every cookies
     for (var i = 0; i < Cookies.length; i++)
-<<<<<<< HEAD
         document.cookie = Cookies[i] + "=;expires=" + new Date(0).toUTCString();
 }
-=======
-    document.cookie = Cookies[i] + "=;expires=" + new Date(0).toUTCString();
- }
->>>>>>> c6e9266b098bb521c640875069bc476f522e5d8c
 function setCookie(cname, cvalue) {
     document.cookie = cname + "=" + cvalue
 }
@@ -40,13 +35,9 @@ function getCookie(cname) {
 
 function LogOut() {
     deleteCookies();
-<<<<<<< HEAD
     setTimeout(() => {
         document.location.href = "/"
     }, 500);
-=======
-    document.location.href = "/"
->>>>>>> c6e9266b098bb521c640875069bc476f522e5d8c
 }
 
 var Role = [

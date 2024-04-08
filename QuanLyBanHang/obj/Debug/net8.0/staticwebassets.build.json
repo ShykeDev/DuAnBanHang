@@ -1,10 +1,6 @@
 {
   "Version": 1,
-<<<<<<< HEAD
-  "Hash": "L8fk1boZqD+C9ehuMxE1hui8elJK3wLxxVLuJlcJhYQ=",
-=======
-  "Hash": "wgALXzD542tlql3FvQJHdW7aXvchqylCl7MmlYcZFCI=",
->>>>>>> c6e9266b098bb521c640875069bc476f522e5d8c
+  "Hash": "LCZGhzucOtVO5/dRrCv7zPV9hTMcgBhzcDU80mxF55c=",
   "Source": "QuanLyBanHang",
   "BasePath": "_content/QuanLyBanHang",
   "Mode": "Default",
@@ -12143,30 +12139,7 @@
       "OriginalItemSpec": "wwwroot\\js\\angular.js"
     },
     {
-<<<<<<< HEAD
-      "Identity": "Y:\\C#\\QuanLyBanHang\\wwwroot\\js\\AppFunction.js",
-      "SourceId": "QuanLyBanHang",
-      "SourceType": "Discovered",
-      "ContentRoot": "Y:\\C#\\QuanLyBanHang\\wwwroot\\",
-      "BasePath": "_content/QuanLyBanHang",
-      "RelativePath": "js/AppFunction.js",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "AssetMergeBehavior": "PreferTarget",
-      "AssetMergeSource": "",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\js\\AppFunction.js"
-    },
-    {
-      "Identity": "Y:\\C#\\QuanLyBanHang\\wwwroot\\js\\config1.js",
-=======
       "Identity": "E:\\DuAnBanHang\\QuanLyBanHang\\wwwroot\\js\\AppFunction.js",
->>>>>>> c6e9266b098bb521c640875069bc476f522e5d8c
       "SourceId": "QuanLyBanHang",
       "SourceType": "Discovered",
       "ContentRoot": "E:\\DuAnBanHang\\QuanLyBanHang\\wwwroot\\",
@@ -12183,6 +12156,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\js\\AppFunction.js"
+    },
+    {
+      "Identity": "E:\\DuAnBanHang\\QuanLyBanHang\\wwwroot\\js\\config1.js",
+      "SourceId": "QuanLyBanHang",
+      "SourceType": "Discovered",
+      "ContentRoot": "E:\\DuAnBanHang\\QuanLyBanHang\\wwwroot\\",
+      "BasePath": "_content/QuanLyBanHang",
+      "RelativePath": "js/config1.js",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\js\\config1.js"
     },
     {
       "Identity": "E:\\DuAnBanHang\\QuanLyBanHang\\wwwroot\\js\\desktop.ini",
@@ -12337,11 +12329,7 @@
       "OriginalItemSpec": "wwwroot\\JsController\\DanhMucsController.js"
     },
     {
-<<<<<<< HEAD
-      "Identity": "Y:\\C#\\QuanLyBanHang\\wwwroot\\JsController\\GioHang.js",
-=======
       "Identity": "E:\\DuAnBanHang\\QuanLyBanHang\\wwwroot\\JsController\\GioHang.js",
->>>>>>> c6e9266b098bb521c640875069bc476f522e5d8c
       "SourceId": "QuanLyBanHang",
       "SourceType": "Discovered",
       "ContentRoot": "E:\\DuAnBanHang\\QuanLyBanHang\\wwwroot\\",

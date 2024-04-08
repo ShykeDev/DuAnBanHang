@@ -301,12 +301,12 @@ namespace DataBase.Migrations
                     b.HasData(
                         new
                         {
-                            ID = new Guid("54c95334-b66a-4669-984f-806615449a96"),
+                            ID = new Guid("3eacf13e-f100-493e-9e90-17b1d194f305"),
                             DiaChi = "Phúc Diễn, Bắc Từ Liêm, Hà Nội",
                             Email = "nhatvu@gmail.com",
                             Name = "Nguyễn Lê Nhất Vũ",
                             NgaySinh = "2004-01-01",
-                            Password = "19112004",
+                            Password = "Admin19112004",
                             Role = 0,
                             SDT = "0865805582",
                             State = 0,
@@ -314,12 +314,12 @@ namespace DataBase.Migrations
                         },
                         new
                         {
-                            ID = new Guid("083fc65c-fbd0-4f92-b03f-e466903e8667"),
+                            ID = new Guid("8a93d7ad-a30a-417f-b265-e404301d0ce1"),
                             DiaChi = "Phúc Diễn, Bắc Từ Liêm, Hà Nội",
                             Email = "nhatvu@gmail.com",
                             Name = "Nguyễn Lê Nhất Vũ",
                             NgaySinh = "2004-01-01",
-                            Password = "19112004",
+                            Password = "User19112004",
                             Role = 1,
                             SDT = "0865805582",
                             State = 0,

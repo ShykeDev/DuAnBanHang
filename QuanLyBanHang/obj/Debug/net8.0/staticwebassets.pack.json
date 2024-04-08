@@ -5,19 +5,11 @@
       "PackagePath": "staticwebassets\\JsController\\DanhMucsController.js"
     },
     {
-<<<<<<< HEAD
-      "Id": "Y:\\C#\\QuanLyBanHang\\wwwroot\\JsController\\GioHang.js",
-      "PackagePath": "staticwebassets\\JsController\\GioHang.js"
-    },
-    {
-      "Id": "Y:\\C#\\QuanLyBanHang\\wwwroot\\JsController\\HomeController.js",
-=======
       "Id": "E:\\DuAnBanHang\\QuanLyBanHang\\wwwroot\\JsController\\GioHang.js",
       "PackagePath": "staticwebassets\\JsController\\GioHang.js"
     },
     {
       "Id": "E:\\DuAnBanHang\\QuanLyBanHang\\wwwroot\\JsController\\HomeController.js",
->>>>>>> c6e9266b098bb521c640875069bc476f522e5d8c
       "PackagePath": "staticwebassets\\JsController\\HomeController.js"
     },
     {
@@ -37,11 +29,7 @@
       "PackagePath": "staticwebassets\\JsController\\UserController.js"
     },
     {
-<<<<<<< HEAD
-      "Id": "Y:\\C#\\QuanLyBanHang\\wwwroot\\css\\all.css",
-=======
       "Id": "E:\\DuAnBanHang\\QuanLyBanHang\\wwwroot\\css\\all.css",
->>>>>>> c6e9266b098bb521c640875069bc476f522e5d8c
       "PackagePath": "staticwebassets\\css\\all.css"
     },
     {
@@ -2573,24 +2561,20 @@
       "PackagePath": "staticwebassets\\images\\slideshows\\slide3.png"
     },
     {
-<<<<<<< HEAD
-      "Id": "Y:\\C#\\QuanLyBanHang\\wwwroot\\js\\AppFunction.js",
-      "PackagePath": "staticwebassets\\js\\AppFunction.js"
-    },
-    {
-      "Id": "Y:\\C#\\QuanLyBanHang\\wwwroot\\js\\angular-route.js",
-=======
       "Id": "E:\\DuAnBanHang\\QuanLyBanHang\\wwwroot\\js\\AppFunction.js",
       "PackagePath": "staticwebassets\\js\\AppFunction.js"
     },
     {
       "Id": "E:\\DuAnBanHang\\QuanLyBanHang\\wwwroot\\js\\angular-route.js",
->>>>>>> c6e9266b098bb521c640875069bc476f522e5d8c
       "PackagePath": "staticwebassets\\js\\angular-route.js"
     },
     {
       "Id": "E:\\DuAnBanHang\\QuanLyBanHang\\wwwroot\\js\\angular.js",
       "PackagePath": "staticwebassets\\js\\angular.js"
+    },
+    {
+      "Id": "E:\\DuAnBanHang\\QuanLyBanHang\\wwwroot\\js\\config1.js",
+      "PackagePath": "staticwebassets\\js\\config1.js"
     },
     {
       "Id": "E:\\DuAnBanHang\\QuanLyBanHang\\wwwroot\\js\\desktop.ini",
