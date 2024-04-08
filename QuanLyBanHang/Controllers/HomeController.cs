@@ -62,10 +62,12 @@ namespace QuanLyBanHang.Controllers
         [HttpGet]
         public async Task<JsonResult> OnLogin(string username, string password)
         {
-            if (!Regex.IsMatch(password, @"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d$@$!%*?&]{6,}$")) {
+            if (!Regex.IsMatch(password, @"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d$@$!%*?&]{6,}$"))
+            {
                 return Json("Password phải chứa cả ký tự hoa, ký tự và số");
             }
-            if (password.Length < 6) {
+            if (password.Length < 6)
+            {
                 return Json("Password phải nhiều hơn 6 ký tự");
             }
             MainDbContext _context = new MainDbContext();
@@ -104,7 +106,8 @@ namespace QuanLyBanHang.Controllers
                 return Json("Vui lòng nhập số điện thoại");
             }
             //Regex numberphone
-            if (!Regex.IsMatch(user.SDT, @"^\d{10}$")) {
+            if (!Regex.IsMatch(user.SDT, @"^\d{10}$"))
+            {
                 return Json("Số điện thoại không hợp lệ");
             }
             if (user.UserName == "" || user.UserName == null)
@@ -116,10 +119,12 @@ namespace QuanLyBanHang.Controllers
                 return Json("Vui lòng nhập password");
             }
             //regex password
-            if (!Regex.IsMatch(user.Password, @"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d$@$!%*?&]{6,}$")) {
+            if (!Regex.IsMatch(user.Password, @"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d$@$!%*?&]{6,}$"))
+            {
                 return Json("Password phải chứa cả ký tự hoa, ký tự và số");
             }
-            if (user.Password.Length < 6) {
+            if (user.Password.Length < 6)
+            {
                 return Json("Password phải nhiều hơn 6 ký tự");
             }
             if (user.DiaChi == "" || user.DiaChi == null)
@@ -130,7 +135,8 @@ namespace QuanLyBanHang.Controllers
             {
                 return Json("Vui lòng nhập email");
             }
-            if (!Regex.IsMatch(user.Email, @"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$")) {
+            if (!Regex.IsMatch(user.Email, @"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$"))
+            {
                 return Json("Email không hợp lệ");
             }
             if (user.NgaySinh == null)
@@ -260,6 +266,19 @@ namespace QuanLyBanHang.Controllers
                 return Json("Đã xảy ra lỗi");
             }
 
+        }
+
+        [HttpPost]
+        public void ThemHoaDon(HoaDon hoaDon, List<HoaDonChiTiet> hoaDonChiTiets)
+        {
+            MainDbContext _context = new MainDbContext();
+            hoaDon.ID = Guid.NewGuid();
+            _context.HoaDons.Add(hoaDon);
+            foreach (var item in hoaDonChiTiets)
+            {
+                _context.HoaDonChiTiets.Add(new HoaDonChiTiet(Guid.NewGuid(), hoaDon.ID, item.IDSanPham, item.GiaSanPham, item.SoLuong, item.ThuocTinh));
+            }
+            _context.SaveChanges();
         }
 
         private bool UserExists(string userName)

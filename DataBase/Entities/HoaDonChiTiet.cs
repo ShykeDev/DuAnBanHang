@@ -13,10 +13,11 @@ namespace DataBase.Entities
         {
         }
 
-        public HoaDonChiTiet(Guid iD, Guid iDSanPham, int giaSanPham, int soLuong, string? thuocTinh)
+        public HoaDonChiTiet(Guid iD, Guid iDSanPham, Guid idSHoaDon, int giaSanPham, int soLuong, string? thuocTinh)
         {
             ID = iD;
             IDSanPham = iDSanPham;
+            IDSHoaDon = idSHoaDon;
             GiaSanPham = giaSanPham;
             SoLuong = soLuong;
             ThuocTinh = thuocTinh;
@@ -24,6 +25,7 @@ namespace DataBase.Entities
 
         public Guid ID { get; set; }
         public Guid IDSanPham { get; set; }
+        public Guid IDSHoaDon { get; set; }
         public int GiaSanPham { get; set; }
         public int SoLuong { get; set; }
         public string? ThuocTinh { get; set; }

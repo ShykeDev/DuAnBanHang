@@ -95,4 +95,36 @@ myApp.controller('GioHangCtrl', function ($rootScope, $scope, $http) {
         }
         $('#MainModal').modal('show');
     }
+
+    $scope.ThemHoaDon = function () {
+        $.ajax({
+            //Post data
+            url: '/Home/ThemHoaDon',
+            type: "POST",
+            data: $scope.ListThanhToan,
+            success: function (response) {
+                if (response == null || response == undefined || response.length == 0) {
+                    return;
+                } else {
+                    if (response == null || response == undefined || response.length == 0) {
+                        return;
+                    } else {
+                        if (response) {
+                            toastr.success("Xác nhận đơn hàng thành công");
+                            $scope.GetSanPhams();
+                        } else {
+                            toastr.error("Xác nhận đơn hàng bị lỗi");
+                        }
+                    }
+                }
+            },
+            error: function () {
+                swal("Oops!", "Đã xảy ra lỗi!", "error");
+                return;
+            }
+        });
+        
+        $('#MainModal').modal('hide');
+    }
+
 });

@@ -214,16 +214,17 @@ namespace DataBase.Migrations
                 {
                     ID = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     IDSanPham = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    IDSHoaDon = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     GiaSanPham = table.Column<int>(type: "int", nullable: false),
                     SoLuong = table.Column<int>(type: "int", nullable: false),
                     ThuocTinh = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_HoaDonChiTiets", x => new { x.ID, x.IDSanPham });
+                    table.PrimaryKey("PK_HoaDonChiTiets", x => x.ID);
                     table.ForeignKey(
                         name: "FK_HDCT",
-                        column: x => x.ID,
+                        column: x => x.IDSHoaDon,
                         principalTable: "HoaDons",
                         principalColumn: "ID",
                         onDelete: ReferentialAction.Cascade);
@@ -237,13 +238,13 @@ namespace DataBase.Migrations
 
             migrationBuilder.InsertData(
                 table: "Users",
-                columns: new[] { "ID", "DiaChi", "Email", "Name", "NgaySinh", "Password", "SDT", "State", "UserName" },
-                values: new object[] { new Guid("3eacf13e-f100-493e-9e90-17b1d194f305"), "Phúc Diễn, Bắc Từ Liêm, Hà Nội", "nhatvu@gmail.com", "Nguyễn Lê Nhất Vũ", "2004-01-01", "Admin19112004", "0865805582", 0, "shyke" });
+                columns: new[] { "ID", "DiaChi", "Email", "Name", "NgaySinh", "Password", "Role", "SDT", "State", "UserName" },
+                values: new object[] { new Guid("0fc8e4f7-93fb-44be-8a39-a561d47ac6c9"), "Phúc Diễn, Bắc Từ Liêm, Hà Nội", "nhatvu@gmail.com", "Nguyễn Lê Nhất Vũ", "2004-01-01", "User19112004", 1, "0865805582", 0, "shykeuser" });
 
             migrationBuilder.InsertData(
                 table: "Users",
-                columns: new[] { "ID", "DiaChi", "Email", "Name", "NgaySinh", "Password", "Role", "SDT", "State", "UserName" },
-                values: new object[] { new Guid("8a93d7ad-a30a-417f-b265-e404301d0ce1"), "Phúc Diễn, Bắc Từ Liêm, Hà Nội", "nhatvu@gmail.com", "Nguyễn Lê Nhất Vũ", "2004-01-01", "User19112004", 1, "0865805582", 0, "shykeuser" });
+                columns: new[] { "ID", "DiaChi", "Email", "Name", "NgaySinh", "Password", "SDT", "State", "UserName" },
+                values: new object[] { new Guid("43f19c8c-e49c-4fe4-adf6-83e04d53802b"), "Phúc Diễn, Bắc Từ Liêm, Hà Nội", "nhatvu@gmail.com", "Nguyễn Lê Nhất Vũ", "2004-01-01", "Admin19112004", "0865805582", 0, "shyke" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_DanhMucChiTiets_idSanPham",
@@ -269,6 +270,11 @@ namespace DataBase.Migrations
                 name: "IX_HoaDonChiTiets_IDSanPham",
                 table: "HoaDonChiTiets",
                 column: "IDSanPham");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_HoaDonChiTiets_IDSHoaDon",
+                table: "HoaDonChiTiets",
+                column: "IDSHoaDon");
 
             migrationBuilder.CreateIndex(
                 name: "IX_HoaDons_UserID",

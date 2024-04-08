@@ -9,8 +9,8 @@ namespace DataBase.Configuations
         public void Configure(EntityTypeBuilder<HoaDonChiTiet> builder)
         {
             builder.ToTable("HoaDonChiTiets");
-            builder.HasKey(x => new { x.ID, x.IDSanPham });
-            builder.HasOne<HoaDon>().WithMany(p => p.HoaDonChiTiets).HasForeignKey(p => p.ID)
+            builder.HasKey(x => x.ID);
+            builder.HasOne<HoaDon>().WithMany(p => p.HoaDonChiTiets).HasForeignKey(p => p.IDSHoaDon)
                 .HasConstraintName("FK_HDCT");
         }
     }

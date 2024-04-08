@@ -12,6 +12,7 @@ using System.Data;
 using QuanLyBanHang.Models;
 using System.Diagnostics;
 using System.Text.Json;
+using System.Text.RegularExpressions;
 namespace QuanLyBanHang.Controllers
 {
     public class UsersController : BaseController
@@ -77,6 +78,10 @@ namespace QuanLyBanHang.Controllers
             {
                 return Json("Vui lòng nhập số điện thoại");
             }
+            //Regex numberphone
+            if (!Regex.IsMatch(user.SDT, @"^\d{10}$")) {
+                return Json("Số điện thoại không hợp lệ");
+            }
             if (user.UserName == "" || user.UserName == null)
             {
                 return Json("Vui lòng nhập username");
@@ -85,6 +90,13 @@ namespace QuanLyBanHang.Controllers
             {
                 return Json("Vui lòng nhập password");
             }
+            //regex password
+            if (!Regex.IsMatch(user.Password, @"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d$@$!%*?&]{6,}$")) {
+                return Json("Password phải chứa cả ký tự hoa, ký tự và số");
+            }
+            if (user.Password.Length < 6) {
+                return Json("Password phải nhiều hơn 6 ký tự");
+            }
             if (user.DiaChi == "" || user.DiaChi == null)
             {
                 return Json("Vui lòng nhập địa chỉ");
@@ -92,6 +104,13 @@ namespace QuanLyBanHang.Controllers
             if (user.Email == "" || user.Email == null)
             {
                 return Json("Vui lòng nhập email");
+            }
+            if (!Regex.IsMatch(user.Email, @"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$")) {
+                return Json("Email không hợp lệ");
+            }
+            if (user.NgaySinh == null)
+            {
+                return Json("Vui này nhận ngày sinh");
             }
             if (CalculateAge(Convert.ToDateTime(user.NgaySinh)) < 7 || CalculateAge(Convert.ToDateTime(user.NgaySinh)) > 100)
             {
@@ -130,6 +149,10 @@ namespace QuanLyBanHang.Controllers
             {
                 return Json("Vui lòng nhập số điện thoại");
             }
+            //Regex numberphone
+            if (!Regex.IsMatch(user.SDT, @"^\d{10}$")) {
+                return Json("Số điện thoại không hợp lệ");
+            }
             if (user.UserName == "" || user.UserName == null)
             {
                 return Json("Vui lòng nhập username");
@@ -138,6 +161,13 @@ namespace QuanLyBanHang.Controllers
             {
                 return Json("Vui lòng nhập password");
             }
+            //regex password
+            if (!Regex.IsMatch(user.Password, @"^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[A-Za-z\d$@$!%*?&]{6,}$")) {
+                return Json("Password phải chứa cả ký tự hoa, ký tự và số");
+            }
+            if (user.Password.Length < 6) {
+                return Json("Password phải nhiều hơn 6 ký tự");
+            }
             if (user.DiaChi == "" || user.DiaChi == null)
             {
                 return Json("Vui lòng nhập địa chỉ");
@@ -145,6 +175,13 @@ namespace QuanLyBanHang.Controllers
             if (user.Email == "" || user.Email == null)
             {
                 return Json("Vui lòng nhập email");
+            }
+            if (!Regex.IsMatch(user.Email, @"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$")) {
+                return Json("Email không hợp lệ");
+            }
+            if (user.NgaySinh == null)
+            {
+                return Json("Vui này nhận ngày sinh");
             }
             if (CalculateAge(Convert.ToDateTime(user.NgaySinh)) < 7 || CalculateAge(Convert.ToDateTime(user.NgaySinh)) > 100)
             {

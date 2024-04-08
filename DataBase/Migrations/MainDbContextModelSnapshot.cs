@@ -142,13 +142,17 @@ namespace DataBase.Migrations
             modelBuilder.Entity("DataBase.Entities.HoaDonChiTiet", b =>
                 {
                     b.Property<Guid>("ID")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid>("IDSanPham")
+                        .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<int>("GiaSanPham")
                         .HasColumnType("int");
+
+                    b.Property<Guid>("IDSHoaDon")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("IDSanPham")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<int>("SoLuong")
                         .HasColumnType("int");
@@ -156,7 +160,9 @@ namespace DataBase.Migrations
                     b.Property<string>("ThuocTinh")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("ID", "IDSanPham");
+                    b.HasKey("ID");
+
+                    b.HasIndex("IDSHoaDon");
 
                     b.HasIndex("IDSanPham");
 
@@ -301,7 +307,7 @@ namespace DataBase.Migrations
                     b.HasData(
                         new
                         {
-                            ID = new Guid("3eacf13e-f100-493e-9e90-17b1d194f305"),
+                            ID = new Guid("43f19c8c-e49c-4fe4-adf6-83e04d53802b"),
                             DiaChi = "Phúc Diễn, Bắc Từ Liêm, Hà Nội",
                             Email = "nhatvu@gmail.com",
                             Name = "Nguyễn Lê Nhất Vũ",
@@ -314,7 +320,7 @@ namespace DataBase.Migrations
                         },
                         new
                         {
-                            ID = new Guid("8a93d7ad-a30a-417f-b265-e404301d0ce1"),
+                            ID = new Guid("0fc8e4f7-93fb-44be-8a39-a561d47ac6c9"),
                             DiaChi = "Phúc Diễn, Bắc Từ Liêm, Hà Nội",
                             Email = "nhatvu@gmail.com",
                             Name = "Nguyễn Lê Nhất Vũ",
@@ -389,7 +395,7 @@ namespace DataBase.Migrations
                 {
                     b.HasOne("DataBase.Entities.HoaDon", null)
                         .WithMany("HoaDonChiTiets")
-                        .HasForeignKey("ID")
+                        .HasForeignKey("IDSHoaDon")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired()
                         .HasConstraintName("FK_HDCT");
