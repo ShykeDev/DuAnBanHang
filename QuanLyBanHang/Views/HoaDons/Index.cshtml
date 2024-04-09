@@ -1,54 +1,250 @@
-﻿@model IEnumerable<DataBase.Entities.HoaDon>
-
-@{
-    ViewData["Title"] = "Index";
-    Layout = "~/Views/Shared/_LayoutUser.cshtml";
+﻿@{
+    ViewData["Title"] = "Quản lý hóa đơn";
+    Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
 
-<h1>Index</h1>
+<script src="~/JsController/HoaDon.js"></script>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.NgayMua)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.SDT)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.DiaChi)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.TrangThaiDonHang)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.NgayMua)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.SDT)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.DiaChi)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.TrangThaiDonHang)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.ID">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.ID">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>
-            </td>
-        </tr>
-}
-    </tbody>
-</table>
+<div class="card-header justify-content-between align-items-center d-flex">
+    <h6 class="card-title m-0">Quản lý Hóa đơn</h6>
+</div>
+<div class="card-body" ng-controller="HoaDonCtrl">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <div class="bg-light rounded px-3 py-1 flex-shrink-0 d-flex align-items-center">
+            <input class="form-control border-0 bg-transparent px-0 py-2 fw-bolder" placeholder="Search"
+                aria-label="Search" id="searchText" ng-model="searchText">
+        </div>
+    </div>
+    <ul class="col-12 nav nav-tabs nav- mb-3" id="pills-tab" role="tablist">
+        <li class="nav-item" role="presentation">
+            <button class="nav-link active" id="pills-giohang-tab" ng-click="ChangeState(-1)" data-bs-toggle="pill"
+                data-bs-target="#pills-giohang" type="button" role="tab" aria-controls="pills-giohang"
+                aria-selected="true">Tất cả</button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" id="pills-choxacnhan-tab" ng-click="ChangeState(0)" data-bs-toggle="pill"
+                data-bs-target="#pills-choxacnhan" type="button" role="tab" aria-controls="pills-choxacnhan"
+                aria-selected="false">Chờ xác nhận</button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" id="pills-dangvanchuyen-tab" ng-click="ChangeState(1)" data-bs-toggle="pill"
+                data-bs-target="#pills-dangvanchuyen" type="button" role="tab" aria-controls="pills-dangvanchuyen"
+                aria-selected="false">Đang vận chuyển</button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" id="pills-damua-tab" ng-click="ChangeState(2)" data-bs-toggle="pill"
+                data-bs-target="#pills-damua" type="button" role="tab" aria-controls="pills-damua"
+                aria-selected="false">Giao hàng thành công</button>
+        </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" id="pills-dahuy-tab" ng-click="ChangeState(3)" data-bs-toggle="pill"
+                data-bs-target="#pills-dahuy" type="button" role="tab" aria-controls="pills-dahuy"
+                aria-selected="false">Đã hủy</button>
+        </li>
+    </ul>
+
+
+
+    <div class="table-responsive">
+        <table class="table m-0 text-center table-bordered">
+            <thead>
+                <tr>
+                    <th>
+                        <a href="#" ng-click="sortType = 'ngayMua'; sortReverse = !sortReverse">
+                            Ngày mua
+                            <span ng-show="sortType == 'ngayMua' && !sortReverse" class="fa fa-caret-down"></span>
+                            <span ng-show="sortType == 'ngayMua' && sortReverse" class="fa fa-caret-up"></span>
+                        </a>
+                    </th>
+                    <th>
+                        <a href="#" ng-click="sortType = 'nameUser'; sortReverse = !sortReverse">
+                            Họ Tên
+                            <span ng-show="sortType == 'nameUser' && !sortReverse" class="fa fa-caret-down"></span>
+                            <span ng-show="sortType == 'nameUser' && sortReverse" class="fa fa-caret-up"></span>
+                        </a>
+                    </th>
+                    <th>
+                        <a href="#" ng-click="sortType = 'sdt'; sortReverse = !sortReverse">
+                            Số điện thoại
+                            <span ng-show="sortType == 'sdt' && !sortReverse" class="fa fa-caret-down"></span>
+                            <span ng-show="sortType == 'sdt' && sortReverse" class="fa fa-caret-up"></span>
+                        </a>
+                    </th>
+                    <th>
+                        <a href="#" ng-click="sortType = 'TongTien'; sortReverse = !sortReverse">
+                            Tổng tiền
+                            <span ng-show="sortType == 'TongTien' && !sortReverse" class="fa fa-caret-down"></span>
+                            <span ng-show="sortType == 'TongTien' && sortReverse" class="fa fa-caret-up"></span>
+                        </a>
+                    </th>
+                    <th>
+                        <a href="#" ng-click="sortType = 'trangThaiDonHang'; sortReverse = !sortReverse">
+                            Trạng thái
+                            <span ng-show="sortType == 'trangThaiDonHang' && !sortReverse"
+                                class="fa fa-caret-down"></span>
+                            <span ng-show="sortType == 'trangThaiDonHang' && sortReverse" class="fa fa-caret-up"></span>
+                        </a>
+                    </th>
+                    <th class="text-primary"> Action </th>
+                </tr>
+            </thead>
+            <tbody ng-repeat="item in ListHoaDon | orderBy:sortType:sortReverse">
+                <tr ng-if="item.trangThaiDonHang == filter || filter == -1">
+                    <td>{{formatDate(item.ngayMua)}}</td>
+                    <td>{{item.nameUser}}</td>
+                    <td>{{item.sdt}}</td>
+                    <td>
+                        {{item.TongTien}}
+                    </td>
+                    <td>
+                        {{TrangThai[item.trangThaiDonHang].state}}
+                    </td>
+                    <td>
+                        <button class="btn btn-primary btn-sm ps-3 pe-3 me-2" data-target="#MainModal"
+                            ng-click="ChiTiet(item.id)">
+                            Chi tiết
+                        </button>
+                        <button ng-if="item.trangThaiDonHang == 0"
+                            class="btn btn-success text-white btn-sm ps-3 pe-3 me-2" ng-click="Update(item.id, 1)">
+                            Giao Hàng
+                        </button>
+                        <button ng-if="item.trangThaiDonHang == 1"
+                            class="btn btn-success text-white btn-sm ps-3 pe-3 me-2" ng-click="Update(item.id, 2)">
+                            Hoàn thành
+                        </button>
+                        <button ng-if="item.trangThaiDonHang != 2 && item.trangThaiDonHang != 3"
+                            class="btn btn-danger text-white btn-sm ps-3 pe-3 me-2" ng-click="Update(item.id, 3)">
+                            Hủy đơn
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="modal fade" id="MainModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+            aria-labelledby="MainModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-xl">
+                <div class="modal-content rounded">
+                    <div class="modal-header">
+                        <h3 class="modal-title w-100 text-center" id="MainModalLabel">Chi tiết hóa đơn</h3>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Đóng"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row g-md-6">
+                            <!-- Checkout Panel Left -->
+                            <div class="col-12 col-lg-6 col-xl-7">
+                                <!-- Checkout Panel Contact -->
+                                <div class="checkout-panel">
+                                    <h5 class="title-checkout">Thông tin nhận hàng</h5>
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label for="Name" class="form-label">Họ và tên</label>
+                                                <input type="text" class="form-control" id="nameUser"
+                                                    ng-model="info.nameUser" disabled>
+                                            </div>
+                                        </div>
+
+                                        <!-- Last Name-->
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label for="Tel" class="form-label">Số điện thoại</label>
+                                                <input type="tel" class="form-control" id="Tel" maxlength="10"
+                                                    pattern="0[0-9]{9}" ng-model="info.sdt" disabled>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-12">
+                                            <div class="form-group">
+                                                <label for="email" class="form-label">Email</label>
+                                                <input type="email" class="form-control" id="email"
+                                                    ng-model="info.email" placeholder="you@example.com" disabled>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label for="state" class="form-label">Địa chỉ chi tiết</label>
+                                                <input type="text" class="form-control" id="address" placeholder=""
+                                                    ng-model="info.diaChi" disabled>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label for="state" class="form-label">Chú thích</label>
+                                                <input type="text" class="form-control" id="address" placeholder=""
+                                                    ng-model="chuthich" disabled>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-12 col-lg-6 col-xl-5">
+                                <div class="p-4 sticky-md-top top-5">
+                                    <div class="border-bottom pb-3">
+                                        <!-- Cart Item-->
+                                        <div class="d-none d-md-flex justify-content-between align-items-start py-2"
+                                            ng-repeat="item in info.hoaDonChiTiets">
+                                            <div class="d-flex flex-grow-1 justify-content-start align-items-start">
+                                                <div class="position-relative f-w-20 border p-2 me-4">
+                                                    <img src="{{GetSanPham(item.idSanPham).anhs.img}}" alt=""
+                                                        class="rounded img-fluid">
+                                                </div>
+                                                <div>
+                                                    <p class="mb-1 fs-6 fw-bolder">{{GetSanPham(item.idSanPham).name}}
+                                                    </p>
+                                                    <span
+                                                        class="fs-xs text-uppercase fw-bolder text-muted">{{item.thuocTinh}}</span>
+                                                    <br>
+                                                    <span class="fs-xs  fw-bolder text-muted">Số lượng:
+                                                        {{item.soLuong}}</span>
+                                                </div>
+                                            </div>
+                                            <div class="flex-shrink-0 fw-bolder">
+                                                <span>{{(item.giaSanPham *
+                                                    item.soLuong).toLocaleString('vi-VN', {style : 'currency', currency
+                                                    :
+                                                    'VND'})}}</span>
+                                            </div>
+                                        </div>
+                                        <!-- / Cart Item-->
+                                    </div>
+                                    <div class="py-3 border-bottom">
+                                        <div class="d-flex justify-content-between align-items-center mb-2">
+                                            <p class="m-0 fw-bolder fs-6">Giá trị đơn hàng</p>
+                                            <p class="m-0 fs-6 fw-bolder">{{info.TongTien}}</p>
+                                        </div>
+                                        <div class="d-flex justify-content-between align-items-center ">
+                                            <p class="m-0 fw-bolder fs-6">Tiền ship</p>
+                                            <p class="m-0 fs-6 fw-bolder">0 đ</p>
+                                        </div>
+                                    </div>
+                                    <div class="py-3 border-bottom">
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <div>
+                                                <p class="m-0 fw-bolder fs-6">Tổng</p>
+                                            </div>
+                                            <p class="m-0 fs-5 fw-bold fs-6">{{info.TongTien}}</p>
+                                        </div>
+                                    </div>
+                                    <div class="py-3 border-bottom">
+                                        <div class="d-flex justify-content-between align-items-center">
+                                            <div>
+                                                <p class="m-0 fw-bolder fs-6">Trạng thái</p>
+                                            </div>
+                                            <p class="m-0 fs-5 fw-bold fs-6">{{TrangThai[info.trangThaiDonHang].state}}
+                                            </p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- /Checkout Panel Summary -->
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

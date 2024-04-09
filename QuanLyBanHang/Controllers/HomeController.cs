@@ -84,6 +84,38 @@ namespace QuanLyBanHang.Controllers
                 HttpContext.Response.Cookies.Append("UserName", User.UserName);
                 HttpContext.Response.Cookies.Append("Password", User.Password);
                 HttpContext.Response.Cookies.Append("Role", User.Role.ToString());
+                string giohangCookie = HttpContext.Request.Cookies["GioHang"];
+                try
+                {
+                    if (giohangCookie != null)
+                    {
+                        HttpContext.Response.Cookies.Delete("GioHang");
+                        List<GioHangChiTiet> ListTmp = JsonSerializer.Deserialize<List<GioHangChiTiet>>(giohangCookie);
+                        foreach (var item in ListTmp)
+                        {
+                            var giohangTmp = _context.GioHangChiTiets.FirstOrDefault(gh => gh.UserID == User.ID && gh.IDSanPham == item.IDSanPham && gh.ThuocTinh == item.ThuocTinh);
+                            if (giohangTmp == null)
+                            {
+                                Console.WriteLine("Thêm");
+                                _context.GioHangChiTiets.Add(new GioHangChiTiet(Guid.NewGuid(), item.IDSanPham, User.ID, item.SoLuong, item.ThuocTinh));
+                            }
+                            else
+                            {
+                                Console.WriteLine("Update");
+                                giohangTmp.SoLuong += item.SoLuong;
+                                _context.Update(giohangTmp);
+                            }
+                        }
+                        await _context.SaveChangesAsync();
+                    }
+
+                }
+                catch (System.Exception)
+                {
+
+                    throw;
+                }
+
                 Notify("Xin chào " + User.Name, typeNotify.alert, NotificationState.success, "Đăng nhập thành công");
                 return Json(true);
             }
@@ -192,28 +224,35 @@ namespace QuanLyBanHang.Controllers
         }
 
         [HttpGet]
-        public async Task<JsonResult> GetSanPhamGioHang(Guid id)
+        public async Task<JsonResult> GetSanPhamGioHang(Guid? id)
         {
             MainDbContext _context = new MainDbContext();
             try
             {
-                if (id != null && id.ToString() != "")
+                List<GioHangChiTiet?> gioHangList;
+                if (id == null)
                 {
-                    var tmp = _context.GioHangChiTiets.Include(sp => sp.sanPham).Where(gh => gh.UserID == id).ToList();
-                    for (int i = 0; i < tmp.Count; i++)
-                    {
-                        tmp[i].sanPham.anhs = _context.ItemImages.FirstOrDefault(sp => sp.ID == tmp[i].IDSanPham);
-                    }
-                    return Json(tmp);
+                    gioHangList = JsonSerializer.Deserialize<List<GioHangChiTiet>>(HttpContext.Request.Cookies["GioHang"]);
+                    var listSanPham = _context.SanPhams.Include(sp => sp.anhs);
+                    return Json(new { success = true, gioHang = gioHangList, sanPham = listSanPham });
                 }
+                else
+                {
+                    gioHangList = _context.GioHangChiTiets.Include(sp => sp.sanPham).Where(gh => gh.UserID == id).ToList();
+                    var listHoaDons = _context.HoaDons.Include(sp => sp.HoaDonChiTiets).Where(gh => gh.UserID == id);
+                    var listSanPham = _context.SanPhams.Include(sp => sp.anhs);
+                    return Json(new { success = true, gioHang = gioHangList, hoaDon = listHoaDons, sanPham = listSanPham });
+                }
+                return Json(false);
+
             }
             catch (Exception)
             {
                 return Json(false);
             }
-
-            return Json(false);
         }
+
+
 
         [HttpGet]
         public async Task<JsonResult> RemoveSanPhamGioHang(string id)
@@ -240,45 +279,110 @@ namespace QuanLyBanHang.Controllers
             {
                 if (!await _context.Users.AnyAsync(u => u.ID == userID))
                 {
-                    //Chưa đăng nhập
-                    return Json(false);
-                }
-                var giohangTmp = _context.GioHangChiTiets.FirstOrDefault(gh => gh.UserID == userID && gh.IDSanPham == sanPhamID && gh.ThuocTinh == thuocTinh);
-                if (giohangTmp == null)
-                {
-                    Console.WriteLine("Thêm");
-                    _context.GioHangChiTiets.Add(new GioHangChiTiet(Guid.NewGuid(), sanPhamID, userID, soLuong, thuocTinh));
-                    await _context.SaveChangesAsync();
+                    string giohangCookie = HttpContext.Request.Cookies["GioHang"];
+                    if (giohangCookie == null)
+                    {
+                        List<GioHangChiTiet> giohangTmp = new List<GioHangChiTiet>();
+                        giohangTmp.Add(new GioHangChiTiet(Guid.NewGuid(), sanPhamID, null, soLuong, thuocTinh));
+                        HttpContext.Response.Cookies.Append("GioHang", JsonSerializer.Serialize(giohangTmp));
+                    }
+                    else
+                    {
+                        HttpContext.Response.Cookies.Delete("GioHang");
+                        List<GioHangChiTiet> giohangTmp = JsonSerializer.Deserialize<List<GioHangChiTiet>>(giohangCookie);
+                        if (giohangTmp.Any(sp => sp.IDSanPham == sanPhamID && sp.ThuocTinh == thuocTinh))
+                        {
+                            var item = giohangTmp.First(sp => sp.IDSanPham == sanPhamID && sp.ThuocTinh == thuocTinh);
+                            item.SoLuong += soLuong;
+                            HttpContext.Response.Cookies.Append("GioHang", JsonSerializer.Serialize(giohangTmp));
+                            return Json(true);
+                        }
+                        else
+                        {
+                            giohangTmp.Add(new GioHangChiTiet(Guid.NewGuid(), sanPhamID, null, soLuong, thuocTinh));
+                            HttpContext.Response.Cookies.Append("GioHang", JsonSerializer.Serialize(giohangTmp));
+                        }
+
+                    }
                     return Json(true);
                 }
                 else
                 {
-                    Console.WriteLine("Update");
-                    giohangTmp.SoLuong += soLuong;
-                    _context.Update(giohangTmp);
-                    await _context.SaveChangesAsync();
-                    return Json(true);
+                    var giohangTmp = _context.GioHangChiTiets.FirstOrDefault(gh => gh.UserID == userID && gh.IDSanPham == sanPhamID && gh.ThuocTinh == thuocTinh);
+                    if (giohangTmp == null)
+                    {
+                        Console.WriteLine("Thêm");
+                        _context.GioHangChiTiets.Add(new GioHangChiTiet(Guid.NewGuid(), sanPhamID, userID, soLuong, thuocTinh));
+                        await _context.SaveChangesAsync();
+                        return Json(true);
+                    }
+                    else
+                    {
+                        Console.WriteLine("Update");
+                        giohangTmp.SoLuong += soLuong;
+                        _context.Update(giohangTmp);
+                        await _context.SaveChangesAsync();
+                        return Json(true);
+                    }
                 }
             }
             catch (Exception e)
             {
-                Console.WriteLine(e.ToString());
+                Console.WriteLine(e.ToString());   
                 return Json("Đã xảy ra lỗi");
             }
-
         }
 
         [HttpPost]
-        public void ThemHoaDon(HoaDon hoaDon, List<HoaDonChiTiet> hoaDonChiTiets)
+        public async Task<IActionResult> ThemHoaDon(HoaDon hoaDon, List<HoaDonChiTiet> hoaDonChiTiets)
         {
-            MainDbContext _context = new MainDbContext();
-            hoaDon.ID = Guid.NewGuid();
-            _context.HoaDons.Add(hoaDon);
-            foreach (var item in hoaDonChiTiets)
+            try
             {
-                _context.HoaDonChiTiets.Add(new HoaDonChiTiet(Guid.NewGuid(), hoaDon.ID, item.IDSanPham, item.GiaSanPham, item.SoLuong, item.ThuocTinh));
+                Console.WriteLine(JsonSerializer.Serialize(hoaDon));
+                MainDbContext _context = new MainDbContext();
+                if (hoaDon.UserID != null)
+                {
+                    foreach (var item in hoaDonChiTiets)
+                    {
+                        _context.GioHangChiTiets.Remove(_context.GioHangChiTiets.First(gh => gh.ID == item.ID));
+                    }
+                }
+                else
+                {
+                    string giohangCookie = HttpContext.Request.Cookies["GioHang"];
+                    HttpContext.Response.Cookies.Delete("GioHang");
+                    List<GioHangChiTiet> giohangTmp = JsonSerializer.Deserialize<List<GioHangChiTiet>>(giohangCookie);
+                    foreach (var item in hoaDonChiTiets)
+                    {
+                        giohangTmp.Remove(giohangTmp.First(gh => gh.ID == item.ID));
+                    }
+                    HttpContext.Response.Cookies.Append("GioHang", JsonSerializer.Serialize(giohangTmp));
+                }
+                hoaDon.ID = Guid.NewGuid();
+                _context.HoaDons.Add(hoaDon);
+                foreach (var item in hoaDonChiTiets)
+                {
+                    var sanPham = _context.SanPhams.First(sp => sp.ID == item.IDSanPham);
+                    if (item.SoLuong > 20)
+                    {
+                        return Json(new { success = false, message = "Số lượng sản phẩm " + sanPham.Name + " quá giới hạn" });
+                    }
+                    if (sanPham.SoLuong < item.SoLuong)
+                    {
+                        return Json(new { success = false, message = "Số lượng sản phẩm " + sanPham.Name + " không đủ" });
+                    }
+                    sanPham.SoLuong -= item.SoLuong;
+                    _context.SanPhams.Update(sanPham);
+                    _context.HoaDonChiTiets.Add(new HoaDonChiTiet(Guid.NewGuid(), item.IDSanPham, hoaDon.ID, item.sanPham.GiaGiamGia, item.SoLuong, item.ThuocTinh));
+                }
+                _context.SaveChanges();
+                return Json(new { success = true, message = "Đã xác nhận đơn hàng thành công" });
             }
-            _context.SaveChanges();
+            catch (Exception e)
+            {
+                Console.WriteLine(e.Message);
+                return Json(new { success = false, message = "Xác nhận đơn hàng thất bại" });
+            }
         }
 
         private bool UserExists(string userName)

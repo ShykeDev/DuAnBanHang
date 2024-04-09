@@ -207,7 +207,7 @@ namespace QuanLyBanHang.Controllers
             {
                 return Json(await _context.SanPhams
                                             .Include(p => p.thuocTinhs)
-                                            .Include(p => p.anhs).ToListAsync());
+                                            .Include(p => p.anhs).Where(sp => sp.TrangThai == 2 && sp.SoLuong > 0).ToListAsync());
             }
             catch (Exception)
             {
@@ -215,6 +215,20 @@ namespace QuanLyBanHang.Controllers
             }
         }
 
-
+        [HttpGet]
+        public async Task<JsonResult> ListSanPham2()
+        {
+            MainDbContext _context = new MainDbContext();
+            try
+            {
+                return Json(await _context.SanPhams
+                                            .Include(p => p.thuocTinhs)
+                                            .Include(p => p.anhs).ToListAsync());
+            }
+            catch (Exception)
+            {
+                return Json(null);
+            }
+        }
     }
 }

@@ -4,7 +4,7 @@
     Layout = "~/Views/Shared/_LayoutUser.cshtml";
 }
 
-<script src="~/JsController/GioHang.js"></script>
+<script src="~/JsController/GioHangCtrl.js"></script>
 
 <div class="row g-2 p-2" ng-controller="GioHangCtrl">
     <ul class="col-12 nav nav-tabs nav- mb-3" id="pills-tab" role="tablist">
@@ -29,6 +29,11 @@
             <button class="nav-link" id="pills-damua-tab" data-bs-toggle="pill" data-bs-target="#pills-damua"
                 type="button" role="tab" aria-controls="pills-damua" aria-selected="false">Đã mua</button>
         </li>
+        <li class="nav-item" role="presentation">
+            <button class="nav-link" id="pills-dahuy-tab" ng-click="ChangeState(3)" data-bs-toggle="pill"
+                data-bs-target="#pills-dahuy" type="button" role="tab" aria-controls="pills-dahuy"
+                aria-selected="false">Đã hủy</button>
+        </li>
     </ul>
     <div class="tab-content col-12" id="pills-tabContent">
         <div class="tab-pane fade show active row g-2" id="pills-giohang" role="tabpanel"
@@ -50,20 +55,20 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <tr ng-repeat="item in ListSanPham">
+                                <tr ng-if="ListGioHang.length > 0" ng-repeat="item in ListGioHang">
                                     <td class="d-none d-sm-table-cell">
                                         <input class="form-check-input" type="checkbox" ng-model="item.checked"
                                             ng-click="ChangeCheckbox()">
                                     </td>
                                     <td class="d-none d-sm-table-cell">
                                         <picture class="d-block bg-light p-3 f-w-20 border rounded">
-                                            <img class="img-fluid" src="{{item.sanPham.anhs.img}}">
+                                            <img class="img-fluid" src="{{GetSanPhamInfo(item.idSanPham).anhs.img}}">
                                         </picture>
                                     </td>
                                     <td>
                                         <div>
                                             <h6 class="mb-2 fw-bolder">
-                                                {{item.sanPham.name}}
+                                                {{GetSanPhamInfo(item.idSanPham).name}}
                                             </h6>
                                             <small class="d-block text-muted">{{item.thuocTinh}}</small>
                                         </div>
@@ -77,13 +82,13 @@
                                     <td>
                                         <div>
                                             <span
-                                                class="small text-muted mt-1">{{item.sanPham.giaGiamGia.toLocaleString('vi-VN',
+                                                class="small text-muted mt-1">{{GetSanPhamInfo(item.idSanPham).giaGiamGia.toLocaleString('vi-VN',
                                                 {style : 'currency', currency : 'VND'})}}</span>
                                         </div>
                                     </td>
                                     <td>
                                         <div>
-                                            <span class="small text-muted mt-1">{{(item.sanPham.giaGiamGia *
+                                            <span class="small text-muted mt-1">{{(GetSanPhamInfo(item.idSanPham).giaGiamGia *
                                                 item.soLuong).toLocaleString('vi-VN', {style : 'currency', currency :
                                                 'VND'})}}
                                             </span>
@@ -95,6 +100,9 @@
                                                     class="fa-solid fa-trash"></i></button>
                                         </div>
                                     </td>
+                                </tr>
+                                <tr ng-if="ListGioHang.length == 0">
+                                    <td colspan="7" class="text-center">Không có sản phẩm nào trong giỏ hàng</td>
                                 </tr>
                             </tbody>
                         </table>
@@ -116,22 +124,23 @@
                                 <p class="m-0 fs-6 fw-bolder">- 0 đ</p>
                             </div>
                             <!-- Coupon Code-->
-                            <button class="btn btn-link p-0 mt-2 text-primary fw-bolder text-decoration-none"
-                                type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample"
-                                aria-expanded="false" aria-controls="collapseExample">
-                                Have a coupon code?
+                            @* <button class="btn btn-link p-0 mt-2 text-primary fw-bolder text-decoration-none"
+                            type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample"
+                            aria-expanded="false" aria-controls="collapseExample">
+                            Have a coupon code?
                             </button>
                             <div class="collapse" id="collapseExample">
-                                <div class="card card-body bg-transparent p-0">
-                                    <div class="input-group mb-0 mt-2">
-                                        <input type="text" class="form-control border-0"
-                                            placeholder="Enter coupon code">
-                                        <button
-                                            class="btn btn-white text-dark px-3 btn-sm border-0 d-flex justify-content-center align-items-center"><i
-                                                class="ri-checkbox-circle-line ri-lg"></i></button>
-                                    </div>
-                                </div>
+                            <div class="card card-body bg-transparent p-0">
+                            <div class="input-group mb-0 mt-2">
+                            <input type="text" class="form-control border-0"
+                            placeholder="Enter coupon code">
+                            <button
+                            class="btn btn-white text-dark px-3 btn-sm border-0 d-flex justify-content-center
+                            align-items-center"><i
+                            class="ri-checkbox-circle-line ri-lg"></i></button>
                             </div>
+                            </div>
+                            </div> *@
                         </div>
                         <div class="py-3 border-bottom-white-opacity">
                             <div class="d-flex justify-content-between align-items-center flex-column flex-sm-row">
@@ -151,11 +160,312 @@
             </div>
 
         </div>
-        <div class="tab-pane fade" id="pills-choxacnhan" role="tabpanel" aria-labelledby="pills-choxacnhan-tab">...
+        <div class="tab-pane fade" id="pills-choxacnhan" role="tabpanel" aria-labelledby="pills-choxacnhan-tab">
+            <div class="table-responsive">
+                <table class="table m-0 text-center table-bordered">
+                    <thead>
+                        <tr>
+                            <th>
+                                <a href="#" ng-click="sortType = 'ngayMua'; sortReverse = !sortReverse">
+                                    Ngày mua
+                                    <span ng-show="sortType == 'ngayMua' && !sortReverse"
+                                        class="fa fa-caret-down"></span>
+                                    <span ng-show="sortType == 'ngayMua' && sortReverse" class="fa fa-caret-up"></span>
+                                </a>
+                            </th>
+                            <th>
+                                <a href="#" ng-click="sortType = 'nameUser'; sortReverse = !sortReverse">
+                                    Họ Tên
+                                    <span ng-show="sortType == 'nameUser' && !sortReverse"
+                                        class="fa fa-caret-down"></span>
+                                    <span ng-show="sortType == 'nameUser' && sortReverse" class="fa fa-caret-up"></span>
+                                </a>
+                            </th>
+                            <th>
+                                <a href="#" ng-click="sortType = 'sdt'; sortReverse = !sortReverse">
+                                    Số điện thoại
+                                    <span ng-show="sortType == 'sdt' && !sortReverse" class="fa fa-caret-down"></span>
+                                    <span ng-show="sortType == 'sdt' && sortReverse" class="fa fa-caret-up"></span>
+                                </a>
+                            </th>
+                            <th>
+                                <a href="#" ng-click="sortType = 'TongTien'; sortReverse = !sortReverse">
+                                    Tổng tiền
+                                    <span ng-show="sortType == 'TongTien' && !sortReverse"
+                                        class="fa fa-caret-down"></span>
+                                    <span ng-show="sortType == 'TongTien' && sortReverse" class="fa fa-caret-up"></span>
+                                </a>
+                            </th>
+                            <th>
+                                <a href="#" ng-click="sortType = 'trangThaiDonHang'; sortReverse = !sortReverse">
+                                    Trạng thái
+                                    <span ng-show="sortType == 'trangThaiDonHang' && !sortReverse"
+                                        class="fa fa-caret-down"></span>
+                                    <span ng-show="sortType == 'trangThaiDonHang' && sortReverse"
+                                        class="fa fa-caret-up"></span>
+                                </a>
+                            </th>
+                            <th class="text-primary"> Action </th>
+                        </tr>
+                    </thead>
+                    <tbody ng-repeat="item in ListHoaDon | orderBy:sortType:sortReverse">
+                        <tr ng-if="item.trangThaiDonHang == 0">
+                            <td>{{formatDate(item.ngayMua)}}</td>
+                            <td>{{item.nameUser}}</td>
+                            <td>{{item.sdt}}</td>
+                            <td>
+                                {{item.TongTien}}
+                            </td>
+                            <td>
+                                {{TrangThai[item.trangThaiDonHang].state}}
+                            </td>
+                            <td>
+                                <button class="btn btn-primary btn-sm ps-3 pe-3 me-2" data-target="#MainModal"
+                                    ng-click="ChiTiet(item.id)">
+                                    Chi tiết
+                                </button>
+                                <button ng-if="item.trangThaiDonHang != 2 && item.trangThaiDonHang != 3"
+                                    class="btn btn-danger text-white btn-sm ps-3 pe-3 me-2"
+                                    ng-click="HuyDon(item.id)">
+                                    Hủy đơn
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                    <tbody>
+                        <tr ng-if="GetSoLuongHoaDon(0)">
+                            <td colspan="6" class="text-center">Không có đơn hàng nào</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
         <div class="tab-pane fade" id="pills-dangvanchuyen" role="tabpanel" aria-labelledby="pills-dangvanchuyen-tab">
-            ...</div>
-        <div class="tab-pane fade" id="pills-damua" role="tabpanel" aria-labelledby="pills-damua-tab">...</div>
+            <div class="table-responsive">
+                <table class="table m-0 text-center table-bordered">
+                    <thead>
+                        <tr>
+                            <th>
+                                <a href="#" ng-click="sortType = 'ngayMua'; sortReverse = !sortReverse">
+                                    Ngày mua
+                                    <span ng-show="sortType == 'ngayMua' && !sortReverse"
+                                        class="fa fa-caret-down"></span>
+                                    <span ng-show="sortType == 'ngayMua' && sortReverse" class="fa fa-caret-up"></span>
+                                </a>
+                            </th>
+                            <th>
+                                <a href="#" ng-click="sortType = 'nameUser'; sortReverse = !sortReverse">
+                                    Họ Tên
+                                    <span ng-show="sortType == 'nameUser' && !sortReverse"
+                                        class="fa fa-caret-down"></span>
+                                    <span ng-show="sortType == 'nameUser' && sortReverse" class="fa fa-caret-up"></span>
+                                </a>
+                            </th>
+                            <th>
+                                <a href="#" ng-click="sortType = 'sdt'; sortReverse = !sortReverse">
+                                    Số điện thoại
+                                    <span ng-show="sortType == 'sdt' && !sortReverse" class="fa fa-caret-down"></span>
+                                    <span ng-show="sortType == 'sdt' && sortReverse" class="fa fa-caret-up"></span>
+                                </a>
+                            </th>
+                            <th>
+                                <a href="#" ng-click="sortType = 'TongTien'; sortReverse = !sortReverse">
+                                    Tổng tiền
+                                    <span ng-show="sortType == 'TongTien' && !sortReverse"
+                                        class="fa fa-caret-down"></span>
+                                    <span ng-show="sortType == 'TongTien' && sortReverse" class="fa fa-caret-up"></span>
+                                </a>
+                            </th>
+                            <th>
+                                <a href="#" ng-click="sortType = 'trangThaiDonHang'; sortReverse = !sortReverse">
+                                    Trạng thái
+                                    <span ng-show="sortType == 'trangThaiDonHang' && !sortReverse"
+                                        class="fa fa-caret-down"></span>
+                                    <span ng-show="sortType == 'trangThaiDonHang' && sortReverse"
+                                        class="fa fa-caret-up"></span>
+                                </a>
+                            </th>
+                            <th class="text-primary"> Action </th>
+                        </tr>
+                    </thead>
+                    <tbody ng-repeat="item in ListHoaDon | orderBy:sortType:sortReverse">
+                        <tr ng-if="item.trangThaiDonHang == 1">
+                            <td>{{formatDate(item.ngayMua)}}</td>
+                            <td>{{item.nameUser}}</td>
+                            <td>{{item.sdt}}</td>
+                            <td>
+                                {{item.TongTien}}
+                            </td>
+                            <td>
+                                {{TrangThai[item.trangThaiDonHang].state}}
+                            </td>
+                            <td>
+                                <button class="btn btn-primary btn-sm ps-3 pe-3 me-2" data-target="#MainModal"
+                                    ng-click="ChiTiet(item.id)">
+                                    Chi tiết
+                                </button>
+                            </td>
+                        </tr>
+
+                    </tbody>
+                    <tbody>
+                        <tr ng-if="GetSoLuongHoaDon(1)">
+                            <td colspan="6" class="text-center">Không có đơn hàng nào</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="tab-pane fade" id="pills-damua" role="tabpanel" aria-labelledby="pills-damua-tab">
+            <div class="table-responsive">
+                <table class="table m-0 text-center table-bordered">
+                    <thead>
+                        <tr>
+                            <th>
+                                <a href="#" ng-click="sortType = 'ngayMua'; sortReverse = !sortReverse">
+                                    Ngày mua
+                                    <span ng-show="sortType == 'ngayMua' && !sortReverse"
+                                        class="fa fa-caret-down"></span>
+                                    <span ng-show="sortType == 'ngayMua' && sortReverse" class="fa fa-caret-up"></span>
+                                </a>
+                            </th>
+                            <th>
+                                <a href="#" ng-click="sortType = 'nameUser'; sortReverse = !sortReverse">
+                                    Họ Tên
+                                    <span ng-show="sortType == 'nameUser' && !sortReverse"
+                                        class="fa fa-caret-down"></span>
+                                    <span ng-show="sortType == 'nameUser' && sortReverse" class="fa fa-caret-up"></span>
+                                </a>
+                            </th>
+                            <th>
+                                <a href="#" ng-click="sortType = 'sdt'; sortReverse = !sortReverse">
+                                    Số điện thoại
+                                    <span ng-show="sortType == 'sdt' && !sortReverse" class="fa fa-caret-down"></span>
+                                    <span ng-show="sortType == 'sdt' && sortReverse" class="fa fa-caret-up"></span>
+                                </a>
+                            </th>
+                            <th>
+                                <a href="#" ng-click="sortType = 'TongTien'; sortReverse = !sortReverse">
+                                    Tổng tiền
+                                    <span ng-show="sortType == 'TongTien' && !sortReverse"
+                                        class="fa fa-caret-down"></span>
+                                    <span ng-show="sortType == 'TongTien' && sortReverse" class="fa fa-caret-up"></span>
+                                </a>
+                            </th>
+                            <th>
+                                <a href="#" ng-click="sortType = 'trangThaiDonHang'; sortReverse = !sortReverse">
+                                    Trạng thái
+                                    <span ng-show="sortType == 'trangThaiDonHang' && !sortReverse"
+                                        class="fa fa-caret-down"></span>
+                                    <span ng-show="sortType == 'trangThaiDonHang' && sortReverse"
+                                        class="fa fa-caret-up"></span>
+                                </a>
+                            </th>
+                            <th class="text-primary"> Action </th>
+                        </tr>
+                    </thead>
+                    <tbody ng-repeat="item in ListHoaDon | orderBy:sortType:sortReverse">
+                        <tr ng-if="item.trangThaiDonHang == 2">
+                            <td>{{formatDate(item.ngayMua)}}</td>
+                            <td>{{item.nameUser}}</td>
+                            <td>{{item.sdt}}</td>
+                            <td>
+                                {{item.TongTien}}
+                            </td>
+                            <td>
+                                {{TrangThai[item.trangThaiDonHang].state}}
+                            </td>
+                            <td>
+                                <button class="btn btn-primary btn-sm ps-3 pe-3 me-2" data-target="#MainModal"
+                                    ng-click="ChiTiet(item.id)">
+                                    Chi tiết
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                    <tbody>
+                        <tr ng-if="GetSoLuongHoaDon(2)">
+                            <td colspan="6" class="text-center">Không có đơn hàng nào</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="tab-pane fade" id="pills-dahuy" role="tabpanel" aria-labelledby="pills-dahuy-tab">
+            <div class="table-responsive">
+                <table class="table m-0 text-center table-bordered">
+                    <thead>
+                        <tr>
+                            <th>
+                                <a href="#" ng-click="sortType = 'ngayMua'; sortReverse = !sortReverse">
+                                    Ngày mua
+                                    <span ng-show="sortType == 'ngayMua' && !sortReverse"
+                                        class="fa fa-caret-down"></span>
+                                    <span ng-show="sortType == 'ngayMua' && sortReverse" class="fa fa-caret-up"></span>
+                                </a>
+                            </th>
+                            <th>
+                                <a href="#" ng-click="sortType = 'nameUser'; sortReverse = !sortReverse">
+                                    Họ Tên
+                                    <span ng-show="sortType == 'nameUser' && !sortReverse"
+                                        class="fa fa-caret-down"></span>
+                                    <span ng-show="sortType == 'nameUser' && sortReverse" class="fa fa-caret-up"></span>
+                                </a>
+                            </th>
+                            <th>
+                                <a href="#" ng-click="sortType = 'sdt'; sortReverse = !sortReverse">
+                                    Số điện thoại
+                                    <span ng-show="sortType == 'sdt' && !sortReverse" class="fa fa-caret-down"></span>
+                                    <span ng-show="sortType == 'sdt' && sortReverse" class="fa fa-caret-up"></span>
+                                </a>
+                            </th>
+                            <th>
+                                <a href="#" ng-click="sortType = 'TongTien'; sortReverse = !sortReverse">
+                                    Tổng tiền
+                                    <span ng-show="sortType == 'TongTien' && !sortReverse"
+                                        class="fa fa-caret-down"></span>
+                                    <span ng-show="sortType == 'TongTien' && sortReverse" class="fa fa-caret-up"></span>
+                                </a>
+                            </th>
+                            <th>
+                                <a href="#" ng-click="sortType = 'trangThaiDonHang'; sortReverse = !sortReverse">
+                                    Trạng thái
+                                    <span ng-show="sortType == 'trangThaiDonHang' && !sortReverse"
+                                        class="fa fa-caret-down"></span>
+                                    <span ng-show="sortType == 'trangThaiDonHang' && sortReverse"
+                                        class="fa fa-caret-up"></span>
+                                </a>
+                            </th>
+                            <th class="text-primary"> Action </th>
+                        </tr>
+                    </thead>
+                    <tbody ng-repeat="item in ListHoaDon | orderBy:sortType:sortReverse">
+                        <tr ng-if="item.trangThaiDonHang == 3">
+                            <td>{{formatDate(item.ngayMua)}}</td>
+                            <td>{{item.nameUser}}</td>
+                            <td>{{item.sdt}}</td>
+                            <td>
+                                {{item.TongTien}}
+                            </td>
+                            <td>
+                                {{TrangThai[item.trangThaiDonHang].state}}
+                            </td>
+                            <td>
+                                <button class="btn btn-primary btn-sm ps-3 pe-3 me-2" data-target="#MainModal"
+                                    ng-click="ChiTiet(item.id)">
+                                    Chi tiết
+                                </button>
+                            </td>
+                        </tr>
+                    </tbody>
+                    <tbody>
+                        <tr ng-if="GetSoLuongHoaDon(3)">
+                            <td colspan="6" class="text-center">Không có đơn hàng nào</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </div>
     <!-- Cart Items -->
 
@@ -178,8 +488,7 @@
                                     <div class="col-sm-6">
                                         <div class="form-group">
                                             <label for="Name" class="form-label">Họ và tên</label>
-                                            <input type="text" class="form-control" id="Name" ng-model="UserInfo.name"
-                                                required>
+                                            <input type="text" class="form-control"ng-model="info.name" required>
                                         </div>
                                     </div>
 
@@ -187,31 +496,31 @@
                                     <div class="col-sm-6">
                                         <div class="form-group">
                                             <label for="Tel" class="form-label">Số điện thoại</label>
-                                            <input type="tel" class="form-control" id="Tel" maxlength="10"
-                                                pattern="0[0-9]{9}" ng-model="UserInfo.sdt" required>
+                                            <input type="tel" class="form-control" maxlength="10"
+                                                pattern="0[0-9]{9}" ng-model="info.sdt" required>
                                         </div>
                                     </div>
 
                                     <div class="col-12">
                                         <div class="form-group">
                                             <label for="email" class="form-label">Email</label>
-                                            <input type="email" class="form-control" id="email"
-                                                ng-model="UserInfo.email" placeholder="you@example.com">
+                                            <input type="email" class="form-control"
+                                                ng-model="info.email" placeholder="you@example.com">
                                         </div>
                                     </div>
 
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label for="state" class="form-label">Địa chỉ chi tiết</label>
-                                            <input type="text" class="form-control" id="address" placeholder=""
-                                                ng-model="UserInfo.diaChi" required>
+                                            <input type="text" class="form-control" placeholder=""
+                                                ng-model="info.diaChi" required>
                                         </div>
                                     </div>
 
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label for="state" class="form-label">Chú thích</label>
-                                            <input type="text" class="form-control" id="address" placeholder=""
+                                            <input type="text" class="form-control" placeholder=""
                                                 ng-model="chuthich" required>
                                         </div>
                                     </div>
@@ -226,10 +535,11 @@
                                         ng-repeat="item in ListThanhToan">
                                         <div class="d-flex flex-grow-1 justify-content-start align-items-start">
                                             <div class="position-relative f-w-20 border p-2 me-4">
-                                                <img src="{{item.sanPham.anhs.img}}" alt="" class="rounded img-fluid">
+                                                <img src="{{GetSanPhamInfo(item.idSanPham).anhs.img}}" alt=""
+                                                    class="rounded img-fluid">
                                             </div>
                                             <div>
-                                                <p class="mb-1 fs-6 fw-bolder">{{item.sanPham.name}}</p>
+                                                <p class="mb-1 fs-6 fw-bolder">{{GetSanPhamInfo(item.idSanPham).name}}</p>
                                                 <span
                                                     class="fs-xs text-uppercase fw-bolder text-muted">{{item.thuocTinh}}</span>
                                                 <br>
@@ -238,7 +548,7 @@
                                             </div>
                                         </div>
                                         <div class="flex-shrink-0 fw-bolder">
-                                            <span>{{(item.sanPham.giaGiamGia *
+                                            <span>{{(GetSanPhamInfo(item.idSanPham).giaGiamGia *
                                                 item.soLuong).toLocaleString('vi-VN', {style : 'currency', currency :
                                                 'VND'})}}</span>
                                         </div>
@@ -271,7 +581,132 @@
                                         <p class="m-0 fw-bolder fs-6">Thanh toán khi nhận hàng</p>
                                     </div>
                                 </div>
-                                <a href="#" class="btn btn-primary w-100" role="button">Xác nhận đơn hàng</a>
+                                <button href="#" class="btn btn-primary w-100" ng-click="ThemHoaDon()">Xác nhận đơn hàng</button>
+                            </div>
+                        </div>
+                        <!-- /Checkout Panel Summary -->
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="modal fade" id="MainModal2" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
+        aria-labelledby="MainModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl">
+            <div class="modal-content rounded">
+                <div class="modal-header">
+                    <h3 class="modal-title w-100 text-center" id="MainModalLabel">Chi tiết hóa đơn</h3>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Đóng"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row g-md-6">
+                        <!-- Checkout Panel Left -->
+                        <div class="col-12 col-lg-6 col-xl-7">
+                            <!-- Checkout Panel Contact -->
+                            <div class="checkout-panel">
+                                <h5 class="title-checkout">Thông tin nhận hàng</h5>
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label for="Name" class="form-label">Họ và tên</label>
+                                            <input type="text" class="form-control" id="nameUser"
+                                                ng-model="info.nameUser" disabled>
+                                        </div>
+                                    </div>
+
+                                    <!-- Last Name-->
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label for="Tel" class="form-label">Số điện thoại</label>
+                                            <input type="tel" class="form-control" id="Tel" maxlength="10"
+                                                pattern="0[0-9]{9}" ng-model="info.sdt" disabled>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-12">
+                                        <div class="form-group">
+                                            <label for="email" class="form-label">Email</label>
+                                            <input type="email" class="form-control" id="email" ng-model="info.email"
+                                                placeholder="you@example.com" disabled>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label for="state" class="form-label">Địa chỉ chi tiết</label>
+                                            <input type="text" class="form-control" id="address" placeholder=""
+                                                ng-model="info.diaChi" disabled>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label for="state" class="form-label">Chú thích</label>
+                                            <input type="text" class="form-control" id="address" placeholder=""
+                                                ng-model="chuthich" disabled>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-12 col-lg-6 col-xl-5">
+                            <div class="p-4 sticky-md-top top-5">
+                                <div class="border-bottom pb-3">
+                                    <!-- Cart Item-->
+                                    <div class="d-none d-md-flex justify-content-between align-items-start py-2"
+                                        ng-repeat="item in info.hoaDonChiTiets">
+                                        <div class="d-flex flex-grow-1 justify-content-start align-items-start">
+                                            <div class="position-relative f-w-20 border p-2 me-4">
+                                                <img src="{{GetSanPhamInfo(item.idSanPham).anhs.img}}" alt=""
+                                                    class="rounded img-fluid">
+                                            </div>
+                                            <div>
+                                                <p class="mb-1 fs-6 fw-bolder">{{GetSanPhamInfo(item.idSanPham).name}}
+                                                </p>
+                                                <span
+                                                    class="fs-xs text-uppercase fw-bolder text-muted">{{item.thuocTinh}}</span>
+                                                <br>
+                                                <span class="fs-xs  fw-bolder text-muted">Số lượng:
+                                                    {{item.soLuong}}</span>
+                                            </div>
+                                        </div>
+                                        <div class="flex-shrink-0 fw-bolder">
+                                            <span>{{(item.giaSanPham *
+                                                item.soLuong).toLocaleString('vi-VN', {style : 'currency', currency
+                                                :
+                                                'VND'})}}</span>
+                                        </div>
+                                    </div>
+                                    <!-- / Cart Item-->
+                                </div>
+                                <div class="py-3 border-bottom">
+                                    <div class="d-flex justify-content-between align-items-center mb-2">
+                                        <p class="m-0 fw-bolder fs-6">Giá trị đơn hàng</p>
+                                        <p class="m-0 fs-6 fw-bolder">{{info.TongTien}}</p>
+                                    </div>
+                                    <div class="d-flex justify-content-between align-items-center ">
+                                        <p class="m-0 fw-bolder fs-6">Tiền ship</p>
+                                        <p class="m-0 fs-6 fw-bolder">0 đ</p>
+                                    </div>
+                                </div>
+                                <div class="py-3 border-bottom">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div>
+                                            <p class="m-0 fw-bolder fs-6">Tổng</p>
+                                        </div>
+                                        <p class="m-0 fs-5 fw-bold fs-6">{{info.TongTien}}</p>
+                                    </div>
+                                </div>
+                                <div class="py-3 border-bottom">
+                                    <div class="d-flex justify-content-between align-items-center">
+                                        <div>
+                                            <p class="m-0 fw-bolder fs-6">Trạng thái</p>
+                                        </div>
+                                        <p class="m-0 fs-5 fw-bold fs-6">{{TrangThai[info.trangThaiDonHang].state}}
+                                        </p>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                         <!-- /Checkout Panel Summary -->

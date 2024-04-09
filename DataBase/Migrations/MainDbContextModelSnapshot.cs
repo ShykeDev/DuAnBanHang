@@ -90,7 +90,7 @@ namespace DataBase.Migrations
                     b.Property<string>("ThuocTinh")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<Guid>("UserID")
+                    b.Property<Guid?>("UserID")
                         .HasColumnType("uniqueidentifier");
 
                     b.HasKey("ID");
@@ -129,8 +129,12 @@ namespace DataBase.Migrations
                     b.Property<int>("TrangThaiDonHang")
                         .HasColumnType("int");
 
-                    b.Property<Guid>("UserID")
+                    b.Property<Guid?>("UserID")
                         .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("nameUser")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.HasKey("ID");
 
@@ -307,7 +311,7 @@ namespace DataBase.Migrations
                     b.HasData(
                         new
                         {
-                            ID = new Guid("43f19c8c-e49c-4fe4-adf6-83e04d53802b"),
+                            ID = new Guid("4722f2b1-f37e-483c-bf15-1523dc4179ec"),
                             DiaChi = "Phúc Diễn, Bắc Từ Liêm, Hà Nội",
                             Email = "nhatvu@gmail.com",
                             Name = "Nguyễn Lê Nhất Vũ",
@@ -320,7 +324,7 @@ namespace DataBase.Migrations
                         },
                         new
                         {
-                            ID = new Guid("0fc8e4f7-93fb-44be-8a39-a561d47ac6c9"),
+                            ID = new Guid("c8d29bac-ab5a-4914-b957-0fac094f7857"),
                             DiaChi = "Phúc Diễn, Bắc Từ Liêm, Hà Nội",
                             Email = "nhatvu@gmail.com",
                             Name = "Nguyễn Lê Nhất Vũ",
@@ -374,8 +378,6 @@ namespace DataBase.Migrations
                     b.HasOne("DataBase.Entities.User", null)
                         .WithMany("GioHangChiTiets")
                         .HasForeignKey("UserID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired()
                         .HasConstraintName("FK_GHCT_GH");
 
                     b.Navigation("sanPham");
@@ -386,8 +388,6 @@ namespace DataBase.Migrations
                     b.HasOne("DataBase.Entities.User", null)
                         .WithMany("HoaDons")
                         .HasForeignKey("UserID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired()
                         .HasConstraintName("FK_HD_KH");
                 });
 

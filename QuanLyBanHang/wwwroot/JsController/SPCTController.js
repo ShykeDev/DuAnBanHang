@@ -40,18 +40,6 @@ myApp.controller('SPChiTietCtrl', function ($scope, $http) {
                 } else {
                     if (response == true) {
                         toastr.success("Thêm thành công");
-                    } else if (response == false) {
-                        swal({
-                            title: "Thông báo",
-                            text: "Vui lòng đăng nhập để thêm vào giỏ hàng",
-                            icon: "warning",
-                            buttons: true,
-                            dangerMode: true,
-                        }).then((willLogin) => {
-                            if (willLogin) {
-                                location.href = "/Home/Login";
-                            }
-                        });
                     }
                     else {
                         swal("Oops!", response, "error");

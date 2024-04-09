@@ -14,10 +14,11 @@ namespace DataBase.Entities
         {
         }
 
-        public HoaDon(Guid iD, Guid userID, DateTime ngayMua, string sDT, string email, string diaChi, string? chuThich, int trangThaiDonHang)
+        public HoaDon(Guid iD, Guid? userID, string nameuser, DateTime ngayMua, string sDT, string email, string diaChi, string? chuThich, int trangThaiDonHang)
         {
             ID = iD;
             UserID = userID;
+            nameUser = nameuser;
             NgayMua = ngayMua;
             SDT = sDT;
             Email = email;
@@ -27,7 +28,8 @@ namespace DataBase.Entities
         }
 
         public Guid ID { get; set; }
-        public Guid UserID { get; set; }
+        public Guid? UserID { get; set; }
+        public string nameUser { get; set; }
         public DateTime NgayMua { get; set; }
         public string SDT { get; set; }
         public string Email { get; set; }
